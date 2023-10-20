@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Dialog Remover",
+    "version": "1.0",
+    "description": "Removes tp-yt-paper-dialog from YouTube pages",
+    "permissions": ["activeTab"],
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
