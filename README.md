@@ -17,3 +17,6 @@ Go to the extensions page and click on load unpacked and select the folder with 
 ![Sample Image](./images/3.png)
 
 #### Now enjoy youtube ;)
+
+Buy me a coffe... ☕
+`0x53cE5D48030c1623fFF532F6B89080BC2D205323` BSC Network
