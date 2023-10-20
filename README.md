@@ -2,4 +2,4 @@
 A simple extention to remove the annoying ads popup
 
 
-![Sample Image](./images/your-image.png)
+![Sample Image](./images/1.png)
