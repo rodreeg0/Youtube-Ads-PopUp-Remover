@@ -1,6 +1,7 @@
 # Youtube-Ads-PopUp-Remover
 Youtube is now blocking ads. This is an extension to remove the annoying popup that appears and resumes the video playback automatically.
 
+If you're using Firefox [follow the steps explained here](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension)
 
 ![Sample Image](./images/1.png)
 
