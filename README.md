@@ -1,5 +1,5 @@
 # Youtube-Ads-PopUp-Remover
-Youtube is now blocking ads. This is an extention to remove the annoying popup that appears and resumes the video playback automatically.
+Youtube is now blocking ads. This is an extension to remove the annoying popup that appears and resumes the video playback automatically.
 
 
 ![Sample Image](./images/1.png)
