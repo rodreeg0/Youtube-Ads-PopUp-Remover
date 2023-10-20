@@ -6,7 +6,7 @@ Youtube is now blocking ads. This is an extention to remove the annoying popup t
 
 ### Step one
 
-Download or clone this repository.
+Download or clone this repository. If you download it as zip, don't forget to unzip it.
 
 ![Sample Image](./images/2.png)
 
