@@ -14261,6 +14261,9 @@
                     case 6:
                         mapId = "generalStore";
                         break;
+                    case 7:
+                        mapId = "tutorialHouse";
+                        break;
                     }
 
                     if (mapId) {
@@ -14268,7 +14271,9 @@
                     } else {
                     console.error("Invalid input. Please enter a number between 1 and 4.");
                     }
-                } else {
+                } else if (!isNaN(number)) {
+                    m.mapId = mapId;
+                }{
                     console.error("Invalid input. Please enter a number between 1 and 4.");
                 }
                 }
