@@ -12055,9 +12055,9 @@
                                             storeId: "str_bucksGalore"
                                         };
                                         this.room.send(e, t);
-                                    } else if (!sellOrder.hasOwnProperty('completedAt')){
+                                    } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
                                         // Player needs to buy the item
-                                        
+                                        console.log(requestedItemId)
                                         console.log(`Sell order ${i + 1} requires buying ${requestedQuantity} of ${requestedItemId}.`);
                                         try {
                                             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
