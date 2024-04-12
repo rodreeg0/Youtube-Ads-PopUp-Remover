@@ -14241,7 +14241,7 @@
                     if (!isNaN(userInput)){
                         number = parseInt(userInput); // Ensure numeric conversion
                         var mapId;
-                        if (!isNaN(number) && number >= 1 && number <= 6) {
+                        if (!isNaN(number) && number >= 1 && number <= 7) {
                             
                             switch (number) {
                             case 1:
