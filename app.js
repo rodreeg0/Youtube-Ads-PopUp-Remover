@@ -14240,7 +14240,7 @@
                 if (userInput !== null) {
                 var number = parseInt(userInput); // Ensure numeric conversion
 
-                if (!isNaN(number) && number >= 1 && number <= 6) {
+                if (!isNaN(number) && number >= 1 && number <= 7) {
                     var mapId;
                     switch (number) {
                     case 1:
