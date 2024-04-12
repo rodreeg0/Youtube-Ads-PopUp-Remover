@@ -14236,46 +14236,52 @@
             }
             async initRoom(m) {
                 var userInput = prompt("Enter a number between 1 and 4:");
-
+                var number = null;
                 if (userInput !== null) {
-                var number = parseInt(userInput); // Ensure numeric conversion
-
-                if (!isNaN(number) && number >= 1 && number <= 7) {
-                    var mapId;
-                    switch (number) {
-                    case 1:
-                        mapId = "pixelsNFTFarm-2059";
-                        break;
-                    case 2:
-                        mapId = "pixelsNFTFarm-3548";
-                        break;
-                    case 3:
-                        mapId = "pixelsNFTFarm-1759";
-                        break;
-                    case 4:
-                        mapId = "pixelsNFTFarm-848";
-                        break;
-                    case 5:
-                        mapId = "SaunaInterior";
-                        break;
-                    case 6:
-                        mapId = "generalStore";
-                        break;
-                    case 7:
-                        mapId = "tutorialHouse";
-                        break;
+                    if (!isNaN(userInput)){
+                        number = parseInt(userInput); // Ensure numeric conversion
+                        var mapId;
+                        if (!isNaN(number) && number >= 1 && number <= 6) {
+                            
+                            switch (number) {
+                            case 1:
+                                mapId = "pixelsNFTFarm-2059";
+                                break;
+                            case 2:
+                                mapId = "pixelsNFTFarm-3548";
+                                break;
+                            case 3:
+                                mapId = "pixelsNFTFarm-1759";
+                                break;
+                            case 4:
+                                mapId = "pixelsNFTFarm-848";
+                                break;
+                            case 5:
+                                mapId = "SaunaInterior";
+                                break;
+                            case 6:
+                                mapId = "generalStore";
+                                break;
+                            case 7:
+                                mapId = "tutorialHouse";
+                                break;
+                            }
+    
+                            if (mapId) {
+                                m.mapId = mapId;
+                            } else {
+                                console.error("Invalid input. Please enter a number between 1 and 4.");
+                            }
+                        } else if (!isNaN(number)) {
+                            m.mapId = "houseInterior".concat(number);
+                        }{
+                            console.error("Invalid input. Please enter a number between 1 and 4.");
+                        }
+                    }else{
+                        m.mapId = userInput;
                     }
-
-                    if (mapId) {
-                    m.mapId = mapId;
-                    } else {
-                    console.error("Invalid input. Please enter a number between 1 and 4.");
-                    }
-                } else if (!isNaN(number)) {
-                    m.mapId = mapId;
-                }{
-                    console.error("Invalid input. Please enter a number between 1 and 4.");
-                }
+                    
+                    
                 }
                 var R;
                 PhaserGame.phaserGame || await this.initGame(),
