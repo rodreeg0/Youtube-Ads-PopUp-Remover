@@ -12015,6 +12015,57 @@
                                 
                                 window.game.tasks = undefined
                                 return
+                            }else if (window.game.marketBuy !== undefined){
+                                const requestedItemId = window.game.marketBuyItemId;
+                                const requestedQuantity = window.game.marketBuyQuantity;
+                                let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+
+                                // Check if first listing's price exceeds budget
+                                if (listingsFetched.listings.length > 0 &&  window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
+                                    console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
+                                    window.game.marketBuy = undefined
+                                    return; // Skip to the next sell order if budget is exceeded
+                                }
+                                while (true){
+                                    listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                    // Iterate over listings for suitable purchase option
+                                    for (let listing of listingsFetched.listings) {
+                                        console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                        if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
+                                            
+                                            console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                            let e = "marketplace"
+                                            let t = {
+                                                listingId: listing._id,
+                                                quantity: requestedQuantity,
+                                                subcommand: "purchase"
+                                            };
+                                            this.room.send(e, t);
+                                            
+                                            break; // Exit the loop after a suitable purchase option is found
+                                        }
+                                    }
+                                    let totalQuantity = 0;
+                                    await delay(3500);
+                                    
+                                    for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                        if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                            totalQuantity += entry.quantity;
+                                        }
+                                    }
+                                    
+                                    if (requestedQuantity <= totalQuantity) {
+                                        console.log("Bought sucess")
+                                        break; // Exit the loop after finding the requested quantity
+                                    }
+                                    // if (window.game.notification !== 'marketplace-purchase-failed'){
+                                    //     break;
+                                    // }
+                                    console.error(`Purshase of ${requestedItemId} failed.`)
+                                    
+                                }
+                                window.game.marketBuy = undefined
+                                return; // Skip to the next sell order if budget is exceeded
                             }else if (window.game.market !== undefined){
                                 let e = "sellOrderFetch"
                                 let t = {
@@ -12026,20 +12077,20 @@
                                 // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
                                 window.game.market = undefined
                                 await delay(2000);
-                                sellOrders.forEach((sellOrder, index) => sellOrder.originalIndex = index);
-                                console.log(window.sellOrders)
-                                sellOrders.sort((a, b) => {
-                                    const aHasPixelReward = a.reward && a.reward.currency && a.reward.currency.currencyId === "cur_pixel";
-                                    const bHasPixelReward = b.reward && b.reward.currency && b.reward.currency.currencyId === "cur_pixel";
+                                // sellOrders.forEach((sellOrder, index) => sellOrder.originalIndex = index);
+                                // console.log(window.sellOrders)
+                                // sellOrders.sort((a, b) => {
+                                //     const aHasPixelReward = a.reward && a.reward.currency && a.reward.currency.currencyId === "cur_pixel";
+                                //     const bHasPixelReward = b.reward && b.reward.currency && b.reward.currency.currencyId === "cur_pixel";
                                 
-                                    if (aHasPixelReward && !bHasPixelReward) {
-                                      return -1; // Move sell order with "cur_pixel" reward to the beginning
-                                    } else if (!aHasPixelReward && bHasPixelReward) {
-                                      return 1; // Move sell order without "cur_pixel" reward to the end
-                                    } else {
-                                      return 0; // No priority difference if both have the same currency or neither have rewards
-                                    }
-                                  });
+                                //     if (aHasPixelReward && !bHasPixelReward) {
+                                //       return -1; // Move sell order with "cur_pixel" reward to the beginning
+                                //     } else if (!aHasPixelReward && bHasPixelReward) {
+                                //       return 1; // Move sell order without "cur_pixel" reward to the end
+                                //     } else {
+                                //       return 0; // No priority difference if both have the same currency or neither have rewards
+                                //     }
+                                //   });
                                   
                                 console.log(window.sellOrders)
                                 let playerInventory = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
@@ -12050,23 +12101,22 @@
                                     const requestedQuantity = sellOrder.request.quantity;
 
                                     let playerItem = null; // Initialize to avoid potential undefined errors
-
-                                    // Loop through player inventory (key-value pairs)
-                                    for (let [key, entry] of playerInventory) {
+                                    let totalQuantity = 0;
+                                    
+                                    for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
                                         if (entry.hasOwnProperty('item') && requestedItemId === entry.item && !sellOrder.hasOwnProperty('completedAt')) {
-                                            playerItem = entry;
-                                            break; // Exit the loop after finding the item
+                                            totalQuantity += entry.quantity;
                                         }
                                     }
-                                    if (playerItem && playerItem.quantity >= requestedQuantity) {
-                                        // Player has enough items to fulfill the order
+                                    
+                                    if (requestedQuantity <= totalQuantity) {
                                         console.log(`Sell order ${i + 1} of ${requestedItemId} can be fulfilled from inventory.`);
                                         let e = "sellOrderFill"
                                         let t = {
                                             sellOrderIndex: sellOrder.originalIndex,
                                             storeId: "str_bucksGalore"
                                         };
-                                        this.room.send(e, t);
+                                        this.room.send(e, t);  
                                     } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
                                         // Player needs to buy the item
                                         console.log(requestedItemId)
@@ -12080,8 +12130,8 @@
                                                 continue; // Skip to the next sell order if budget is exceeded
                                             }
                                             let qnt;
-                                            if (playerItem && playerItem.quantity > 0){
-                                                qnt = requestedQuantity - playerItem.quantity;
+                                            if (totalQuantity > 0){
+                                                qnt = requestedQuantity - totalQuantity;
                                             }else{
                                                 qnt = requestedQuantity;
                                             }
@@ -12090,6 +12140,7 @@
                                                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
                                                 // Iterate over listings for suitable purchase option
                                                 for (let listing of listingsFetched.listings) {
+                                                    console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
                                                     if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= 3000 && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
                                                         
                                                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
@@ -12104,15 +12155,17 @@
                                                         break; // Exit the loop after a suitable purchase option is found
                                                     }
                                                 }
-                                                let bougthSuccess = false;
-                                                await delay(3500);
+                                                totalQuantity = 0
+
                                                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                                    if (entry.hasOwnProperty('item') && requestedItemId === entry.item && requestedQuantity <= entry.quantity) {
-                                                        bougthSuccess = true; // Exit the loop after finding the item
+                                                    if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                                        totalQuantity += entry.quantity;
                                                     }
                                                 }
-                                                if (bougthSuccess){
-                                                    break;
+                                                
+                                                if (requestedQuantity <= totalQuantity) {
+                                                    console.log("Bought sucess")
+                                                    break; // Exit the loop after finding the requested quantity
                                                 }
                                                 // if (window.game.notification !== 'marketplace-purchase-failed'){
                                                 //     break;
@@ -12514,6 +12567,7 @@
                                     return 0; // No priority difference if both have the same currency or neither have rewards
                                 }
                                 });
+                                console.log(window['sellOrders']);
                                 Y.e.set(J.v, R);
                                 break;
                             case V.m.clientCmd:
