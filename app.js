@@ -12184,84 +12184,84 @@
                                         } catch (error) {
                                             console.error("Error fetching marketplace listings:", error);
                                         }
-                                    }else if (window.game.loadStove !== undefined){
-                                        let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-
-                                        
-                                        let woodSlot = undefined
-                                        
-                                        // Iterate through the map entries
-                                        for (let [key, entry] of itemsMap) {
-                                            if (entry.hasOwnProperty('item') && entry.item === "itm_wood") {
-                                                woodSlot = entry.slot;
-                                            }
-                                        }
-                                        let e = "ui"
-                                        let t = {
-                                            id: "itm_wood",
-                                            mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
-                                            slot: woodSlot,
-                                            tiles: undefined,
-                                            type: "entity",
-                                            x: undefined,
-                                            y: undefined
-
-                                        };
-                                        await this.room.send(e, t);
-                                        
-                                        
-                                        // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
-                                        window.game.loadStove = undefined
-                                        await delay(500);
-                                        return
-                                    }else if(window.game.startCraft !== undefined){
-                                        let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-
-                                        
-                                        let eggQnt = undefined
-                                        
-                                        // Iterate through the map entries
-                                        for (let [key, entry] of itemsMap) {
-                                            if (entry.hasOwnProperty('item') && entry.item === "itm_egg") {
-                                                eggQnt += entry.quantity;
-                                            }
-                                        }
-                                        let qnt = 60
-                                        if (eggQnt < 60){
-                                            qnt = eggQnt
-                                        }
-                                        let e = "clickEntity"
-
-                                        let t = {
-                                            entity: "ent_stove",
-                                            impact: "startCraft",
-                                            inputs: ["ach_Plain_Omelet", qnt],
-                                            mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                        };
-                                        await this.room.send(e, t);
-                                        window.game.startCraft = undefined
-                                        await delay(500);
-                                        return
-                                    }else if(window.game.claimCraft !== undefined){
-                                        
-                                        let e = "clickEntity"
-
-                                        let t = {
-                                            entity: "ent_stove",
-                                            impact: "claim",
-                                            inputs: undefined,
-                                            mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                        };
-                                        await this.room.send(e, t);
-                                        window.game.claimCraft = undefined
-                                        await delay(500);
-                                        return
                                     }
                                     await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
                                     console.log(Date.now())
                                 }
 
 
+                                return
+                            }else if (window.game.loadStove !== undefined){
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+
+                                
+                                let woodSlot = undefined
+                                
+                                // Iterate through the map entries
+                                for (let [key, entry] of itemsMap) {
+                                    if (entry.hasOwnProperty('item') && entry.item === "itm_wood") {
+                                        woodSlot = entry.slot;
+                                    }
+                                }
+                                let e = "ui"
+                                let t = {
+                                    id: "itm_wood",
+                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
+                                    slot: woodSlot,
+                                    tiles: undefined,
+                                    type: "entity",
+                                    x: undefined,
+                                    y: undefined
+
+                                };
+                                await this.room.send(e, t);
+                                
+                                
+                                // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
+                                window.game.loadStove = undefined
+                                await delay(500);
+                                return
+                            }else if(window.game.startCraft !== undefined){
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+
+                                
+                                let eggQnt = undefined
+                                
+                                // Iterate through the map entries
+                                for (let [key, entry] of itemsMap) {
+                                    if (entry.hasOwnProperty('item') && entry.item === "itm_egg") {
+                                        eggQnt += entry.quantity;
+                                    }
+                                }
+                                let qnt = 60
+                                if (eggQnt < 60){
+                                    qnt = eggQnt
+                                }
+                                let e = "clickEntity"
+
+                                let t = {
+                                    entity: "ent_stove",
+                                    impact: "startCraft",
+                                    inputs: ["ach_Plain_Omelet", qnt],
+                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                };
+                                await this.room.send(e, t);
+                                window.game.startCraft = undefined
+                                await delay(500);
+                                return
+                            }else if(window.game.claimCraft !== undefined){
+                                
+                                let e = "clickEntity"
+
+                                let t = {
+                                    entity: "ent_stove",
+                                    impact: "claim",
+                                    inputs: undefined,
+                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                };
+                                await this.room.send(e, t);
+                                window.game.claimCraft = undefined
+                                await delay(500);
                                 return
                             }
                             window.game.clickedShears = true
