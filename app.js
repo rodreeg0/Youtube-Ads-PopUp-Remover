@@ -12251,9 +12251,9 @@
                                     qnt = Math.floor(eggQnt / 2)
                                 }
                                 if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state ==="ready"){
-                                    let e = "clickEntity"
+                                    e = "clickEntity"
 
-                                    let t = {
+                                    t = {
                                         entity: "ent_stove",
                                         impact: "claim",
                                         inputs: undefined,
@@ -12318,6 +12318,7 @@
                                                 //     break;
                                                 // }
                                                 console.error(`Purshase of ${requestedItemId} failed.`)
+                                            }
                                         }
                                         let e = "ui"
                                         let t = {
@@ -12334,9 +12335,9 @@
                                     }
                                 }
                                 
-                                let e = "clickEntity"
+                                e = "clickEntity"
 
-                                let t = {
+                                t = {
                                     entity: "ent_stove",
                                     impact: "startCraft",
                                     inputs: ["ach_Plain_Omelet", qnt],
