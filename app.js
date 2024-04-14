@@ -12250,15 +12250,28 @@
                                 if (Math.floor(eggQnt / 2) < qnt){
                                     qnt = Math.floor(eggQnt / 2)
                                 }
-                                let e = "clickEntity"
+                                if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state ==="ready"){
+                                    let e = "clickEntity"
 
-                                let t = {
-                                    entity: "ent_stove",
-                                    impact: "startCraft",
-                                    inputs: ["ach_Plain_Omelet", qnt],
-                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                };
+                                    let t = {
+                                        entity: "ent_stove",
+                                        impact: "claim",
+                                        inputs: undefined,
+                                        mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                    };
+                                }
                                 await this.room.send(e, t);
+                                    let e = "clickEntity"
+
+                                    let t = {
+                                        entity: "ent_stove",
+                                        impact: "startCraft",
+                                        inputs: ["ach_Plain_Omelet", qnt],
+                                        mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                    };
+                                    
+                                    await this.room.send(e, t);
+                                
                                 window.game.startCraft = undefined
                                 await delay(500);
                                 return
