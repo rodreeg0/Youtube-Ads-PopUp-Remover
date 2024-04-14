@@ -12066,19 +12066,6 @@
                                 }
                                 window.game.marketBuy = undefined
                                 return; // Skip to the next sell order if budget is exceeded
-                            }else if(window.game.marketSell !== undefined){
-                                let e = "marketplace"
-                                let t = {
-                                    currency: "cur_coins",
-                                    itemId: "itm_plain_omelet",
-                                    price: window.game.marketSellPrice,
-                                    quantity: window.game.marketSellQuantity,
-                                    subcommand: "create"
-                                };
-                                await this.room.send(e, t);
-                                
-                                window.game.marketSell = undefined
-                                return
                             }else if (window.game.market !== undefined){
                                 let e = "sellOrderFetch"
                                 let t = {
@@ -12276,22 +12263,6 @@
                                 window.game.claimCraft = undefined
                                 await delay(500);
                                 return
-                            }else if (window.game.fetchMail !== undefined){
-                                let e = "clickEntity"
-                                await this.room.send(e, undefined);
-                                window.game.fetchMail = undefined
-                                await delay(500);
-                                return
-                            }else if (window.game.claimMail !== undefined){
-                                let e = "collectMailboxItem"
-                                let t = {
-                                    mailId: window.mailBoxFirstId,
-                                    similar: true
-                                };
-                                await this.room.send(e, undefined);
-                                window.game.claimMail = undefined
-                                await delay(500);
-                                return
                             }
                             window.game.clickedShears = true
                             const filteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
@@ -12483,17 +12454,12 @@
             handleDisconnect() {
                 var m;
                 null === (m = this.room) || void 0 === m || m.onLeave(m=>{
-                    var R, C, T, L;
-                    if (null === (C = this.currentPlayer) || void 0 === C ? void 0 : null === (R = C.core) || void 0 === R ? void 0 : R.isGuest) {
-                        console.log("disconnected, code=", m),
-                        null === (T = this.room) || void 0 === T || T.removeAllListeners();
-                        return
-                    }
                     if (B.ZP.sendEvent(B.fb.ROOM_LEAVE),
                     this.room) {
+                        var R;
                         if (console.log("disconnected, code=", m),
                         this.room.removeAllListeners(),
-                        null === (L = this.playerSerializer) || void 0 === L || L.teardown(),
+                        null === (R = this.playerSerializer) || void 0 === R || R.teardown(),
                         this.playerSerializer = void 0,
                         this.selfPlayer = void 0,
                         this.room = void 0,
@@ -12567,7 +12533,7 @@
                 null === (m = this.room) || void 0 === m || m.onMessage("*", (m,R)=>{
                     if (this.room)
                         try {
-                            var C, L, U, $, G, q, W, Z, X, Q, ee, et, er, en, eo, ei, ea;
+                            var C, L, U, $, G, q, W, Z, X, Q, ee, et, er, en, eo;
                             switch (m) {
                             case V.m.updatePlayer:
                                 null === (C = this.playerSerializer) || void 0 === C || C.patch(R),
@@ -12606,16 +12572,16 @@
                                 if ("cannot-overwater" === R.message)
                                     break;
                                 B.rV.playSound.emit("snd_ui_error");
-                                let es = R.item && (null === (U = H.Z.getGameItem(R.item)) || void 0 === U ? void 0 : U.image)
-                                  , el = {
+                                let ei = R.item && (null === (U = H.Z.getGameItem(R.item)) || void 0 === U ? void 0 : U.image)
+                                  , ea = {
                                     source: "item",
-                                    icon: es,
+                                    icon: ei,
                                     text: {
                                         id: R.message
                                     },
                                     deduplicationKey: R.message
                                 };
-                                Y.e.set(K.W_, [el]);
+                                Y.e.set(K.W_, [ea]);
                                 break;
                             case V.m.teleportPlayer:
                                 B.ZP.sendEvent(B.fb.ROOM_WARP, {
@@ -12655,10 +12621,7 @@
                                 break;
                             case V.m.playerNotification:
                                 window.game.notification = R.deduplicationKey
-                                Y.e.set(K.W_, [R]),
-                                (null == R ? void 0 : R.source) === "item" && (null === (ei = R.text) || void 0 === ei ? void 0 : ei.count) > 0 && (null === (ea = R.stacking) || void 0 === ea ? void 0 : ea.key) && B.ZP.sendEvent(B.fb.PLAYER_INVENTORY_NEW, {
-                                    item: R.stacking.key
-                                });
+                                Y.e.set(K.W_, [R]);
                                 break;
                             case V.m.sellOrders:
                                 console.log(R.str_bucksGalore);
@@ -12994,11 +12957,10 @@
                     })
                 }
                 return this.handleRoomUpdates(),
-                Q && V && (B.ZP.sendEvent(B.Yi.CLIENT_TRIGGER, {
+                Q && (B.ZP.sendEvent(B.Yi.CLIENT_TRIGGER, {
                     trigger: Q
                 }),
                 Q = null),
-                V || this.room.leave(!0),
                 this.currentPlayer
             }
             entityUpdated(m) {
@@ -13287,6 +13249,10 @@
                 }
                 ),
                 m.inventory.slots.onAdd(m=>{
+                    console.log("item added to inventory", m.item),
+                    B.ZP.sendEvent(B.fb.PLAYER_INVENTORY_NEW, {
+                        slot: m.toJSON()
+                    }),
                     this.monitorSlot(m)
                 }
                 , !1),
@@ -13474,7 +13440,7 @@
                 return V
             }
         });
-        let T = 6.81
+        let T = 6.8
           , L = 1676498533e3
           , U = "game-container"
           , $ = "players"
@@ -16084,7 +16050,7 @@
                     };
                 return new Promise((m,R)=>{
                     setTimeout(()=>{
-                        R("no-telemetryId-available")
+                        m("4fd394a2-bc99-47c5-86d2-64414ee3d1db")
                     }
                     , 3e4),
                     window.GetTelemetryID ? window.GetTelemetryID("public-token-live-e4dbf337-9f27-447f-908f-17038ec8d940").then(C=>{
@@ -16244,8 +16210,7 @@
                         mapId: m,
                         tenant: T,
                         walletProvider: U,
-                        ver: eV.WX,
-                        ...await this.captchaOptions("validateSession")
+                        ver: eV.WX
                     });
                     C = $.data,
                     this.sessionToken = C.sessionToken,
@@ -16579,8 +16544,8 @@
         ;
         var eW = new API(eG.LB,"v1")
         window['jooj'] = eW;
-        
-        // console.log(eW.fetchMarketplaceListingsForItem("itm_popberryLoaf","6572eaec4bba74cc55f03b7b"))
+        console.log(eW.fetchMarketplaceListingsForItem("itm_popberryLoaf","6572eaec4bba74cc55f03b7b"))
+    
     },
     18496: function(m, R, C) {
         "use strict";
@@ -18424,7 +18389,6 @@
                     m.ui.quantity = $,
                     m.ui.completionTime = B,
                     m.ui.entityState = H ? U.substring(7) : U,
-                    m.ui.updated = Date.now(),
                     m.showCrafting = !0)
                 }
             },
@@ -19286,6 +19250,35 @@
         var T = C(7406)
           , L = C(34377)
           , U = C(16562);
+        function updateSelectedItem(m) {
+            let R;
+            if (-1 === m.selectedEquipment)
+                return;
+            let C = U.l.getInstance();
+            if (m.storageMid) {
+                if (m.storageMid === C.mapStorageId)
+                    R = C.getMapStorage();
+                else {
+                    let T = C.getEntityByUniqueId(m.storageMid);
+                    if (null == T ? void 0 : T.storage)
+                        R = T.storage;
+                    else {
+                        m.selectedEquipment = -1,
+                        m.storageMid = void 0;
+                        return
+                    }
+                }
+            } else
+                R = C.currentPlayer.full.inventory;
+            if (null == R ? void 0 : R.slots) {
+                R = JSON.parse(JSON.stringify(R));
+                let C = Object.values(R.slots).find(R=>R.slot === m.selectedEquipment);
+                (null == C ? void 0 : C.quantity) ? m.selectedQty = C.quantity : (m.selectedEquipment = -1,
+                m.storageMid = void 0,
+                m.selectedItem = void 0,
+                L.ZP.postEvent(L.qM.RELEASE_FROM_CURSOR))
+            }
+        }
         let $ = (0,
         T.oM)({
             name: "storage",
@@ -19409,40 +19402,13 @@
                 m.addCase("game/PLAYER_INVENTORY_CHANGE", (m,R)=>{
                     let {inventory: C} = R.payload;
                     m.activeRow = C.activeRow,
-                    function(m) {
-                        let R;
-                        if (-1 === m.selectedEquipment)
-                            return;
-                        let C = U.l.getInstance();
-                        if (m.storageMid) {
-                            if (m.storageMid === C.mapStorageId)
-                                R = C.getMapStorage();
-                            else {
-                                let T = C.getEntityByUniqueId(m.storageMid);
-                                if (null == T ? void 0 : T.storage)
-                                    R = T.storage;
-                                else {
-                                    m.selectedEquipment = -1,
-                                    m.storageMid = void 0;
-                                    return
-                                }
-                            }
-                        } else
-                            R = C.currentPlayer.full.inventory;
-                        if (null == R ? void 0 : R.slots) {
-                            R = JSON.parse(JSON.stringify(R));
-                            let C = Object.values(R.slots).find(R=>R.slot === m.selectedEquipment);
-                            (null == C ? void 0 : C.quantity) ? m.selectedQty = C.quantity : (m.selectedEquipment = -1,
-                            m.storageMid = void 0,
-                            m.selectedItem = void 0,
-                            L.ZP.postEvent(L.qM.RELEASE_FROM_CURSOR))
-                        }
-                    }(m)
+                    updateSelectedItem(m)
                 }
                 ),
                 m.addCase("game/PLAYER_INVENTORY_NEW", (m,R)=>{
-                    let {item: C} = R.payload;
-                    m.highlightedItem = C
+                    let {slot: C} = R.payload;
+                    m.highlightedItem = C.item,
+                    updateSelectedItem(m)
                 }
                 )
             }
@@ -21541,19 +21507,19 @@
           , eE = !1;
         (0,
         B.H)("game/PRESENT_UI", (m,R)=>{
-            var C, T, L, U, $, B, W, Y, K, X, Q;
-            let {ui: ee, source: er} = m
-              , eo = m.params;
-            if (eo || (eo = [m.param]),
-            console.log("got presentui ".concat(ee)),
-            ee.includes("marketplace-") && "marketplace-listings" !== ee) {
+            var C, T, L, U, $, B, W, Y, K, X, Q, ee, er, eo, ei, ea;
+            let {ui: es, source: el} = m
+              , eu = m.params;
+            if (eu || (eu = [m.param]),
+            console.log("got presentui ".concat(es)),
+            es.includes("marketplace-") && "marketplace-listings" !== es) {
                 R.dispatch((0,
                 ey.j4)({
-                    initialCategory: ee.split("marketplace-")[1]
+                    initialCategory: es.split("marketplace-")[1]
                 }));
                 return
             }
-            switch (ee) {
+            switch (es) {
             case "farmDetails":
                 R.dispatch({
                     type: "game/PRESENT_FARM_DETAILS"
@@ -21569,9 +21535,9 @@
                 en.aq)()),
                 R.dispatch((0,
                 H.aA)({
-                    source: er,
+                    source: el,
                     tenant: "pixels",
-                    mode: null == eo ? void 0 : eo[0]
+                    mode: null == eu ? void 0 : eu[0]
                 }));
                 break;
             case "entityInput":
@@ -21579,9 +21545,9 @@
                 en.aq)()),
                 R.dispatch((0,
                 H.Bd)({
-                    source: er,
-                    prompt: null == eo ? void 0 : eo[0],
-                    config: eo.slice(1)
+                    source: el,
+                    prompt: null == eu ? void 0 : eu[0],
+                    config: eu.slice(1)
                 }));
                 break;
             case "marketplace":
@@ -21601,8 +21567,8 @@
                 en.aq)()),
                 R.dispatch((0,
                 H.aA)({
-                    source: er,
-                    mode: null == eo ? void 0 : eo[0]
+                    source: el,
+                    mode: null == eu ? void 0 : eu[0]
                 }));
                 break;
             case "hideHUD":
@@ -21614,9 +21580,9 @@
                 H.Dw)(!0));
                 break;
             case "link":
-                "string" == typeof (null == eo ? void 0 : eo[0]) && V.ZP.sendEvent(V.fb.LINK_OPEN, {
-                    link: null == eo ? void 0 : eo[0],
-                    msgKey: null == eo ? void 0 : eo[1]
+                "string" == typeof (null == eu ? void 0 : eu[0]) && V.ZP.sendEvent(V.fb.LINK_OPEN, {
+                    link: null == eu ? void 0 : eu[0],
+                    msgKey: null == eu ? void 0 : eu[1]
                 });
                 break;
             case "petStorage":
@@ -21631,20 +21597,20 @@
                 R.dispatch((0,
                 Z.lW)({
                     mode: "hatched",
-                    entity: er
+                    entity: el
                 }));
                 break;
             case "petCapsule":
                 R.dispatch((0,
                 Z.lW)({
                     mode: "capsule",
-                    entity: er
+                    entity: el
                 }));
                 break;
             case "petDetails":
                 R.dispatch((0,
                 Z.zR)({
-                    petId: null == eo ? void 0 : eo[0]
+                    petId: null == eu ? void 0 : eu[0]
                 }));
                 break;
             case "mapStorage":
@@ -21656,40 +21622,40 @@
             case "entityStorage":
                 {
                     let m = J.l.getInstance()
-                      , C = m.getEntityByUniqueId(er);
+                      , C = m.getEntityByUniqueId(el);
                     if (C) {
                         let m = et.Z.getGameEntity(C.entity);
                         ((null == m ? void 0 : null === (T = m.storage) || void 0 === T ? void 0 : T.transient) || (0,
                         q.T)(R.getState())) && V.ZP.sendEvent(V.fb.PLAYER_OPEN_STORAGE, {
-                            storageId: er
+                            storageId: el
                         })
                     }
                 }
                 break;
             case "popupMap":
-                let ei = null !== (U = null == eo ? void 0 : eo[0]) && void 0 !== U ? U : "obj_mapTerravilla"
-                  , ea = et.Z.getGameObject(ei);
-                (null == ea ? void 0 : null === (L = ea.sprite) || void 0 === L ? void 0 : L.image) && (ea.sprite.size && ea.sprite.size.height > ea.sprite.size.width ? R.dispatch((0,
+                let ec = null !== (U = null == eu ? void 0 : eu[0]) && void 0 !== U ? U : "obj_mapTerravilla"
+                  , ed = et.Z.getGameObject(ec);
+                (null == ed ? void 0 : null === (L = ed.sprite) || void 0 === L ? void 0 : L.image) && (ed.sprite.size && ed.sprite.size.height > ed.sprite.size.width ? R.dispatch((0,
                 H.vV)({
-                    url: null == ea ? void 0 : null === ($ = ea.sprite) || void 0 === $ ? void 0 : $.image,
+                    url: null == ed ? void 0 : null === ($ = ed.sprite) || void 0 === $ ? void 0 : $.image,
                     vertical: !0
                 })) : R.dispatch((0,
                 H.vV)({
-                    url: null == ea ? void 0 : null === (B = ea.sprite) || void 0 === B ? void 0 : B.image
+                    url: null == ed ? void 0 : null === (B = ed.sprite) || void 0 === B ? void 0 : B.image
                 })));
                 break;
             case "popupFrame":
                 R.dispatch((0,
                 H.vV)({
-                    url: (null == eo ? void 0 : eo[0]) || "https://www.pixels.xyz",
+                    url: (null == eu ? void 0 : eu[0]) || "https://www.pixels.xyz",
                     isIframe: !0
                 }));
                 break;
             case "theatreFrame":
-                (null == eo ? void 0 : eo[0]) === "close" ? R.dispatch((0,
+                (null == eu ? void 0 : eu[0]) === "close" ? R.dispatch((0,
                 H.wR)()) : R.dispatch((0,
                 H.vV)({
-                    url: (null == eo ? void 0 : eo[0]) || "https://www.pixels.xyz",
+                    url: (null == eu ? void 0 : eu[0]) || "https://www.pixels.xyz",
                     isIframe: !0,
                     modeless: !0
                 }));
@@ -21714,7 +21680,7 @@
                 shouldAskAboutSubscription().then(m=>{
                     m && R.dispatch((0,
                     H.VG)({
-                        prompt: null == eo ? void 0 : eo[0],
+                        prompt: null == eu ? void 0 : eu[0],
                         yesno: !0,
                         callback: m=>{
                             "yes" === m ? subscribeUserToPush().then(m=>{
@@ -21741,26 +21707,28 @@
                 );
                 break;
             default:
-                if (ee.startsWith(eb) || eg.h3.includes(ee)) {
-                    let m = ee.replace(eb, "")
-                      , C = null !== (W = null == eo ? void 0 : eo[1]) && void 0 !== W ? W : "";
-                    (null == C ? void 0 : C.startsWith("update:")) || R.dispatch((0,
-                    en.aq)()),
-                    R.dispatch((0,
-                    eh.Uf)({
-                        source: null != er ? er : "",
-                        craftType: m,
-                        tableTier: null !== (Y = null == eo ? void 0 : eo[0]) && void 0 !== Y ? Y : 1,
-                        state: C,
-                        achievement: null !== (K = null == eo ? void 0 : eo[2]) && void 0 !== K ? K : "",
-                        finish: null !== (X = null == eo ? void 0 : eo[3]) && void 0 !== X ? X : 1,
-                        quantity: null !== (Q = null == eo ? void 0 : eo[4]) && void 0 !== Q ? Q : 1
-                    }))
-                } else
-                    et.Z.getStore(ee) ? (R.dispatch((0,
-                    en.aq)()),
-                    R.dispatch((0,
-                    G.WU)(ee))) : console.log("unknown dialog ".concat(ee))
+                es.startsWith(eb) ? (R.dispatch((0,
+                en.aq)()),
+                R.dispatch((0,
+                eh.Uf)({
+                    source: null != el ? el : "",
+                    craftType: es.substring(eb.length),
+                    tableTier: null !== (W = null == eu ? void 0 : eu[0]) && void 0 !== W ? W : 1,
+                    state: null !== (Y = null == eu ? void 0 : eu[1]) && void 0 !== Y ? Y : "",
+                    achievement: null !== (K = null == eu ? void 0 : eu[2]) && void 0 !== K ? K : "",
+                    finish: null !== (X = null == eu ? void 0 : eu[3]) && void 0 !== X ? X : 1,
+                    quantity: null !== (Q = null == eu ? void 0 : eu[4]) && void 0 !== Q ? Q : 1
+                }))) : eg.h3.includes(es) ? R.dispatch((0,
+                eh.Uf)({
+                    source: null != el ? el : "",
+                    craftType: es,
+                    tableTier: null !== (ee = null == eu ? void 0 : eu[0]) && void 0 !== ee ? ee : 1,
+                    state: null !== (er = null == eu ? void 0 : eu[1]) && void 0 !== er ? er : "",
+                    achievement: null !== (eo = null == eu ? void 0 : eu[2]) && void 0 !== eo ? eo : "",
+                    finish: null !== (ei = null == eu ? void 0 : eu[3]) && void 0 !== ei ? ei : 1,
+                    quantity: null !== (ea = null == eu ? void 0 : eu[4]) && void 0 !== ea ? ea : 1
+                })) : et.Z.getStore(es) ? R.dispatch((0,
+                G.WU)(es)) : console.log("unknown dialog ".concat(es))
             }
         }
         ),
@@ -21935,12 +21903,16 @@
                 break;
             case "roninInjectedFunction":
                 try {
-                    var L, U, $, B, H, G, q, W, Z;
+                    var L, U, $, B, H, G, q, W, Z, Y;
                     let m = eC.getState()
-                      , R = null !== (Z = null == T ? void 0 : T[0]) && void 0 !== Z ? Z : "cbRoninCall"
-                      , C = null === ($ = m.game.player) || void 0 === $ ? void 0 : null === (U = $.full) || void 0 === U ? void 0 : null === (L = U.cryptoWallets) || void 0 === L ? void 0 : L.map(m=>m.address);
-                    null === (W = window.ronin) || void 0 === W || null === (q = W.provider) || void 0 === q || null === (G = q[R]) || void 0 === G || G.call(q, {
-                        userId: null === (H = m.game.player) || void 0 === H ? void 0 : null === (B = H.core) || void 0 === B ? void 0 : B.mid,
+                      , R = null !== (Y = null == T ? void 0 : T[0]) && void 0 !== Y ? Y : "cbRoninCall"
+                      , C = null === (B = m.game.player) || void 0 === B ? void 0 : null === ($ = B.full) || void 0 === $ ? void 0 : null === (U = $.cryptoWallets) || void 0 === U ? void 0 : null === (L = U.filter(m=>{
+                        var R;
+                        return null === (R = m.providers) || void 0 === R ? void 0 : R.includes("ronin")
+                    }
+                    )) || void 0 === L ? void 0 : L.map(m=>m.address);
+                    null === (Z = window.ronin) || void 0 === Z || null === (W = Z.provider) || void 0 === W || null === (q = W[R]) || void 0 === q || q.call(W, {
+                        userId: null === (G = m.game.player) || void 0 === G ? void 0 : null === (H = G.core) || void 0 === H ? void 0 : H.mid,
                         wallets: C
                     })
                 } catch (m) {
