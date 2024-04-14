@@ -16549,6 +16549,8 @@
         }
         ;
         var eW = new API(eG.LB,"v1")
+        window['jooj'] = eW;
+        // console.log(eW.fetchMarketplaceListingsForItem("itm_popberryLoaf","6572eaec4bba74cc55f03b7b"))
     },
     18496: function(m, R, C) {
         "use strict";
