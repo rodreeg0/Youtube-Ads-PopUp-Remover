@@ -12288,7 +12288,7 @@
                                     mailId: window.mailBoxFirstId,
                                     similar: true
                                 };
-                                await this.room.send(e, undefined);
+                                await this.room.send(e, t);
                                 window.game.claimMail = undefined
                                 await delay(500);
                                 return
