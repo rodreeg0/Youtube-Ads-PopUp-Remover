@@ -12259,8 +12259,9 @@
                                         inputs: undefined,
                                         mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
                                     };
+                                    await this.room.send(e, t);
                                 }
-                                await this.room.send(e, t);
+                                
                                     let e = "clickEntity"
 
                                     let t = {
