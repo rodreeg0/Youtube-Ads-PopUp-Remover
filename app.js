@@ -12713,7 +12713,9 @@
                             case V.m.fetchMailbox:
                                 console.log("received mailbox items"),
                                 B.ZP.sendEvent(B.fb.RECEIVE_MAIL, R);
+                                if (R.mail.length > 0){
                                 window['mailBoxFirstId'] = R.mail[0]._id
+                                }
                                 break;
                             case V.m.collectMailboxItem:
                                 B.ZP.sendEvent(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
