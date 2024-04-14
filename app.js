@@ -12066,6 +12066,19 @@
                                 }
                                 window.game.marketBuy = undefined
                                 return; // Skip to the next sell order if budget is exceeded
+                            }else if(window.game.marketSell !== undefined){
+                                let e = "marketplace"
+                                let t = {
+                                    currency: "cur_coins",
+                                    itemId: "itm_plain_omelet",
+                                    price: window.game.marketSellPrice,
+                                    quantity: window.game.marketSellQuantity,
+                                    subcommand: "create"
+                                };
+                                await this.room.send(e, t);
+                                
+                                window.game.marketSell = undefined
+                                return
                             }else if (window.game.market !== undefined){
                                 let e = "sellOrderFetch"
                                 let t = {
@@ -12261,6 +12274,22 @@
                                 };
                                 await this.room.send(e, t);
                                 window.game.claimCraft = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.fetchMail !== undefined){
+                                let e = "clickEntity"
+                                await this.room.send(e, undefined);
+                                window.game.fetchMail = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.claimMail !== undefined){
+                                let e = "collectMailboxItem"
+                                let t = {
+                                    mailId: window.mailBoxFirstId,
+                                    similar: true
+                                };
+                                await this.room.send(e, undefined);
+                                window.game.claimMail = undefined
                                 await delay(500);
                                 return
                             }
@@ -16550,6 +16579,7 @@
         ;
         var eW = new API(eG.LB,"v1")
         window['jooj'] = eW;
+        
         // console.log(eW.fetchMarketplaceListingsForItem("itm_popberryLoaf","6572eaec4bba74cc55f03b7b"))
     },
     18496: function(m, R, C) {
