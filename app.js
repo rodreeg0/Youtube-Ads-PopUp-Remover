@@ -12277,7 +12277,7 @@
                                 await delay(500);
                                 return
                             }else if (window.game.fetchMail !== undefined){
-                                let e = "clickEntity"
+                                let e = "fetchMailbox"
                                 await this.room.send(e, undefined);
                                 window.game.fetchMail = undefined
                                 await delay(500);
