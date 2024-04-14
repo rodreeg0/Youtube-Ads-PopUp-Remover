@@ -12247,8 +12247,8 @@
                                     }
                                 }
                                 let qnt = 45
-                                if (eggQnt < 45){
-                                    qnt = eggQnt
+                                if (Math.floor(eggQnt / 2) < qnt){
+                                    qnt = Math.floor(eggQnt / 2)
                                 }
                                 let e = "clickEntity"
 
