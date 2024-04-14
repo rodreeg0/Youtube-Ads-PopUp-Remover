@@ -12283,8 +12283,8 @@
                                 await delay(500);
                                 return
                             }else if (window.game.claimMail !== undefined){
-                                let e = "collectMailboxItem"
-                                let t = {
+                                e = "collectMailboxItem"
+                                t = {
                                     mailId: window.mailBoxFirstId,
                                     similar: true
                                 };
@@ -12700,6 +12700,7 @@
                             case V.m.fetchMailbox:
                                 console.log("received mailbox items"),
                                 B.ZP.sendEvent(B.fb.RECEIVE_MAIL, R);
+                                window['mailBoxFirstId'] = R.mail[0]._id
                                 break;
                             case V.m.collectMailboxItem:
                                 B.ZP.sendEvent(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
