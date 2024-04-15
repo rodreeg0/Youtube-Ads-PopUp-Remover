@@ -12035,7 +12035,7 @@
                                         itmQntBeforeBuy += entry.quantity;
                                     }
                                 }
-                                let itmQnt = 0
+                                
                                 while (true){
                                     listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
                                     // Iterate over listings for suitable purchase option
@@ -12059,7 +12059,7 @@
                                             if (listing.quantity > 1000) {
 
                                                 let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                                
+                                                let itmQnt = 0
                                     
                                                 // Iterate through the map entries
                                                 for (let [key, entry] of itemsMap) {
@@ -12067,6 +12067,8 @@
                                                         itmQnt += entry.quantity;
                                                     }
                                                 }
+                                                console.log("Requested quantity: ".concat(requestedQuantity))
+                                                console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
                                                 let quantity = 0
                                                 if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1000){
                                                     quantity = 1000
@@ -12098,9 +12100,10 @@
                                             totalQuantity += entry.quantity;
                                         }
                                     }
-                                    
+                                    console.log("Requested quantity: ".concat(requestedQuantity))
+                                    console.log("Total bougth: ".concat(totalQuantity - itmQntBeforeBuy))
                                     if (requestedQuantity <= totalQuantity - itmQntBeforeBuy) {
-                                        console.log("Bought sucess")
+                                        console.log("Bougth sucess")
                                         break; // Exit the loop after finding the requested quantity
                                     }
                                     // if (window.game.notification !== 'marketplace-purchase-failed'){
