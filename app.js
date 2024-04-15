@@ -12250,7 +12250,8 @@
                                 if (Math.floor(eggQnt / 2) < qnt){
                                     qnt = Math.floor(eggQnt / 2)
                                 }
-                                if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state ==="ready"){
+
+                                if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === "ready"){
                                     e = "clickEntity"
 
                                     t = {
@@ -12260,13 +12261,14 @@
                                         mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
                                     };
                                     await this.room.send(e, t);
+                                    await delay(1500);
                                     if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === 'empty'){
                                         let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
                                         let woodSlot = undefined
                                         
                                         // Iterate through the map entries
                                         for (let [key, entry] of itemsMap) {
-                                            if (entry.hasOwnProperty('item') && entry.item === "itm_wood") {
+                                            if (entry.hasOwnProperty('item') && entry.item === "itm_wood" && entry.quantity >= 6) {
                                                 woodSlot = entry.slot;
                                             }
                                         }
@@ -12332,6 +12334,7 @@
 
                                         };
                                         await this.room.send(e, t);
+                                        await delay(1500);
                                     }
                                 }
                                 
@@ -12345,6 +12348,7 @@
                                 };
                                 
                                 await this.room.send(e, t);
+                                await delay(1500);
                                 
                                 window.game.startCraft = undefined
                                 await delay(500);
