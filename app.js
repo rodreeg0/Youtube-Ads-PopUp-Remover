@@ -12035,12 +12035,26 @@
                                         itmQntBeforeBuy += entry.quantity;
                                     }
                                 }
-                                
+                                let myArray = [];
+
                                 while (true){
                                     listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                    // Iterate over listings for suitable purchase option
+                                    
+                                    let beforeBuyQnt = 0
+                                    itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                    // Iterate through the map entries
+                                    for (let [key, entry] of itemsMap) {
+                                        if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
+                                            beforeBuyQnt += entry.quantity;
+                                        }
+                                    }
+                                    
                                     for (let listing of listingsFetched.listings) {
+                                        if (myArray.includes(listing._id)){
+                                            continue;
+                                        }
                                         console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                        
                                         if (requestedQuantity < 3000){
                                             if (listing.quantity >= requestedQuantity) {
                                             // if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )    
@@ -12058,7 +12072,7 @@
                                         }else{
                                             if (listing.quantity > 1000) {
 
-                                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                                itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
                                                 let itmQnt = 0
                                     
                                                 // Iterate through the map entries
@@ -12079,7 +12093,7 @@
                                                 }
 
                                                 
-                                                console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                                console.log(`Attempting to buy ${quantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
                                                 let e = "marketplace"
                                                 let t = {
                                                     listingId: listing._id,
@@ -12100,6 +12114,7 @@
                                             totalQuantity += entry.quantity;
                                         }
                                     }
+                                    
                                     console.log("Requested quantity: ".concat(requestedQuantity))
                                     console.log("Total bougth: ".concat(totalQuantity - itmQntBeforeBuy))
                                     if (requestedQuantity <= totalQuantity - itmQntBeforeBuy) {
@@ -12109,7 +12124,10 @@
                                     // if (window.game.notification !== 'marketplace-purchase-failed'){
                                     //     break;
                                     // }
-                                    console.error(`Purshase of ${requestedItemId} failed.`)
+                                    if (totalQuantity == beforeBuyQnt){
+                                        
+                                        console.error(`Purshase of ${requestedItemId} failed.`)
+                                    }
                                     
                                 }
                                 window.game.marketBuy = undefined
@@ -12294,7 +12312,7 @@
                                         eggQnt += entry.quantity;
                                     }
                                 }
-                                let qnt = 45
+                                let qnt = 120
                                 if (Math.floor(eggQnt / 2) < qnt){
                                     qnt = Math.floor(eggQnt / 2)
                                 }
@@ -14578,8 +14596,8 @@
                             }
                         } else if (!isNaN(number)) {
                             m.mapId = "houseInterior".concat(number);
-                        }{
-                            console.error("Invalid input. Please enter a number between 1 and 4.");
+                        }else{
+                            console.error("Invalid input. Please enter a number between 1 and 7.");
                         }
                     }else{
                         m.mapId = userInput;
