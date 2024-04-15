@@ -12036,7 +12036,7 @@
                                     }
                                 }
                                 let myArray = [];
-
+                                let currentListingId = undefined;
                                 while (true){
                                     listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
                                     
@@ -12066,7 +12066,7 @@
                                                     subcommand: "purchase"
                                                 };
                                                 this.room.send(e, t);
-                                                
+                                                currentListingId = listing._id;
                                                 break; // Exit the loop after a suitable purchase option is found
                                             }
                                         }else{
@@ -12102,6 +12102,8 @@
                                                 };
                                                 this.room.send(e, t);
                                                 
+                                                currentListingId = listing._id;
+                                                
                                                 break; // Exit the loop after a suitable purchase option is found
                                             }
                                         }
@@ -12124,8 +12126,10 @@
                                     // if (window.game.notification !== 'marketplace-purchase-failed'){
                                     //     break;
                                     // }
-                                    if (totalQuantity == beforeBuyQnt){
-                                        
+                                    if (totalQuantity == beforeBuyQnt && currentListingId !== undefined){
+                                        if (!myArray.includes(currentListingId)){
+                                            myArray.push(currentListingId);
+                                        }
                                         console.error(`Purshase of ${requestedItemId} failed.`)
                                     }
                                     
