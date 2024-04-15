@@ -12026,35 +12026,79 @@
                                     window.game.marketBuy = undefined
                                     return; // Skip to the next sell order if budget is exceeded
                                 }
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                let itmQntBeforeBuy = 0
+                    
+                                // Iterate through the map entries
+                                for (let [key, entry] of itemsMap) {
+                                    if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
+                                        itmQntBeforeBuy += entry.quantity;
+                                    }
+                                }
+                                let itmQnt = 0
                                 while (true){
                                     listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
                                     // Iterate over listings for suitable purchase option
                                     for (let listing of listingsFetched.listings) {
                                         console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                        if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
-                                            
-                                            console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                            let e = "marketplace"
-                                            let t = {
-                                                listingId: listing._id,
-                                                quantity: requestedQuantity,
-                                                subcommand: "purchase"
-                                            };
-                                            this.room.send(e, t);
-                                            
-                                            break; // Exit the loop after a suitable purchase option is found
+                                        if (requestedQuantity < 3000){
+                                            if (listing.quantity >= requestedQuantity) {
+                                            // if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )    
+                                                console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                                let e = "marketplace"
+                                                let t = {
+                                                    listingId: listing._id,
+                                                    quantity: requestedQuantity,
+                                                    subcommand: "purchase"
+                                                };
+                                                this.room.send(e, t);
+                                                
+                                                break; // Exit the loop after a suitable purchase option is found
+                                            }
+                                        }else{
+                                            if (listing.quantity > 2000) {
+
+                                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                                
+                                    
+                                                // Iterate through the map entries
+                                                for (let [key, entry] of itemsMap) {
+                                                    if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
+                                                        itmQnt += entry.quantity;
+                                                    }
+                                                }
+                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 2000){
+                                                    requestedQuantity = 2000
+                                                }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
+                                                    requestedQuantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
+                                                }else{
+                                                    break
+                                                }
+
+                                                
+                                                console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                                let e = "marketplace"
+                                                let t = {
+                                                    listingId: listing._id,
+                                                    quantity: requestedQuantity,
+                                                    subcommand: "purchase"
+                                                };
+                                                this.room.send(e, t);
+                                                
+                                                break; // Exit the loop after a suitable purchase option is found
+                                            }
                                         }
                                     }
-                                    let totalQuantity = 0;
-                                    await delay(3500);
+                                    await delay(4000);
                                     
+                                    let totalQuantity = 0;
                                     for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
                                         if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
                                             totalQuantity += entry.quantity;
                                         }
                                     }
                                     
-                                    if (requestedQuantity <= totalQuantity) {
+                                    if (requestedQuantity <= totalQuantity - itmQntBeforeBuy) {
                                         console.log("Bought sucess")
                                         break; // Exit the loop after finding the requested quantity
                                     }
