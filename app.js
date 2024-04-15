@@ -12017,7 +12017,7 @@
                                 return
                             }else if (window.game.marketBuy !== undefined){
                                 const requestedItemId = window.game.marketBuyItemId;
-                                let requestedQuantity = window.game.marketBuyQuantity;
+                                const requestedQuantity = window.game.marketBuyQuantity;
                                 let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
 
                                 // Check if first listing's price exceeds budget
@@ -12056,7 +12056,7 @@
                                                 break; // Exit the loop after a suitable purchase option is found
                                             }
                                         }else{
-                                            if (listing.quantity > 2000) {
+                                            if (listing.quantity > 1000) {
 
                                                 let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
                                                 
@@ -12067,10 +12067,11 @@
                                                         itmQnt += entry.quantity;
                                                     }
                                                 }
-                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 2000){
-                                                    requestedQuantity = 2000
+                                                let quantity = 0
+                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1000){
+                                                    quantity = 1000
                                                 }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
-                                                    requestedQuantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
+                                                    quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
                                                 }else{
                                                     break
                                                 }
@@ -12080,7 +12081,7 @@
                                                 let e = "marketplace"
                                                 let t = {
                                                     listingId: listing._id,
-                                                    quantity: requestedQuantity,
+                                                    quantity: quantity,
                                                     subcommand: "purchase"
                                                 };
                                                 this.room.send(e, t);
