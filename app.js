@@ -12021,7 +12021,7 @@
                                 let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
 
                                 // Check if first listing's price exceeds budget
-                                if (listingsFetched.listings.length > 0 &&  window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
+                                if (listingsFetched.listings.length > 0 &&  await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
                                     console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
                                     window.game.marketBuy = undefined
                                     return; // Skip to the next sell order if budget is exceeded
@@ -12324,17 +12324,19 @@
                                             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
 
                                             // Check if first listing's price exceeds budget
-                                            if (listingsFetched.listings.length > 0 &&  window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
+                                            if (listingsFetched.listings.length > 0 && await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
                                                 console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
                                                 window.game.marketBuy = undefined
                                                 return; // Skip to the next sell order if budget is exceeded
                                             }
                                             while (true){
+                                                await delay(1000)
                                                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
                                                 // Iterate over listings for suitable purchase option
                                                 for (let listing of listingsFetched.listings) {
                                                     console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                                    if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
+                                                    
+                                                    if (listing.quantity >= requestedQuantity && (await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
                                                         
                                                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
                                                         let e = "marketplace"
