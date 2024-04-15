@@ -12086,7 +12086,7 @@
                                                 console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
                                                 let quantity = 0
                                                 if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1000){
-                                                    quantity = listing.quantity - 500
+                                                    quantity = 1000
                                                 }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
                                                     quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
                                                 }else{
