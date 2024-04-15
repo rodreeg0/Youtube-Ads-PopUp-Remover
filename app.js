@@ -12017,7 +12017,7 @@
                                 return
                             }else if (window.game.marketBuy !== undefined){
                                 const requestedItemId = window.game.marketBuyItemId;
-                                const requestedQuantity = window.game.marketBuyQuantity;
+                                let requestedQuantity = window.game.marketBuyQuantity;
                                 let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
 
                                 // Check if first listing's price exceeds budget
