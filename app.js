@@ -11802,6 +11802,7 @@
                             (t.id === "itm_wintermintSeeds" ||
                             t.id === "itm_cloverSeeds" ||
                             t.id === "itm_popberrySeeds" ||
+                            t.id === "itm_coffeeseed" ||
                             t.id === "itm_perfectPopberrySeeds") && window.game.clickedSeed === undefined
                         ) {
                             
@@ -12036,10 +12037,10 @@
                                     }
                                 }
                                 let myArray = [];
-                                let currentListingId = undefined;
+                                let currentListingId;
                                 while (true){
                                     listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                    
+                                    currentListingId = undefined;
                                     let beforeBuyQnt = 0
                                     itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
                                     // Iterate through the map entries
@@ -12085,7 +12086,7 @@
                                                 console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
                                                 let quantity = 0
                                                 if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1000){
-                                                    quantity = 1000
+                                                    quantity = listing.quantity - 500
                                                 }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
                                                     quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
                                                 }else{
