@@ -12317,7 +12317,7 @@
                                         eggQnt += entry.quantity;
                                     }
                                 }
-                                let qnt = 120
+                                let qnt = 60
                                 if (Math.floor(eggQnt / 2) < qnt){
                                     qnt = Math.floor(eggQnt / 2)
                                 }
