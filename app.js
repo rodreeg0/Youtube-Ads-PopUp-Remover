@@ -12150,6 +12150,17 @@
                                 
                                 window.game.marketSell = undefined
                                 return
+                            }else if(window.game.cancelListing !== undefined){
+                                let e = "marketplace"
+                                let t = {
+                                    listingId: window.game.listingId,
+                                    subcommand: "claim"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2500);
+                                
+                                window.game.cancelListing = undefined
+                                return
                             }else if (window.game.market !== undefined){
                                 let e = "sellOrderFetch"
                                 let t = {
