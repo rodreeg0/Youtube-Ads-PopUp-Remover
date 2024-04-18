@@ -12138,10 +12138,11 @@
                                 window.game.marketBuy = undefined
                                 return; // Skip to the next sell order if budget is exceeded
                             }else if(window.game.marketSell !== undefined){
+                                
                                 let e = "marketplace"
                                 let t = {
                                     currency: "cur_coins",
-                                    itemId: "itm_plain_omelet",
+                                    itemId: window.game.marketSellItem,
                                     price: window.game.marketSellPrice,
                                     quantity: window.game.marketSellQuantity,
                                     subcommand: "create"
