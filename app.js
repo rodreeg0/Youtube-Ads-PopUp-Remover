@@ -12317,21 +12317,8 @@
                                 await delay(500);
                                 return
                             }else if(window.game.startCraft !== undefined){
-                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-
-                                
-                                let eggQnt = 0
-                                
-                                // Iterate through the map entries
-                                for (let [key, entry] of itemsMap) {
-                                    if (entry.hasOwnProperty('item') && entry.item === "itm_egg") {
-                                        eggQnt += entry.quantity;
-                                    }
-                                }
-                                let qnt = 30
-                                if (Math.floor(eggQnt / 2) < qnt){
-                                    qnt = Math.floor(eggQnt / 2)
-                                }
+                                let craftAmount = window.game.qntCraft;
+                                let craftItem = window.game.itemCraft;
 
                                 if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === "ready"){
                                     e = "clickEntity"
@@ -12427,7 +12414,7 @@
                                 t = {
                                     entity: "ent_stove",
                                     impact: "startCraft",
-                                    inputs: ["ach_Plain_Omelet", qnt],
+                                    inputs: [craftItem, craftAmount],
                                     mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
                                 };
                                 
