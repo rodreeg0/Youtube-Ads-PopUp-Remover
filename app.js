@@ -12056,7 +12056,7 @@
                                         }
                                         console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
                                         
-                                        if (requestedQuantity < 3000){
+                                        if (requestedQuantity < window.game.marketBuyMaxQuantity){
                                             if (listing.quantity >= requestedQuantity) {
                                             // if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )    
                                                 console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
@@ -12071,7 +12071,7 @@
                                                 break; // Exit the loop after a suitable purchase option is found
                                             }
                                         }else{
-                                            if (listing.quantity > 1000) {
+                                            if (listing.quantity > window.game.marketBuyListingMinimum) {
 
                                                 itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
                                                 let itmQnt = 0
@@ -12085,8 +12085,8 @@
                                                 console.log("Requested quantity: ".concat(requestedQuantity))
                                                 console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
                                                 let quantity = 0
-                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1000){
-                                                    quantity = 1000
+                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > window.game.marketBuyListingMinimum){
+                                                    quantity = window.game.marketBuyListingMinimum
                                                 }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
                                                     quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
                                                 }else{
