@@ -12321,94 +12321,94 @@
                                 let craftAmount = window.game.qntCraft;
                                 let craftItem = window.game.itemCraft;
 
-                                if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === "ready"){
-                                    e = "clickEntity"
+                                // if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === "ready"){
+                                //     e = "clickEntity"
 
-                                    t = {
-                                        entity: "ent_stove",
-                                        impact: "claim",
-                                        inputs: undefined,
-                                        mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                    };
-                                    await this.room.send(e, t);
-                                    await delay(1500);
-                                    if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === 'empty'){
-                                        let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                        let woodSlot = undefined
+                                //     t = {
+                                //         entity: "ent_stove",
+                                //         impact: "claim",
+                                //         inputs: undefined,
+                                //         mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                //     };
+                                //     await this.room.send(e, t);
+                                //     await delay(1500);
+                                //     if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === 'empty'){
+                                //         let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                //         let woodSlot = undefined
                                         
-                                        // Iterate through the map entries
-                                        for (let [key, entry] of itemsMap) {
-                                            if (entry.hasOwnProperty('item') && entry.item === "itm_wood" && entry.quantity >= 6) {
-                                                woodSlot = entry.slot;
-                                            }
-                                        }
-                                        if (woodSlot === undefined){
+                                //         // Iterate through the map entries
+                                //         for (let [key, entry] of itemsMap) {
+                                //             if (entry.hasOwnProperty('item') && entry.item === "itm_wood" && entry.quantity >= 6) {
+                                //                 woodSlot = entry.slot;
+                                //             }
+                                //         }
+                                //         if (woodSlot === undefined){
                                             
-                                            const requestedItemId = "itm_wood"
-                                            const requestedQuantity = 6
-                                            let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                //             const requestedItemId = "itm_wood"
+                                //             const requestedQuantity = 6
+                                //             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
 
-                                            // Check if first listing's price exceeds budget
-                                            if (listingsFetched.listings.length > 0 && await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
-                                                console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
-                                                window.game.marketBuy = undefined
-                                                return; // Skip to the next sell order if budget is exceeded
-                                            }
-                                            while (true){
-                                                await delay(1000)
-                                                listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                                // Iterate over listings for suitable purchase option
-                                                for (let listing of listingsFetched.listings) {
-                                                    console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                //             // Check if first listing's price exceeds budget
+                                //             if (listingsFetched.listings.length > 0 && await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
+                                //                 console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
+                                //                 window.game.marketBuy = undefined
+                                //                 return; // Skip to the next sell order if budget is exceeded
+                                //             }
+                                //             while (true){
+                                //                 await delay(1000)
+                                //                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                //                 // Iterate over listings for suitable purchase option
+                                //                 for (let listing of listingsFetched.listings) {
+                                //                     console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
                                                     
-                                                    if (listing.quantity >= requestedQuantity && (await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
+                                //                     if (listing.quantity >= requestedQuantity && (await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
                                                         
-                                                        console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                                        let e = "marketplace"
-                                                        let t = {
-                                                            listingId: listing._id,
-                                                            quantity: requestedQuantity,
-                                                            subcommand: "purchase"
-                                                        };
-                                                        this.room.send(e, t);
+                                //                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                //                         let e = "marketplace"
+                                //                         let t = {
+                                //                             listingId: listing._id,
+                                //                             quantity: requestedQuantity,
+                                //                             subcommand: "purchase"
+                                //                         };
+                                //                         this.room.send(e, t);
                                                         
-                                                        break; // Exit the loop after a suitable purchase option is found
-                                                    }
-                                                }
-                                                let totalQuantity = 0;
-                                                await delay(3500);
+                                //                         break; // Exit the loop after a suitable purchase option is found
+                                //                     }
+                                //                 }
+                                //                 let totalQuantity = 0;
+                                //                 await delay(3500);
                                                 
-                                                for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                                    if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
-                                                        totalQuantity += entry.quantity;
-                                                    }
-                                                }
+                                //                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                //                     if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                //                         totalQuantity += entry.quantity;
+                                //                     }
+                                //                 }
                                                 
-                                                if (requestedQuantity <= totalQuantity) {
-                                                    console.log("Bought sucess")
-                                                    break; // Exit the loop after finding the requested quantity
-                                                }
-                                                // if (window.game.notification !== 'marketplace-purchase-failed'){
-                                                //     break;
-                                                // }
-                                                console.error(`Purshase of ${requestedItemId} failed.`)
-                                            }
-                                        }
-                                        let e = "ui"
-                                        let t = {
-                                            id: "itm_wood",
-                                            mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
-                                            slot: woodSlot,
-                                            tiles: undefined,
-                                            type: "entity",
-                                            x: undefined,
-                                            y: undefined
+                                //                 if (requestedQuantity <= totalQuantity) {
+                                //                     console.log("Bought sucess")
+                                //                     break; // Exit the loop after finding the requested quantity
+                                //                 }
+                                //                 // if (window.game.notification !== 'marketplace-purchase-failed'){
+                                //                 //     break;
+                                //                 // }
+                                //                 console.error(`Purshase of ${requestedItemId} failed.`)
+                                //             }
+                                //         }
+                                //         let e = "ui"
+                                //         let t = {
+                                //             id: "itm_wood",
+                                //             mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
+                                //             slot: woodSlot,
+                                //             tiles: undefined,
+                                //             type: "entity",
+                                //             x: undefined,
+                                //             y: undefined
 
-                                        };
-                                        await this.room.send(e, t);
-                                        await delay(1500);
-                                    }
-                                }
+                                //         };
+                                //         await this.room.send(e, t);
+                                //         await delay(1500);
+                                //     }
+                                // }
                                 
                                 e = "clickEntity"
 
