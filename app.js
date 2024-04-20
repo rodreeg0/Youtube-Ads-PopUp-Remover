@@ -12091,6 +12091,7 @@
                                                         quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
                                                     }else if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
                                                         quantity = listing.quantity - (listing.quantity * 0.1)
+                                                        quantity = Math.floor(quantity)
                                                     }
                                                     
                                                 }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
