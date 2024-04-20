@@ -12085,8 +12085,14 @@
                                                 console.log("Requested quantity: ".concat(requestedQuantity))
                                                 console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
                                                 let quantity = 0
+                                                
                                                 if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > window.game.marketBuyListingMinimum){
-                                                    quantity = window.game.marketBuyListingMinimum
+                                                    if (requestedQuantity - (itmQnt - itmQntBeforeBuy) < listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
+                                                        quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
+                                                    }else if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
+                                                        quantity = listing.quantity - (listing.quantity * 0.1)
+                                                    }
+                                                    
                                                 }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
                                                     quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
                                                 }else{
