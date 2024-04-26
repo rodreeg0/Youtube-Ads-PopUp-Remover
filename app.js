@@ -12852,7 +12852,7 @@
                                 console.log(window['sellOrders']);
                                 Y.e.set(J.v, R);
                                 if (window.deliverTasks !== undefined){
-                                    // window.deliverTasks = undefined
+                                    window.deliverTasks = undefined
                                     let coinPriceLimit = 3000;
                                     if (window.coinPriceLimit !== undefined){
                                         coinPriceLimit = window.coinPriceLimit;
@@ -12966,8 +12966,20 @@
                                         await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
                                         console.log(Date.now())
                                     }
-                                    // await delay(180000)
-                                    // window.deliverTasks = true
+                                    while (sellOrders.some(obj => obj.hasOwnProperty('completedAt'))){
+
+                                        console.log('Waiting for all taskboard to be filled')
+                                        await delay(5000)
+
+                                    }
+                                    
+                                    window.deliverTasks = true
+                                    let e = "sellOrderFetch"
+                                    let t = {
+                                        storeId: "str_bucksGalore"
+                                    };
+                                    await this.room.send(e, t);
+                                    // await delay(1000)
                                 }
                                 
                                 break;
