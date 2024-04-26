@@ -12834,6 +12834,7 @@
                                 break;
                             case V.m.sellOrders:
                                 console.log(R.str_bucksGalore);
+                                
                                 window['sellOrders'] = R.str_bucksGalore.orders
                                 window['sellOrders'].forEach((sellOrder, index) => sellOrder.originalIndex = index);
                                 window['sellOrders'].sort((a, b) => {
@@ -12926,9 +12927,7 @@
                                                             break; // Exit the loop after a suitable purchase option is found
                                                         }
                                                     }
-                                                    console.log('delay 1');
                                                     await delay(3000);
-                                                    console.log('delay 2');
                                                     totalQuantity = 0
 
                                                     for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
@@ -12954,6 +12953,8 @@
                                                     storeId: "str_bucksGalore"
                                                 };
                                                 this.room.send(e, t);
+                                                
+                                                await delay(3000);
                                                 if (!listingsFetched.listings.some(listing => listing.quantity >= requestedQuantity && listing.price * requestedQuantity <= 3000)) {
                                                     console.log(`No listings found for ${requestedItemId} that meet requirements.`);
                                                 }
