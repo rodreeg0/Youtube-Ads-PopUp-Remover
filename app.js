@@ -12850,6 +12850,14 @@
                                 });
                                 console.log(window['sellOrders']);
                                 Y.e.set(J.v, R);
+                                let coinPriceLimit = 3000;
+                                if (window.coinPriceLimit !== undefined){
+                                    coinPriceLimit = window.coinPriceLimit;
+                                }
+                                let pixelPriceLimit = 25000;
+                                if (window.pixelPriceLimit !== undefined){
+                                    pixelPriceLimit = window.pixelPriceLimit;
+                                }
                                 for (let i = 0; i < sellOrders.length; i++) {
                                     const sellOrder = sellOrders[i];
                                     const requestedItemId = sellOrder.request.itemId;
@@ -12880,7 +12888,7 @@
                                             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
 
                                             // Check if first listing's price exceeds budget
-                                            if (listingsFetched.listings.length > 0 && (listingsFetched.listings[0].price * requestedQuantity > 3000 || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) && !(window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listingsFetched.listings[0].price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
+                                            if (listingsFetched.listings.length > 0 && (listingsFetched.listings[0].price * requestedQuantity > coinPriceLimit || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) && !(window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listingsFetched.listings[0].price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel" && (listingsFetched.listings[0].price * requestedQuantity) / sellOrder.reward.currency.amount < pixelPriceLimit)) {
                                                 console.log(`Cheapest listing exceeds budget for sell order ${i + 1}.`);
                                                 continue; // Skip to the next sell order if budget is exceeded
                                             }
@@ -12917,6 +12925,7 @@
                                                         break; // Exit the loop after a suitable purchase option is found
                                                     }
                                                 }
+                                                await delay(2000);
                                                 totalQuantity = 0
 
                                                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
