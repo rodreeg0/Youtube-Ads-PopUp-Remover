@@ -12681,7 +12681,7 @@
                 }
                 )
             }
-            handleRoomEvents() {
+            async handleRoomEvents() {
                 var m;
                 this.room && (this.room.onMessage(V.m.timeSync, m=>{
                     (null == m ? void 0 : m.ms) && (this.serverTimeDelta = Date.now() - m.ms,
@@ -12852,7 +12852,7 @@
                                 console.log(window['sellOrders']);
                                 Y.e.set(J.v, R);
                                 if (window.deliverTasks !== undefined){
-                                    window.deliverTasks = undefined
+                                    // window.deliverTasks = undefined
                                     let coinPriceLimit = 3000;
                                     if (window.coinPriceLimit !== undefined){
                                         coinPriceLimit = window.coinPriceLimit;
@@ -12966,8 +12966,8 @@
                                         await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
                                         console.log(Date.now())
                                     }
-                                    await delay(180000)
-                                    window.deliverTasks = true
+                                    // await delay(180000)
+                                    // window.deliverTasks = true
                                 }
                                 
                                 break;
@@ -13254,7 +13254,7 @@
                     )
                 }
                 );
-                this.handleRoomEvents();
+                await this.handleRoomEvents();
                 let et = new Promise(m=>{
                     this.room.onStateChange.once(()=>{
                         let R = this.room.state.players.get(this.room.sessionId);
