@@ -12911,7 +12911,7 @@
                                                             continue;
                                                         }
                                                         console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                                        if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= 3000 && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
+                                                        if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= coinPriceLimit && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
                                                             
                                                             console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
                                                             let e = "marketplace"
@@ -12926,7 +12926,9 @@
                                                             break; // Exit the loop after a suitable purchase option is found
                                                         }
                                                     }
-                                                    await delay(2000);
+                                                    console.log('delay 1');
+                                                    await delay(3000);
+                                                    console.log('delay 2');
                                                     totalQuantity = 0
 
                                                     for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
