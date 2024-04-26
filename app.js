@@ -12739,6 +12739,7 @@
                     if (this.room)
                         try {
                             var C, L, U, $, G, q, W, Z, X, Q, ee, et, er, en, eo, ei, ea;
+                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
                             switch (m) {
                             case V.m.updatePlayer:
                                 null === (C = this.playerSerializer) || void 0 === C || C.patch(R),
