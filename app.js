@@ -11796,7 +11796,7 @@
                             delayMax = 200
     
                         } 
-                    catch (error) {
+                    }catch (error) {
                         // Rethrow the error
                         throw error;
                     }
