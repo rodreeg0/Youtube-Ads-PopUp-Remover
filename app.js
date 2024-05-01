@@ -11788,7 +11788,7 @@
                     let delayMax;
                     try {
 
-                        if (window.game.fastFarm !== undefined){
+                        if (window.game && window.game.fastFarm !== undefined){
                             delayMin = 100
                             delayMax = 150
                         }else{
