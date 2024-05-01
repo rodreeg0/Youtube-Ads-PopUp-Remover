@@ -11786,15 +11786,21 @@
                     }
                     let delayMin;
                     let delayMax;
+                    try {
 
-                    if (window.game.fastFarm !== undefined){
-                        delayMin = 100
-                        delayMax = 150
-                    }else{
-                        delayMin = 150
-                        delayMax = 200
-
+                        if (window.game.fastFarm !== undefined){
+                            delayMin = 100
+                            delayMax = 150
+                        }else{
+                            delayMin = 150
+                            delayMax = 200
+    
+                        } 
+                    catch (error) {
+                        // Rethrow the error
+                        throw error;
                     }
+                    
                     
                     // Check if e is "mv" and the last two items of the t array are not zero
                     if (e === "mv" && (((t[1] === 3119 && t[2] === 2855) || (t[1] === 3284 && t[2] === 2829)) && t[3] === 0 && t[4] === 0)) {
