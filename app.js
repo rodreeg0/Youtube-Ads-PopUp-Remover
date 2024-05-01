@@ -11786,21 +11786,15 @@
                     }
                     let delayMin;
                     let delayMax;
-                    try {
 
-                        if (window.game && window.game.fastFarm !== undefined){
-                            delayMin = 100
-                            delayMax = 150
-                        }else{
-                            delayMin = 150
-                            delayMax = 200
-    
-                        } 
-                    }catch (error) {
-                        // Rethrow the error
-                        throw error;
+                    if (window.game.fastFarm !== undefined){
+                        delayMin = 100
+                        delayMax = 150
+                    }else{
+                        delayMin = 150
+                        delayMax = 200
+
                     }
-                    
                     
                     // Check if e is "mv" and the last two items of the t array are not zero
                     if (e === "mv" && (((t[1] === 3119 && t[2] === 2855) || (t[1] === 3284 && t[2] === 2829)) && t[3] === 0 && t[4] === 0)) {
@@ -14796,6 +14790,7 @@
                     T.ZP.removeEventListerner(T.fb.GAME_CONNECTED, onConnected),
                     T.ZP.removeEventListerner(T.fb.SVR_CANNOTCONNECT, onNotConnected),
                     PhaserGame.reentrancyCheck = !1
+                    window.game = PhaserGame.phaserGame
                 }
                   , onNotConnected = ()=>{
                     clearTimeout(B),
