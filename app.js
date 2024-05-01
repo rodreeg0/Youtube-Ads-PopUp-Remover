@@ -6434,7 +6434,7 @@
         var T;
         m = C.nmd(m),
         (function() {
-            var L, U = "Expected a function", $ = "__lodash_hash_undefined__", B = "__lodash_placeholder__", V = 1 / 0, H = 0 / 0, G = [["ary", 128], ["bind", 1], ["bindKey", 2], ["curry", 8], ["curryRight", 16], ["flip", 512], ["partial", 32], ["partialRight", 64], ["rearg", 256]], q = "[object Arguments]", W = "[object Array]", Z = "[object Boolean]", Y = "[object Date]", K = "[object Error]", J = "[object Function]", X = "[object GeneratorFunction]", Q = "[object Map]", ee = "[object Number]", et = "[object Object]", er = "[object Promise]", en = "[object RegExp]", eo = "[object Set]", ei = "[object String]", ea = "[object Symbol]", es = "[object WeakMap]", el = "[object ArrayBuffer]", eu = "[object DataView]", ec = "[object Float32Array]", ed = "[object Float64Array]", ef = "[object Int8Array]", ep = "[object Int16Array]", eh = "[object Int32Array]", eg = "[object Uint8Array]", em = "[object Uint8ClampedArray]", ey = "[object Uint16Array]", ev = "[object Uint32Array]", eb = /\b__p \+= '';/g, eE = /\b(__p \+=) '' \+/g, e_ = /(__e\(.*?\)|\b__t\)) \+\n'';/g, eS = /&(?:amp|lt|gt|quot|#39);/g, eO = /[&<>"']/g, eA = RegExp(eS.source), ew = RegExp(eO.source), eI = /<%-([\s\S]+?)%>/g, eP = /<%([\s\S]+?)%>/g, eR = /<%=([\s\S]+?)%>/g, ek = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, eC = /^\w*$/, eT = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, ex = /[\\^$.*+?()[\]{}|]/g, eL = RegExp(ex.source), eN = /^\s+/, eM = /\s/, ej = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/, eD = /\{\n\/\* \[wrapped with (.+)\] \*/, eU = /,? & /, e$ = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, eB = /[()=,{}\[\]\/\s]/, eF = /\\(\\)?/g, eV = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g, ez = /\w*$/, eH = /^[-+]0x[0-9a-f]+$/i, eG = /^0b[01]+$/i, eW = /^\[object .+?Constructor\]$/, eZ = /^0o[0-7]+$/i, eY = /^(?:0|[1-9]\d*)$/, eK = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, eJ = /($^)/, eX = /['\n\r\u2028\u2029\\]/g, eQ = "\ud800-\udfff", e0 = "\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff", e1 = "\\u2700-\\u27bf", e2 = "a-z\\xdf-\\xf6\\xf8-\\xff", e3 = "A-Z\\xc0-\\xd6\\xd8-\\xde", e4 = "\\ufe0e\\ufe0f", e6 = "\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", e8 = "['’]", e5 = "[" + e6 + "]", e9 = "[" + e0 + "]", e7 = "[" + e2 + "]", te = "[^" + eQ + e6 + "\\d+" + e1 + e2 + e3 + "]", tt = "\ud83c[\udffb-\udfff]", tr = "[^" + eQ + "]", tn = "(?:\ud83c[\udde6-\uddff]){2}", to = "[\ud800-\udbff][\udc00-\udfff]", ti = "[" + e3 + "]", ta = "\\u200d", ts = "(?:" + e7 + "|" + te + ")", tl = "(?:" + e8 + "(?:d|ll|m|re|s|t|ve))?", tu = "(?:" + e8 + "(?:D|LL|M|RE|S|T|VE))?", tc = "(?:" + e9 + "|" + tt + ")?", td = "[" + e4 + "]?", tf = "(?:" + ta + "(?:" + [tr, tn, to].join("|") + ")" + td + tc + ")*", tp = td + tc + tf, th = "(?:" + ["[" + e1 + "]", tn, to].join("|") + ")" + tp, tg = "(?:" + [tr + e9 + "?", e9, tn, to, "[" + eQ + "]"].join("|") + ")", tm = RegExp(e8, "g"), ty = RegExp(e9, "g"), tv = RegExp(tt + "(?=" + tt + ")|" + tg + tp, "g"), tb = RegExp([ti + "?" + e7 + "+" + tl + "(?=" + [e5, ti, "$"].join("|") + ")", "(?:" + ti + "|" + te + ")+" + tu + "(?=" + [e5, ti + ts, "$"].join("|") + ")", ti + "?" + ts + "+" + tl, ti + "+" + tu, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", "\\d+", th].join("|"), "g"), tE = RegExp("[" + ta + eQ + e0 + e4 + "]"), t_ = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, tS = ["Array", "Buffer", "DataView", "Date", "Error", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Math", "Object", "Promise", "RegExp", "Set", "String", "Symbol", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "WeakMap", "_", "clearTimeout", "isFinite", "parseInt", "setTimeout"], tO = -1, tA = {};
+            var L, U = "Expected a function", $ = "__lodash_hash_undefined__", B = "__lodash_placeholder__", V = 1 / 0, H = 0 / 0, G = [["ary", 128], ["bind", 1], ["bindKey", 2], ["curry", 8], ["curryRight", 16], ["flip", 512], ["partial", 32], ["partialRight", 64], ["rearg", 256]], q = "[object Arguments]", W = "[object Array]", Z = "[object Boolean]", Y = "[object Date]", K = "[object Error]", J = "[object Function]", X = "[object GeneratorFunction]", Q = "[object Map]", ee = "[object Number]", et = "[object Object]", er = "[object Promise]", en = "[object RegExp]", eo = "[object Set]", ei = "[object String]", ea = "[object Symbol]", es = "[object WeakMap]", el = "[object ArrayBuffer]", eu = "[object DataView]", ec = "[object Float32Array]", ed = "[object Float64Array]", ef = "[object Int8Array]", ep = "[object Int16Array]", eh = "[object Int32Array]", eg = "[object Uint8Array]", em = "[object Uint8ClampedArray]", ey = "[object Uint16Array]", ev = "[object Uint32Array]", eb = /\b__p \+= '';/g, eE = /\b(__p \+=) '' \+/g, e_ = /(__e\(.*?\)|\b__t\)) \+\n'';/g, eS = /&(?:amp|lt|gt|quot|#39);/g, eO = /[&<>"']/g, eA = RegExp(eS.source), ew = RegExp(eO.source), eI = /<%-([\s\S]+?)%>/g, eR = /<%([\s\S]+?)%>/g, eP = /<%=([\s\S]+?)%>/g, ek = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, eC = /^\w*$/, eT = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, ex = /[\\^$.*+?()[\]{}|]/g, eL = RegExp(ex.source), eN = /^\s+/, eM = /\s/, ej = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/, eD = /\{\n\/\* \[wrapped with (.+)\] \*/, eU = /,? & /, e$ = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, eB = /[()=,{}\[\]\/\s]/, eF = /\\(\\)?/g, eV = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g, ez = /\w*$/, eH = /^[-+]0x[0-9a-f]+$/i, eG = /^0b[01]+$/i, eW = /^\[object .+?Constructor\]$/, eZ = /^0o[0-7]+$/i, eY = /^(?:0|[1-9]\d*)$/, eK = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, eJ = /($^)/, eX = /['\n\r\u2028\u2029\\]/g, eQ = "\ud800-\udfff", e0 = "\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff", e1 = "\\u2700-\\u27bf", e2 = "a-z\\xdf-\\xf6\\xf8-\\xff", e3 = "A-Z\\xc0-\\xd6\\xd8-\\xde", e4 = "\\ufe0e\\ufe0f", e6 = "\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", e8 = "['’]", e5 = "[" + e6 + "]", e9 = "[" + e0 + "]", e7 = "[" + e2 + "]", te = "[^" + eQ + e6 + "\\d+" + e1 + e2 + e3 + "]", tt = "\ud83c[\udffb-\udfff]", tr = "[^" + eQ + "]", tn = "(?:\ud83c[\udde6-\uddff]){2}", to = "[\ud800-\udbff][\udc00-\udfff]", ti = "[" + e3 + "]", ta = "\\u200d", ts = "(?:" + e7 + "|" + te + ")", tl = "(?:" + e8 + "(?:d|ll|m|re|s|t|ve))?", tu = "(?:" + e8 + "(?:D|LL|M|RE|S|T|VE))?", tc = "(?:" + e9 + "|" + tt + ")?", td = "[" + e4 + "]?", tf = "(?:" + ta + "(?:" + [tr, tn, to].join("|") + ")" + td + tc + ")*", tp = td + tc + tf, th = "(?:" + ["[" + e1 + "]", tn, to].join("|") + ")" + tp, tg = "(?:" + [tr + e9 + "?", e9, tn, to, "[" + eQ + "]"].join("|") + ")", tm = RegExp(e8, "g"), ty = RegExp(e9, "g"), tv = RegExp(tt + "(?=" + tt + ")|" + tg + tp, "g"), tb = RegExp([ti + "?" + e7 + "+" + tl + "(?=" + [e5, ti, "$"].join("|") + ")", "(?:" + ti + "|" + te + ")+" + tu + "(?=" + [e5, ti + ts, "$"].join("|") + ")", ti + "?" + ts + "+" + tl, ti + "+" + tu, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", "\\d+", th].join("|"), "g"), tE = RegExp("[" + ta + eQ + e0 + e4 + "]"), t_ = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, tS = ["Array", "Buffer", "DataView", "Date", "Error", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Math", "Object", "Promise", "RegExp", "Set", "String", "Symbol", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "WeakMap", "_", "clearTimeout", "isFinite", "parseInt", "setTimeout"], tO = -1, tA = {};
             tA[ec] = tA[ed] = tA[ef] = tA[ep] = tA[eh] = tA[eg] = tA[em] = tA[ey] = tA[ev] = !0,
             tA[q] = tA[W] = tA[el] = tA[Z] = tA[eu] = tA[Y] = tA[K] = tA[J] = tA[Q] = tA[ee] = tA[et] = tA[en] = tA[eo] = tA[ei] = tA[es] = !1;
             var tw = {};
@@ -6448,8 +6448,8 @@
                 "\u2028": "u2028",
                 "\u2029": "u2029"
             }
-              , tP = parseFloat
-              , tR = parseInt
+              , tR = parseFloat
+              , tP = parseInt
               , tk = "object" == typeof C.g && C.g && C.g.Object === Object && C.g
               , tC = "object" == typeof self && self && self.Object === Object && self
               , tT = tk || tC || Function("return this")()
@@ -7132,7 +7132,7 @@
                 function baseDelay(m, R, C) {
                     if ("function" != typeof m)
                         throw new e5(U);
-                    return rP(function() {
+                    return rR(function() {
                         m.apply(L, C)
                     }, R)
                 }
@@ -7166,8 +7166,8 @@
                 }
                 lodash.templateSettings = {
                     escape: eI,
-                    evaluate: eP,
-                    interpolate: eR,
+                    evaluate: eR,
+                    interpolate: eP,
                     variable: "",
                     imports: {
                         _: lodash
@@ -7731,7 +7731,7 @@
                     return C
                 }
                 function baseRest(m, R) {
-                    return rR(overRest(m, R, identity), m + "")
+                    return rP(overRest(m, R, identity), m + "")
                 }
                 function baseSet(m, R, C, T) {
                     if (!isObject(m))
@@ -8414,7 +8414,7 @@
                     Z
                 }
                 function flatRest(m) {
-                    return rR(overRest(m, L, flatten), m + "")
+                    return rP(overRest(m, L, flatten), m + "")
                 }
                 function getAllKeys(m) {
                     return baseGetAllKeys(m, keys, rS)
@@ -8565,13 +8565,13 @@
                         return m[R]
                 }
                 var rI = shortOut(ry)
-                  , rP = tj || function(m, R) {
+                  , rR = tj || function(m, R) {
                     return tT.setTimeout(m, R)
                 }
-                  , rR = shortOut(rv);
+                  , rP = shortOut(rv);
                 function setWrapToString(m, R, C) {
                     var T, L, U = R + "";
-                    return rR(m, function(m, R) {
+                    return rP(m, function(m, R) {
                         var C = R.length;
                         if (!C)
                             return m;
@@ -8908,7 +8908,7 @@
                         var m, C, T, L = r2();
                         if (shouldInvoke(L))
                             return trailingEdge(L);
-                        H = rP(timerExpired, (m = L - G,
+                        H = rR(timerExpired, (m = L - G,
                         C = L - q,
                         T = R - m,
                         Z ? t1(T, B - C) : T))
@@ -8926,14 +8926,14 @@
                         U) {
                             if (L === H)
                                 return q = m = G,
-                                H = rP(timerExpired, R),
+                                H = rR(timerExpired, R),
                                 W ? invokeFunc(m) : V;
                             if (Z)
                                 return rb(H),
-                                H = rP(timerExpired, R),
+                                H = rR(timerExpired, R),
                                 invokeFunc(G)
                         }
-                        return L === H && (H = rP(timerExpired, R)),
+                        return L === H && (H = rR(timerExpired, R)),
                         V
                     }
                     return R = toNumber(R) || 0,
@@ -9139,7 +9139,7 @@
                         return 0 === m ? m : +m;
                     m = baseTrim(m);
                     var C = eG.test(m);
-                    return C || eZ.test(m) ? tR(m.slice(2), C ? 2 : 8) : eH.test(m) ? H : +m
+                    return C || eZ.test(m) ? tP(m.slice(2), C ? 2 : 8) : eH.test(m) ? H : +m
                 }
                 function toPlainObject(m) {
                     return copyObject(m, keysIn(m))
@@ -9240,7 +9240,7 @@
                         baseUnset(C, R[L]);
                     return C
                 })
-                  , nP = flatRest(function(m, R) {
+                  , nR = flatRest(function(m, R) {
                     return null == m ? {} : basePickBy(m, R, function(R, C) {
                         return hasIn(m, C)
                     })
@@ -9256,7 +9256,7 @@
                         return R(m, C[0])
                     })
                 }
-                var nR = createToPairs(keys)
+                var nP = createToPairs(keys)
                   , nk = createToPairs(keysIn);
                 function values(m) {
                     return null == m ? [] : baseValues(m, keys(m))
@@ -9663,7 +9663,7 @@
                 lodash.partial = r9,
                 lodash.partialRight = r7,
                 lodash.partition = r0,
-                lodash.pick = nP,
+                lodash.pick = nR,
                 lodash.pickBy = pickBy,
                 lodash.property = property,
                 lodash.propertyOf = function(m) {
@@ -9821,7 +9821,7 @@
                 ,
                 lodash.thru = thru,
                 lodash.toArray = toArray,
-                lodash.toPairs = nR,
+                lodash.toPairs = nP,
                 lodash.toPairsIn = nk,
                 lodash.toPath = function(m) {
                     return no(m) ? arrayMap(m, toKey) : isSymbol(m) ? [m] : copyArray(rk(toString(m)))
@@ -9901,7 +9901,7 @@
                 }
                 ,
                 lodash.zipWith = rq,
-                lodash.entries = nR,
+                lodash.entries = nP,
                 lodash.entriesIn = nk,
                 lodash.extend = ng,
                 lodash.extendWith = nm,
@@ -10251,7 +10251,7 @@
                     }
                     if (C || m % 1 || R % 1) {
                         var U = t4();
-                        return t1(m + U * (R - m + tP("1e-" + ((U + "").length - 1))), R)
+                        return t1(m + U * (R - m + tR("1e-" + ((U + "").length - 1))), R)
                     }
                     return baseRandom(m, R)
                 }
@@ -10375,7 +10375,7 @@
                     C && isIterateeCall(m, R, C) && (R = L),
                     m = toString(m),
                     R = nm({}, R, T, customDefaultsAssignIn);
-                    var U, $, B = nm({}, R.imports, T.imports, customDefaultsAssignIn), V = keys(B), H = baseValues(B, V), G = 0, q = R.interpolate || eJ, W = "__p += '", Z = e6((R.escape || eJ).source + "|" + q.source + "|" + (q === eR ? eV : eJ).source + "|" + (R.evaluate || eJ).source + "|$", "g"), Y = "//# sourceURL=" + (tn.call(R, "sourceURL") ? (R.sourceURL + "").replace(/\s/g, " ") : "lodash.templateSources[" + ++tO + "]") + "\n";
+                    var U, $, B = nm({}, R.imports, T.imports, customDefaultsAssignIn), V = keys(B), H = baseValues(B, V), G = 0, q = R.interpolate || eJ, W = "__p += '", Z = e6((R.escape || eJ).source + "|" + q.source + "|" + (q === eP ? eV : eJ).source + "|" + (R.evaluate || eJ).source + "|$", "g"), Y = "//# sourceURL=" + (tn.call(R, "sourceURL") ? (R.sourceURL + "").replace(/\s/g, " ") : "lodash.templateSources[" + ++tO + "]") + "\n";
                     m.replace(Z, function(R, C, T, L, B, V) {
                         return T || (T = L),
                         W += m.slice(G, V).replace(eX, escapeStringChar),
@@ -10994,12 +10994,19 @@
             return m > 0 && (L += "".concat(m, "d ")),
             R > 0 && (L += "".concat(R, "h ")),
             C > 0 && (L += "".concat(C, "m ")),
-            0 === m && 0 === R && 0 === C && T < 60 && T >= 0 && (L = "".concat(T, "s")),
+            void 0 !== T && (L += "".concat(T, "s")),
             L
         }
         ;
         function formatTimeRemaining(m) {
-            return m < 0 || "number" != typeof m || Number.isNaN(m) ? "..." : formatTimeAsString(Math.floor(m / 86400), Math.floor(m / 3600 % 24), Math.floor(m / 60 % 60), Math.floor(m % 60))
+            if (m < 0 || "number" != typeof m || Number.isNaN(m))
+                return "...";
+            if (m <= 90)
+                return formatTimeAsString(0, 0, Math.floor(m / 60), Math.floor(m % 60));
+            {
+                let R = Math.round(m / 60);
+                return formatTimeAsString(Math.floor(R / 1440), Math.floor(R / 60 % 24), Math.floor(R % 60))
+            }
         }
         function formatTierAsRomanNumeral(m) {
             switch (m) {
@@ -12020,7 +12027,7 @@
                                 const requestedItemId = window.game.marketBuyItemId;
                                 const requestedQuantity = window.game.marketBuyQuantity;
                                 let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-
+                                
                                 // Check if first listing's price exceeds budget
                                 if (listingsFetched.listings.length > 0 &&  await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
                                     console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
@@ -12054,6 +12061,7 @@
                                         if (myArray.includes(listing._id)){
                                             continue;
                                         }
+                                        
                                         console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
                                         
                                         if (requestedQuantity < window.game.marketBuyMaxQuantity){
@@ -12739,7 +12747,6 @@
                     if (this.room)
                         try {
                             var C, L, U, $, G, q, W, Z, X, Q, ee, et, er, en, eo, ei, ea;
-                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
                             switch (m) {
                             case V.m.updatePlayer:
                                 null === (C = this.playerSerializer) || void 0 === C || C.patch(R),
@@ -12826,7 +12833,6 @@
                                 }));
                                 break;
                             case V.m.playerNotification:
-                                window.game.notification = R.deduplicationKey
                                 Y.e.set(K.W_, [R]),
                                 (null == R ? void 0 : R.source) === "item" && (null === (ei = R.text) || void 0 === ei ? void 0 : ei.count) > 0 && (null === (ea = R.stacking) || void 0 === ea ? void 0 : ea.key) && B.ZP.sendEvent(B.fb.PLAYER_INVENTORY_NEW, {
                                     item: R.stacking.key
@@ -13004,10 +13010,6 @@
                             case V.m.fetchMailbox:
                                 console.log("received mailbox items"),
                                 B.ZP.sendEvent(B.fb.RECEIVE_MAIL, R);
-                                if (R.mail.length > 0){
-                                    window['mailBoxFirstId'] = R.mail[0]._id
-                                
-                                }
                                 break;
                             case V.m.collectMailboxItem:
                                 B.ZP.sendEvent(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
@@ -13266,7 +13268,7 @@
                     )
                 }
                 );
-                await this.handleRoomEvents();
+                this.handleRoomEvents();
                 let et = new Promise(m=>{
                     this.room.onStateChange.once(()=>{
                         let R = this.room.state.players.get(this.room.sessionId);
@@ -13575,6 +13577,7 @@
                 , !1),
                 m.entities.onRemove(m=>{
                     var R;
+                    B.ZP.sendEvent(B.fb.ENTITY_REMOVE, m.toJSON()),
                     null === (R = this.scene) || void 0 === R || R.removeEntity(m)
                 }
                 ),
@@ -13782,7 +13785,7 @@
                 return V
             }
         });
-        let T = 6.81
+        let T = 6.9
           , L = 1676498533e3
           , U = "game-container"
           , $ = "players"
@@ -14703,7 +14706,7 @@
                 window && (window.pixelsRentrancy = m)
             }
             async initRoom(m) {
-                var userInput = prompt("Enter a number between 1 and 4:");
+                var userInput = prompt("1-4: Lands\n5: Sauna\n6: Hazel\n7: Karen\n8: DrunkenGoose");
                 var number = null;
                 if (userInput !== null) {
                     if (!isNaN(userInput)){
@@ -14716,7 +14719,7 @@
                                 mapId = "pixelsNFTFarm-2059";
                                 break;
                             case 2:
-                                mapId = "pixelsNFTFarm-3548";
+                                mapId = "pixelsNFTFarm-4093";
                                 break;
                             case 3:
                                 mapId = "pixelsNFTFarm-1759";
@@ -14732,6 +14735,9 @@
                                 break;
                             case 7:
                                 mapId = "tutorialHouse";
+                                break;
+                            case 8:
+                                mapId = "DrunkenGooseInterior";
                                 break;
                             }
     
@@ -14784,7 +14790,6 @@
                     T.ZP.removeEventListerner(T.fb.GAME_CONNECTED, onConnected),
                     T.ZP.removeEventListerner(T.fb.SVR_CANNOTCONNECT, onNotConnected),
                     PhaserGame.reentrancyCheck = !1
-                    window.game = PhaserGame.phaserGame
                 }
                   , onNotConnected = ()=>{
                     clearTimeout(B),
@@ -15480,7 +15485,7 @@
             eI.headers[m] = {}
         }
         );
-        let eP = ed.toObjectSet(["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"]);
+        let eR = ed.toObjectSet(["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"]);
         var parseHeaders = m=>{
             let R, C, T;
             let L = {};
@@ -15488,12 +15493,12 @@
                 T = m.indexOf(":"),
                 R = m.substring(0, T).trim().toLowerCase(),
                 C = m.substring(T + 1).trim(),
-                !R || L[R] && eP[R] || ("set-cookie" === R ? L[R] ? L[R].push(C) : L[R] = [C] : L[R] = L[R] ? L[R] + ", " + C : C)
+                !R || L[R] && eR[R] || ("set-cookie" === R ? L[R] ? L[R].push(C) : L[R] = [C] : L[R] = L[R] ? L[R] + ", " + C : C)
             }),
             L
         }
         ;
-        let eR = Symbol("internals");
+        let eP = Symbol("internals");
         function normalizeHeader(m) {
             return m && String(m).trim().toLowerCase()
         }
@@ -15631,7 +15636,7 @@
                 C
             }
             static accessor(m) {
-                let R = this[eR] = this[eR] = {
+                let R = this[eP] = this[eP] = {
                     accessors: {}
                 }
                   , C = R.accessors
@@ -16763,22 +16768,16 @@
                     console.log(m)
                 }
             }
-            async getNFTTraitData(m, R, C, T) {
-                var L, U;
-                let $ = {
+            async getNFTTraitData(m, R) {
+                let C = {
                     headers: {
                         Authorization: this.sessionToken
                     }
                 };
                 if (!this.sessionToken)
                     return [];
-                let {data: B} = await eF.get("".concat(this.baseAPIURL, "/player/collections/getNFTData?collection=").concat(m, "&token=").concat(R), $);
-                if (!(null === (L = B.traits) || void 0 === L ? void 0 : L.length)) {
-                    let m = await eF.get("/api/opensea?contract=".concat(C, "&token=").concat(R, "&chain=").concat(T || "ethereum"));
-                    if (m && m.data && (null === (U = m.data.traits) || void 0 === U ? void 0 : U.length) > 0)
-                        return m.data
-                }
-                return B || {}
+                let {data: T} = await eF.get("".concat(this.baseAPIURL, "/player/collections/getNFTData?collection=").concat(m, "&token=").concat(R), C);
+                return T || {}
             }
             async getTopFarms() {
                 let {data: m} = await eF.get("".concat(this.baseCacheUrl, "/discoverability/top_farms"));
@@ -16887,8 +16886,6 @@
         ;
         var eW = new API(eG.LB,"v1")
         window['jooj'] = eW;
-        
-        // console.log(eW.fetchMarketplaceListingsForItem("itm_popberryLoaf","6572eaec4bba74cc55f03b7b"))
     },
     18496: function(m, R, C) {
         "use strict";
@@ -19551,8 +19548,7 @@
                 ),
                 m.addCase("game/".concat(H.fb.CLIENT_CMD), (m,R)=>{
                     let C = R.payload;
-                    "petmint" === C.detail && (m.petPicker.refresh = Date.now() + 9e5),
-                    "realmmint" === C.detail && (m.realmrefresh = !0)
+                    "petmint" === C.detail ? m.petPicker.refresh = Date.now() + 9e5 : "realmmint" === C.detail && (m.realmrefresh = !0)
                 }
                 )
             }
@@ -19704,6 +19700,13 @@
                 ),
                 m.addCase("game/ENTITY_UPDATE", (m,R)=>{
                     R.payload.mid === m.openStorage.mid && (m.openStorage.updated += 1)
+                }
+                ),
+                m.addCase("game/ENTITY_REMOVE", (m,R)=>{
+                    R.payload.mid === m.openStorage.mid && (m.openStorage = {
+                        isOpen: !1,
+                        updated: 0
+                    })
                 }
                 ),
                 m.addCase("game/".concat(L.fb.CLIENT_CMD), (m,R)=>{
@@ -21090,10 +21093,10 @@
         "use strict";
         C.d(R, {
             Bd: function() {
-                return q
+                return W
             },
             Dw: function() {
-                return $
+                return B
             },
             Ep: function() {
                 return confirmDialogSelector
@@ -21105,19 +21108,22 @@
                 return popupSelector
             },
             VG: function() {
-                return Z
+                return Y
+            },
+            _u: function() {
+                return highlightButton
             },
             aA: function() {
-                return B
-            },
-            aP: function() {
-                return W
-            },
-            e4: function() {
                 return V
             },
+            aP: function() {
+                return Z
+            },
+            e4: function() {
+                return H
+            },
             ex: function() {
-                return Y
+                return K
             },
             gs: function() {
                 return hiddenHUD
@@ -21125,21 +21131,25 @@
             j2: function() {
                 return portalSelector
             },
+            je: function() {
+                return J
+            },
             rg: function() {
                 return screenSize
             },
             tD: function() {
-                return U
+                return $
             },
             vV: function() {
-                return H
+                return G
             },
             wR: function() {
-                return G
+                return q
             }
         });
-        var T = C(7406);
-        let L = (0,
+        var T = C(7406)
+          , L = C(34377);
+        let U = (0,
         T.oM)({
             name: "ui",
             initialState: {
@@ -21176,6 +21186,10 @@
                 ,
                 showHUD: (m,R)=>{
                     m.hideHUD = !R.payload
+                }
+                ,
+                clearHighlight: (m,R)=>{
+                    m.highlightButton === R.payload && (m.highlightButton = void 0)
                 }
                 ,
                 portalClose: m=>{
@@ -21243,17 +21257,26 @@
                     m.imageDialog.isIframe = !1,
                     m.hideHUD = !1
                 }
+                ),
+                m.addCase("game/".concat(L.fb.CLIENT_CMD), (m,R)=>{
+                    let C = R.payload;
+                    if ("buttonhighlight" === C.detail) {
+                        var T;
+                        m.highlightButton = (null === (T = C.params) || void 0 === T ? void 0 : T[0]) || void 0
+                    }
+                }
                 )
             }
         })
-          , {gameDimension: U, showHUD: $, portalConfig: B, portalClose: V, imagePopup: H, imagePopupClose: G, entityInput: q, entityInputClose: W, confirmDialog: Z, confirmDialogClose: Y} = L.actions
+          , {gameDimension: $, showHUD: B, portalConfig: V, portalClose: H, imagePopup: G, imagePopupClose: q, entityInput: W, entityInputClose: Z, confirmDialog: Y, confirmDialogClose: K, clearHighlight: J} = U.actions
           , portalSelector = m=>m.ui.portalDialog
           , popupSelector = m=>m.ui.imageDialog
           , entityInputSelector = m=>m.ui.entityInput
           , confirmDialogSelector = m=>m.ui.confirmDialog
           , hiddenHUD = m=>m.ui.hideHUD
+          , highlightButton = m=>m.ui.highlightButton
           , screenSize = m=>m.ui.dimension;
-        R.ZP = L.reducer
+        R.ZP = U.reducer
     },
     80535: function(m, R, C) {
         "use strict";
@@ -21550,6 +21573,7 @@
                         type: R,
                         mid: m.targetId,
                         moving: !0,
+                        startCoords: m.world,
                         config: {
                             [R]: C
                         }
@@ -21728,7 +21752,6 @@
                 });
                 break;
             case "guild":
-                console.log("sending ROOM_PERMISSIONS", m),
                 V.ZP.sendEvent(V.qM.ROOM_PERMISSIONS, {
                     guild: m.value
                 });
@@ -22249,8 +22272,14 @@
                       , C = null === ($ = m.game.player) || void 0 === $ ? void 0 : null === (U = $.full) || void 0 === U ? void 0 : null === (L = U.cryptoWallets) || void 0 === L ? void 0 : L.map(m=>m.address);
                     null === (W = window.ronin) || void 0 === W || null === (q = W.provider) || void 0 === q || null === (G = q[R]) || void 0 === G || G.call(q, {
                         userId: null === (H = m.game.player) || void 0 === H ? void 0 : null === (B = H.core) || void 0 === B ? void 0 : B.mid,
-                        wallets: C
-                    })
+                        addresses: C
+                    }).then(m=>{
+                        console.log("Ronin injected function result: ", m)
+                    }
+                    ).catch(m=>{
+                        console.log("Ronin injected function ERROR: ", m)
+                    }
+                    )
                 } catch (m) {
                     console.log(m)
                 }
@@ -22260,8 +22289,8 @@
         var eA = C(18496)
           , ew = C(22181)
           , eI = C(54698)
-          , eP = C(87434)
-          , eR = C(46787)
+          , eR = C(87434)
+          , eP = C(46787)
           , ek = C(15103);
         let eC = (0,
         $.xC)({
@@ -22274,9 +22303,9 @@
                 marketplace: ey.ZP,
                 chat: eI.ZP,
                 plot: em.ZP,
-                report: eP.ZP,
+                report: eR.ZP,
                 storage: en.ZP,
-                trade: eR.ZP,
+                trade: eP.ZP,
                 mapEditor: q.ZP,
                 crafting: eh.ZP
             },
