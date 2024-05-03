@@ -12471,6 +12471,171 @@
                                 window.game.claimMail = undefined
                                 await delay(500);
                                 return
+                            }else if (window.game.yggquest1 !== undefined){
+                                
+                                // inicia quest 1
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb708e7e3d4867d9e3dd20",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_01_step1_1_4",
+                                    event: "evt_ygg_01_step1_1",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //pega lupa
+                                e = "clickEntity"
+                                t = {
+                                    entity: "ent_pickup_exploretool",
+                                    impact: "click",
+                                    inputs: [2144.5, 2569.5],
+                                    mid: "65fb70f2d4b9b0c552f0e2ad"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //entrega lupa
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb708e7e3d4867d9e3dd20",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_01_step2_2_3",
+                                    event: "evt_ygg_01_step2_2",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+                                
+                                window.game.yggquest1 = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.yggquest2 !== undefined){
+                                // inicia quest 2
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb709f7e3d4867d9e3df53",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_02_step1_1_4",
+                                    event: "evt_ygg_02_step1_1",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //pegar fingerprint
+                                e = "ui"
+                                t = {
+                                    id: "itm_exploretool_01",
+                                    mid: "65fb6fc49c2033e1365ccc9a",
+                                    slot: 2,
+                                    tiles: undefined,
+                                    type: "entity",
+                                    x: undefined,
+                                    y: undefined
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                // entrega fingerprint
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb709f7e3d4867d9e3df53",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_02_step2_1_3",
+                                    event: "evt_ygg_02_step2_1",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+                                window.game.yggquest2 = undefined
+                                await delay(500);
+                                return
+                                
+                            }else if (window.game.yggquest3 !== undefined){
+                                // iniciar quest3
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb70b87e3d4867d9e3e2bb",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_03_step1_1_3",
+                                    event: "evt_ygg_03_step1_1",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+
+
+                                // pega o power pixel, precisa pegar num de slot
+                                e = "ui"
+                                t = {
+                                    id: "itm_exploretool_01",
+                                    mid: "65e76ffe99c035186f5be9e0",
+                                    slot: 2,
+                                    tiles: undefined,
+                                    type: "entity",
+                                    x: undefined,
+                                    y: undefined
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //finaliza quest 3
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb70b87e3d4867d9e3e2bb",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_03_step2_2_4",
+                                    event: "evt_ygg_03_step2_2",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+                                window.game.yggquest3 = undefined
+                                await delay(500);
+                                return
                             }
                             window.game.clickedShears = true
                             const filteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
@@ -13011,6 +13176,10 @@
                             case V.m.fetchMailbox:
                                 console.log("received mailbox items"),
                                 B.ZP.sendEvent(B.fb.RECEIVE_MAIL, R);
+                                if (R.mail.length > 0){
+                                    window['mailBoxFirstId'] = R.mail[0]._id
+                                
+                                }
                                 break;
                             case V.m.collectMailboxItem:
                                 B.ZP.sendEvent(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
