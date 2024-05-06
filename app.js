@@ -11779,12 +11779,982 @@
                 return "pixelsNFTFarm-".concat(C)
             }
             registerEvents() {
-                let sendCommand = (m,R,C)=>{
-                    if (!C || !this.room || this.room.sessionId !== C) {
-                        console.log("message ignored because room not loaded", m);
-                        return
+                let sendCommand = async (e, t, r) => {
+                    // if (!r || !this.room || this.room.sessionId !== r) {
+                    //     console.log("Message ignored because room not loaded", e);
+                    //     return;
+                    // }
+                    if (!r || !this.room ) {
+                        console.log("Message ignored because room not loaded", e);
+                        return;
                     }
-                    this.room.send(m, R)
+                    let delayMin;
+                    let delayMax;
+
+                    if (window.game.fastFarm !== undefined){
+                        delayMin = 100
+                        delayMax = 150
+                    }else{
+                        delayMin = 150
+                        delayMax = 200
+
+                    }
+                    
+                    // Check if e is "mv" and the last two items of the t array are not zero
+                    if (e === "mv" && (((t[1] === 3119 && t[2] === 2855) || (t[1] === 3284 && t[2] === 2829)) && t[3] === 0 && t[4] === 0)) {
+                        console.log("Message ignored because conditions not met", e, t);
+                        return;
+                    }
+                    
+                    // Check if e is "ui" and t.id is "itm_rustyWateringCan"
+                    if (e === "ui" && !t.id.includes("Fruit")) {
+                        // Check if t.id is one of the seed items
+                        if (
+                            (t.id === "itm_wintermintSeeds" ||
+                            t.id === "itm_cloverSeeds" ||
+                            t.id === "itm_popberrySeeds" ||
+                            t.id === "itm_coffeeseed" ||
+                            t.id === "itm_perfectPopberrySeeds") && window.game.clickedSeed === undefined
+                        ) {
+                            
+                            window.game.clickedSeed = true
+                            // Additional code for seeds goes here
+                            // Get the number from window.game.plantQnt
+                            let plantQnt;
+                            if (window.game.plantQnt === undefined && t.id === "itm_perfectPopberrySeeds"){
+                                plantQnt = 1;
+                            }else if (window.game.plantQnt === undefined){
+                                plantQnt = 60;
+                            }else{
+                                plantQnt = window.game.plantQnt;
+                            }
+                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+                            // Get all entities with entityType equal to "soil"
+                            
+                            // const cropMids = Object.values(window.game.scene.scenes[1].crops)
+                            // .flatMap(crop => crop.mid);
+                            
+                            // // Filter out soil entities that are already in crops based on mid
+                            // const unusedSoilEntities = soilEntities.filter(entityMid =>
+                            //     !cropMids.includes(entityMid)
+                            // );
+                            const sentEntityMids = new Set();
+                            const soilEntities = Array.from(window.game.scene.scenes[1].entities.entries())
+                                .filter(([entityId, entity]) => {
+                                    return entity.entityType === "soil" && entity.state === "normal";
+                                })
+                                .map(([entityId, entity]) => entity.mid);
+                            // Iterate through the list with a delay of 0.2s for each
+                            console.log('plant qnt')
+                            console.log(plantQnt)
+                            while (Array.from(window.game.scene.scenes[1].crops.entries()).length < plantQnt){
+                                const soilEntities = Array.from(window.game.scene.scenes[1].entities.entries())
+                                .filter(([entityId, entity]) => {
+                                    return entity.entityType === "soil" && entity.state === "normal";
+                                })
+                                .map(([entityId, entity]) => entity.mid);
+                                
+                                for (let i = soilEntities.length - 1; i > 0; i--) {
+                                    const j = Math.floor(Math.random() * (i + 1));
+                                    [soilEntities[i], soilEntities[j]] = [soilEntities[j], soilEntities[i]];
+                                }
+                                for (let i = 0; i <  Math.min(plantQnt, soilEntities.length); i++) {
+                                    // Check if the entity mid was not sent before
+                                    if (!sentEntityMids.has(soilEntities[i])) {
+                                        // Send room request with modified mid
+                                        // (replace the next line with the actual logic for sending the room request)
+                                        t.mid = soilEntities[i];
+                                        t.type = "entity";
+                                        t.x = undefined;
+                                        t.y = undefined;
+                                        this.room.send(e, t);
+                                        console.log(sentEntityMids)
+
+                                        sentEntityMids.add(soilEntities[i]);
+                                        // Add a delay for each request
+                                        await delay(Math.floor(Math.random() * (delayMax - delayMin + 1)) + delayMin);
+                                    }else{
+                                        console.log(soilEntities[i])
+                                    }
+                                    // continue
+                                }
+                                await delay(1500);
+                                console.log("size after loop: " + soilEntities.length);
+                                const excludedSoilEntities = Array.from(window.game.scene.scenes[1].entities.entries())
+                                    .filter(([entityId, entity]) => {
+                                        return soilEntities.includes(entityId) && entity.state === "normal" && entity.entityType === "soil";
+                                    })
+                                    .map(([entityId, entity]) => entityId);
+                                
+                                excludedSoilEntities.forEach(excludedEntity => sentEntityMids.delete(excludedEntity));
+                                console.log('planted entities excluded from sent')
+                                console.log(excludedSoilEntities)
+                                // Remove the excluded soil entities from the sentEntityMids set
+                                  
+                            } 
+                            window.game.clickedSeed = undefined
+                            
+                        } else if (t.id === "itm_shears" && window.game.clickedShears === undefined) {
+
+                            
+                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+                            if (window.game.sellitems !== undefined){
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+
+                                // Find items with specific IDs
+                                let targetItemIds = ["itm_wintermintFruit", "itm_clover4LeafFruit", "itm_cloverFruit"];
+
+                                // Iterate through maps with specific item IDs
+                                for (let itemId of targetItemIds) {
+                                    for (let [key, value] of itemsMap) {
+                                        if (value.hasOwnProperty('item') && value.item === itemId) {
+                                            // Get quantity and slot properties
+                                            let quantity = value.quantity;
+                                            let slot = value.slot; // Assuming the key is the slot property
+
+                                            // Log or perform operations with quantity and slot
+                                            console.log(`Item ID: ${itemId}, Quantity: ${quantity}, Slot: ${slot}`);
+
+                                            // Check if window.game.sellitems is defined and perform actions
+                                            let e = "sellStoreItem";
+                                            let t = {
+                                            itemId: itemId,
+                                            quantity: quantity,
+                                            slot: slot,
+                                            storeId: "str_bucksGalore"
+                                            };
+                                            this.room.send(e, t);
+                                        }
+                                    }
+                                }
+                                window.game.sellitems = undefined
+                                return
+                            }else if (window.game.buyitems !== undefined){
+                                let e = "buyStoreItem"
+                                this.room.send(e, window.game.buyitemsObj)
+                                window.game.buyitems = undefined
+                                return
+                            }else if (window.game.swapItems !== undefined){
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+
+                                // Items to search for
+                                let targetItems = ["itm_wintermintSeeds", "itm_cloverSeeds"];
+
+                                // Initialize variables to store quantities
+                                let winterQuantity = 0;
+                                let cloverQuantity = 0;
+                                let cloverSlot = undefined
+                                let winterSlot = undefined
+
+                                // Iterate through the map entries
+                                for (let [key, entry] of itemsMap) {
+                                    if (entry.hasOwnProperty('item') && targetItems.includes(entry.item)) {
+                                        // Check if the item is wintermintSeeds or cloverSeeds
+                                        if (entry.item === "itm_wintermintSeeds") {
+                                            winterQuantity += entry.quantity;
+                                            winterSlot = entry.slot;
+                                        } else if (entry.item === "itm_cloverSeeds") {
+                                            cloverQuantity += entry.quantity;
+                                            cloverSlot = entry.slot;
+                                        }
+                                    }
+                                }
+                                if (cloverQuantity > 0) {
+                                    // console.log(cloverQuantity);
+                                    // console.log(cloverSlot);
+                                    if (cloverSlot !== 2){
+                                        let k = "swapOrCombineInventorySlots"
+                                        let j = {
+                                            sourceContainer: undefined,
+                                            sourceIndex: cloverSlot,
+                                            targetIndex: 2
+                                        }
+                                        
+                                        this.room.send(k, j)
+                                    }
+                                } else if (window.game.scene.scenes[1].stateManager.playerSerializer.state.levels.get("farming").level >= 11) {
+                                    // console.log(winterQuantity);
+                                    // console.log(winterSlot);
+                                    if (winterSlot !== 2){
+                                        let k = "swapOrCombineInventorySlots"
+                                        let j = {
+                                            sourceContainer: undefined,
+                                            sourceIndex: winterSlot,
+                                            targetIndex: 2
+                                        }
+                                        
+                                        this.room.send(k, j)
+                                    }
+                                }else{
+                                    // console.log(0);
+                                    // console.log(cloverSlot);
+                                    if (cloverSlot !== 2){
+                                        let k = "swapOrCombineInventorySlots"
+                                        let j = {
+                                            sourceContainer: undefined,
+                                            sourceIndex: cloverSlot,
+                                            targetIndex: 2
+                                        }
+                                        
+                                        this.room.send(k, j)
+                                    }
+                                }
+                                window.game.swapItems = undefined
+                                return
+                            }else if (window.game.marketplace !== undefined){
+                                let e = "marketplace"
+                                let t = {
+                                    listingId: "6568ecee4a4e955736a0a95c",
+                                    quantity: 1,
+                                    subcommand: "purchase"
+                                }
+                                this.room.send(e, t)
+                                window.game.marketplace = undefined
+                                return
+                            }else if (window.game.tasks !== undefined){
+                                let e = "sellOrderFill"
+                                for (let i=0;i<9;i++){
+                                    let t = {
+                                        sellOrderIndex: i,
+                                        storeId: "str_bucksGalore"
+                                    };
+                                    this.room.send(e, t);
+
+                                    await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
+                                    console.log(Date.now())
+                                }
+                                
+                                window.game.tasks = undefined
+                                return
+                            }else if (window.game.marketBuy !== undefined){
+                                const requestedItemId = window.game.marketBuyItemId;
+                                const requestedQuantity = window.game.marketBuyQuantity;
+                                let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                
+                                // Check if first listing's price exceeds budget
+                                if (listingsFetched.listings.length > 0 &&  await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
+                                    console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
+                                    window.game.marketBuy = undefined
+                                    return; // Skip to the next sell order if budget is exceeded
+                                }
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                let itmQntBeforeBuy = 0
+                    
+                                // Iterate through the map entries
+                                for (let [key, entry] of itemsMap) {
+                                    if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
+                                        itmQntBeforeBuy += entry.quantity;
+                                    }
+                                }
+                                let myArray = [];
+                                let currentListingId;
+                                while (true){
+                                    listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                    currentListingId = undefined;
+                                    let beforeBuyQnt = 0
+                                    itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                    // Iterate through the map entries
+                                    for (let [key, entry] of itemsMap) {
+                                        if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
+                                            beforeBuyQnt += entry.quantity;
+                                        }
+                                    }
+                                    
+                                    for (let listing of listingsFetched.listings) {
+                                        if (myArray.includes(listing._id)){
+                                            continue;
+                                        }
+                                        
+                                        console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                        
+                                        if (requestedQuantity < window.game.marketBuyMaxQuantity){
+                                            if (listing.quantity >= requestedQuantity) {
+                                            // if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )    
+                                                console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                                let e = "marketplace"
+                                                let t = {
+                                                    listingId: listing._id,
+                                                    quantity: requestedQuantity,
+                                                    subcommand: "purchase"
+                                                };
+                                                this.room.send(e, t);
+                                                currentListingId = listing._id;
+                                                break; // Exit the loop after a suitable purchase option is found
+                                            }
+                                        }else{
+                                            if (listing.quantity > window.game.marketBuyListingMinimum) {
+
+                                                itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                                let itmQnt = 0
+                                    
+                                                // Iterate through the map entries
+                                                for (let [key, entry] of itemsMap) {
+                                                    if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
+                                                        itmQnt += entry.quantity;
+                                                    }
+                                                }
+                                                console.log("Requested quantity: ".concat(requestedQuantity))
+                                                console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
+                                                let quantity = 0
+                                                
+                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > window.game.marketBuyListingMinimum){
+                                                    if (requestedQuantity - (itmQnt - itmQntBeforeBuy) < listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
+                                                        quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
+                                                    }else if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
+                                                        quantity = listing.quantity - (listing.quantity * 0.1)
+                                                        quantity = Math.floor(quantity)
+                                                    }
+                                                    
+                                                }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
+                                                    quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
+                                                }else{
+                                                    break
+                                                }
+
+                                                
+                                                console.log(`Attempting to buy ${quantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                                let e = "marketplace"
+                                                let t = {
+                                                    listingId: listing._id,
+                                                    quantity: quantity,
+                                                    subcommand: "purchase"
+                                                };
+                                                this.room.send(e, t);
+                                                
+                                                currentListingId = listing._id;
+                                                
+                                                break; // Exit the loop after a suitable purchase option is found
+                                            }
+                                        }
+                                    }
+                                    await delay(4000);
+                                    
+                                    let totalQuantity = 0;
+                                    for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                        if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                            totalQuantity += entry.quantity;
+                                        }
+                                    }
+                                    
+                                    console.log("Requested quantity: ".concat(requestedQuantity))
+                                    console.log("Total bougth: ".concat(totalQuantity - itmQntBeforeBuy))
+                                    if (requestedQuantity <= totalQuantity - itmQntBeforeBuy) {
+                                        console.log("Bougth sucess")
+                                        break; // Exit the loop after finding the requested quantity
+                                    }
+                                    // if (window.game.notification !== 'marketplace-purchase-failed'){
+                                    //     break;
+                                    // }
+                                    if (totalQuantity == beforeBuyQnt && currentListingId !== undefined){
+                                        if (!myArray.includes(currentListingId)){
+                                            myArray.push(currentListingId);
+                                        }
+                                        console.error(`Purshase of ${requestedItemId} failed.`)
+                                    }
+                                    
+                                }
+                                window.game.marketBuy = undefined
+                                return; // Skip to the next sell order if budget is exceeded
+                            }else if(window.game.marketSell !== undefined){
+                                
+                                let e = "marketplace"
+                                let t = {
+                                    currency: "cur_coins",
+                                    itemId: window.game.marketSellItem,
+                                    price: window.game.marketSellPrice,
+                                    quantity: window.game.marketSellQuantity,
+                                    subcommand: "create"
+                                };
+                                await this.room.send(e, t);
+                                
+                                window.game.marketSell = undefined
+                                return
+                            }else if(window.game.cancelListing !== undefined){
+                                let e = "marketplace"
+                                let t = {
+                                    listingId: window.game.listingId,
+                                    subcommand: "claim"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2500);
+                                
+                                window.game.cancelListing = undefined
+                                return
+                            }else if (window.deliverTasks !== undefined){
+                                let e = "sellOrderFetch"
+                                let t = {
+                                    storeId: "str_bucksGalore"
+                                };
+                                await this.room.send(e, t);
+                                
+                                
+                                // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
+                                
+                                await delay(2000);
+                                // sellOrders.forEach((sellOrder, index) => sellOrder.originalIndex = index);
+                                // console.log(window.sellOrders)
+                                // sellOrders.sort((a, b) => {
+                                //     const aHasPixelReward = a.reward && a.reward.currency && a.reward.currency.currencyId === "cur_pixel";
+                                //     const bHasPixelReward = b.reward && b.reward.currency && b.reward.currency.currencyId === "cur_pixel";
+                                
+                                //     if (aHasPixelReward && !bHasPixelReward) {
+                                //       return -1; // Move sell order with "cur_pixel" reward to the beginning
+                                //     } else if (!aHasPixelReward && bHasPixelReward) {
+                                //       return 1; // Move sell order without "cur_pixel" reward to the end
+                                //     } else {
+                                //       return 0; // No priority difference if both have the same currency or neither have rewards
+                                //     }
+                                //   });
+                                  
+                                // console.log(window.sellOrders)
+                                // let playerInventory = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                // // await delay(30000)
+                                // for (let i = 0; i < sellOrders.length; i++) {
+                                //     const sellOrder = sellOrders[i];
+                                //     const requestedItemId = sellOrder.request.itemId;
+                                //     const requestedQuantity = sellOrder.request.quantity;
+
+                                //     let playerItem = null; // Initialize to avoid potential undefined errors
+                                //     let totalQuantity = 0;
+                                    
+                                //     for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                //         if (entry.hasOwnProperty('item') && requestedItemId === entry.item && !sellOrder.hasOwnProperty('completedAt')) {
+                                //             totalQuantity += entry.quantity;
+                                //         }
+                                //     }
+                                    
+                                //     if (requestedQuantity <= totalQuantity) {
+                                //         console.log(`Sell order ${i + 1} of ${requestedItemId} can be fulfilled from inventory.`);
+                                //         let e = "sellOrderFill"
+                                //         let t = {
+                                //             sellOrderIndex: sellOrder.originalIndex,
+                                //             storeId: "str_bucksGalore"
+                                //         };
+                                //         this.room.send(e, t);  
+                                //     } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
+                                //         // Player needs to buy the item
+                                //         console.log(requestedItemId)
+                                //         console.log(`Sell order ${i + 1} requires buying ${requestedQuantity} of ${requestedItemId}.`);
+                                //         try {
+                                //             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+
+                                //             // Check if first listing's price exceeds budget
+                                //             if (listingsFetched.listings.length > 0 && (listingsFetched.listings[0].price * requestedQuantity > 3000 || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) && !(window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listingsFetched.listings[0].price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
+                                //                 console.log(`Cheapest listing exceeds budget for sell order ${i + 1}.`);
+                                //                 continue; // Skip to the next sell order if budget is exceeded
+                                //             }
+                                //             let qnt;
+                                //             if (totalQuantity > 0){
+                                //                 qnt = requestedQuantity - totalQuantity;
+                                //             }else{
+                                //                 qnt = requestedQuantity;
+                                //             }
+
+                                //             while (true){
+                                //                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                //                 // Iterate over listings for suitable purchase option
+                                //                 for (let listing of listingsFetched.listings) {
+                                //                     console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                //                     if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= 3000 && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
+                                                        
+                                //                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                //                         let e = "marketplace"
+                                //                         let t = {
+                                //                             listingId: listing._id,
+                                //                             quantity: qnt,
+                                //                             subcommand: "purchase"
+                                //                         };
+                                //                         this.room.send(e, t);
+                                                        
+                                //                         break; // Exit the loop after a suitable purchase option is found
+                                //                     }
+                                //                 }
+                                //                 totalQuantity = 0
+
+                                //                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                //                     if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                //                         totalQuantity += entry.quantity;
+                                //                     }
+                                //                 }
+                                                
+                                //                 if (requestedQuantity <= totalQuantity) {
+                                //                     console.log("Bought sucess")
+                                //                     break; // Exit the loop after finding the requested quantity
+                                //                 }
+                                //                 // if (window.game.notification !== 'marketplace-purchase-failed'){
+                                //                 //     break;
+                                //                 // }
+                                //                 console.error(`Purshase of ${requestedItemId} failed.`)
+                                //             }
+                                //             let e = "sellOrderFill"
+                                //             let t = {
+                                //                 sellOrderIndex: sellOrder.originalIndex,
+                                //                 storeId: "str_bucksGalore"
+                                //             };
+                                //             this.room.send(e, t);
+                                //             if (!listingsFetched.listings.some(listing => listing.quantity >= requestedQuantity && listing.price * requestedQuantity <= 3000)) {
+                                //                 console.log(`No listings found for ${requestedItemId} that meet requirements.`);
+                                //             }
+                                //         } catch (error) {
+                                //             console.error("Error fetching marketplace listings:", error);
+                                //         }
+                                //     }
+                                //     await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
+                                //     console.log(Date.now())
+                                // }
+
+
+                                return
+                            }else if (window.game.loadStove !== undefined){
+                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+
+                                
+                                let woodSlot = undefined
+                                
+                                // Iterate through the map entries
+                                for (let [key, entry] of itemsMap) {
+                                    if (entry.hasOwnProperty('item') && entry.item === "itm_wood") {
+                                        woodSlot = entry.slot;
+                                    }
+                                }
+                                let e = "ui"
+                                let t = {
+                                    id: "itm_wood",
+                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
+                                    slot: woodSlot,
+                                    tiles: undefined,
+                                    type: "entity",
+                                    x: undefined,
+                                    y: undefined
+
+                                };
+                                await this.room.send(e, t);
+                                
+                                
+                                // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
+                                window.game.loadStove = undefined
+                                await delay(500);
+                                return
+                            }else if(window.game.startCraft !== undefined){
+                                let craftAmount = window.game.qntCraft;
+                                let craftItem = window.game.itemCraft;
+
+                                // if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === "ready"){
+                                //     e = "clickEntity"
+
+                                //     t = {
+                                //         entity: "ent_stove",
+                                //         impact: "claim",
+                                //         inputs: undefined,
+                                //         mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                //     };
+                                //     await this.room.send(e, t);
+                                //     await delay(1500);
+                                //     if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === 'empty'){
+                                //         let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
+                                //         let woodSlot = undefined
+                                        
+                                //         // Iterate through the map entries
+                                //         for (let [key, entry] of itemsMap) {
+                                //             if (entry.hasOwnProperty('item') && entry.item === "itm_wood" && entry.quantity >= 6) {
+                                //                 woodSlot = entry.slot;
+                                //             }
+                                //         }
+                                //         if (woodSlot === undefined){
+                                            
+                                //             const requestedItemId = "itm_wood"
+                                //             const requestedQuantity = 6
+                                //             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+
+                                //             // Check if first listing's price exceeds budget
+                                //             if (listingsFetched.listings.length > 0 && await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
+                                //                 console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
+                                //                 window.game.marketBuy = undefined
+                                //                 return; // Skip to the next sell order if budget is exceeded
+                                //             }
+                                //             while (true){
+                                //                 await delay(1000)
+                                //                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                //                 // Iterate over listings for suitable purchase option
+                                //                 for (let listing of listingsFetched.listings) {
+                                //                     console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                                    
+                                //                     if (listing.quantity >= requestedQuantity && (await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
+                                                        
+                                //                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                //                         let e = "marketplace"
+                                //                         let t = {
+                                //                             listingId: listing._id,
+                                //                             quantity: requestedQuantity,
+                                //                             subcommand: "purchase"
+                                //                         };
+                                //                         this.room.send(e, t);
+                                                        
+                                //                         break; // Exit the loop after a suitable purchase option is found
+                                //                     }
+                                //                 }
+                                //                 let totalQuantity = 0;
+                                //                 await delay(3500);
+                                                
+                                //                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                //                     if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                //                         totalQuantity += entry.quantity;
+                                //                     }
+                                //                 }
+                                                
+                                //                 if (requestedQuantity <= totalQuantity) {
+                                //                     console.log("Bought sucess")
+                                //                     break; // Exit the loop after finding the requested quantity
+                                //                 }
+                                //                 // if (window.game.notification !== 'marketplace-purchase-failed'){
+                                //                 //     break;
+                                //                 // }
+                                //                 console.error(`Purshase of ${requestedItemId} failed.`)
+                                //             }
+                                //         }
+                                //         let e = "ui"
+                                //         let t = {
+                                //             id: "itm_wood",
+                                //             mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
+                                //             slot: woodSlot,
+                                //             tiles: undefined,
+                                //             type: "entity",
+                                //             x: undefined,
+                                //             y: undefined
+
+                                //         };
+                                //         await this.room.send(e, t);
+                                //         await delay(1500);
+                                //     }
+                                // }
+                                
+                                e = "clickEntity"
+
+                                t = {
+                                    entity: "ent_stove",
+                                    impact: "startCraft",
+                                    inputs: [craftItem, craftAmount],
+                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                };
+                                
+                                await this.room.send(e, t);
+                                await delay(1500);
+                                
+                                window.game.startCraft = undefined
+                                await delay(500);
+                                return
+                            }else if(window.game.claimCraft !== undefined){
+                                
+                                let e = "clickEntity"
+
+                                let t = {
+                                    entity: "ent_stove",
+                                    impact: "claim",
+                                    inputs: undefined,
+                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
+                                };
+                                await this.room.send(e, t);
+                                window.game.claimCraft = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.fetchMail !== undefined){
+                                let e = "fetchMailbox"
+                                await this.room.send(e, undefined);
+                                window.game.fetchMail = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.claimMail !== undefined){
+                                console.log(window.mailBoxFirstId)
+                                e = "collectMailboxItem"
+                                t = {
+                                    mailId: window.mailBoxFirstId,
+                                    similar: true
+                                };
+                                await this.room.send(e, t);
+                                window.game.claimMail = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.yggquest1 !== undefined){
+                                
+                                // inicia quest 1
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb708e7e3d4867d9e3dd20",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_01_step1_1_4",
+                                    event: "evt_ygg_01_step1_1",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //pega lupa
+                                e = "clickEntity"
+                                t = {
+                                    entity: "ent_pickup_exploretool",
+                                    impact: "click",
+                                    inputs: [2144.5, 2569.5],
+                                    mid: "65fb70f2d4b9b0c552f0e2ad"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //entrega lupa
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb708e7e3d4867d9e3dd20",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_01_step2_2_3",
+                                    event: "evt_ygg_01_step2_2",
+                                    npcId: "ent_npcPlayerW3"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+                                
+                                window.game.yggquest1 = undefined
+                                await delay(500);
+                                return
+                            }else if (window.game.yggquest2 !== undefined){
+                                // inicia quest 2
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb709f7e3d4867d9e3df53",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_02_step1_1_4",
+                                    event: "evt_ygg_02_step1_1",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //pegar fingerprint
+                                e = "ui"
+                                t = {
+                                    id: "itm_exploretool_01",
+                                    mid: "65fb6fc49c2033e1365ccc9a",
+                                    slot: 2,
+                                    tiles: undefined,
+                                    type: "entity",
+                                    x: undefined,
+                                    y: undefined
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                // entrega fingerprint
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb709f7e3d4867d9e3df53",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_02_step2_1_3",
+                                    event: "evt_ygg_02_step2_1",
+                                    npcId: "ent_npcAMA_Luke"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+                                window.game.yggquest2 = undefined
+                                await delay(500);
+                                return
+                                
+                            }else if (window.game.yggquest3 !== undefined){
+                                // iniciar quest3
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb70b87e3d4867d9e3e2bb",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_03_step1_1_3",
+                                    event: "evt_ygg_03_step1_1",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+
+
+                                // pega o power pixel, precisa pegar num de slot
+                                e = "ui"
+                                t = {
+                                    id: "itm_exploretool_01",
+                                    mid: "65e76ffe99c035186f5be9e0",
+                                    slot: 2,
+                                    tiles: undefined,
+                                    type: "entity",
+                                    x: undefined,
+                                    y: undefined
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+
+                                //finaliza quest 3
+                                e = "talkToNPC"
+                                t = {
+                                    mid: "65fb70b87e3d4867d9e3e2bb",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                //closeDialog
+                                e = "closeDialog"
+                                t = {
+                                    dialogId: "evt_ygg_03_step2_2_4",
+                                    event: "evt_ygg_03_step2_2",
+                                    npcId: "ent_npcGabbyYGG"
+                                };
+                                await this.room.send(e, t);
+                                await delay(2000);
+                                
+                                window.game.yggquest3 = undefined
+                                await delay(500);
+                                return
+                            }
+                            window.game.clickedShears = true
+                            const filteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
+                                .filter(([cropId, crop]) => {
+                                    const cropState = crop.state;
+                                    return cropState === "ripe" || cropState === "dead" || cropState === "deadSeed";
+                                })
+                                .map(([cropId, crop]) => cropId);
+                            
+
+                            while (filteredCrops.length > 0) {
+                                for (let i = filteredCrops.length - 1; i > 0; i--) {
+                                    const j = Math.floor(Math.random() * (i + 1));
+                                    [filteredCrops[i], filteredCrops[j]] = [filteredCrops[j], filteredCrops[i]];
+                                }
+                                
+                                for (let i = 0; i < filteredCrops.length; i++) {
+                                    
+                                    // Send room request with modified mid
+                                    // Replace the next line with the actual logic for sending the room request
+                                    t.mid = filteredCrops[i];
+                                    t.type = "entity";
+                                    t.x = undefined;
+                                    t.y = undefined;
+                    
+                                    this.room.send(e, t);
+                                    await delay(Math.floor(Math.random() * (delayMax - delayMin + 1)) + delayMin);
+                                }
+                                    
+                    
+                                // Optional: Add a delay before the next iteration of the while loop
+                                // delay(500);
+                                
+                                await delay(500);
+                                // Update filtered crops for the next iteration
+                                const updatedFilteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
+                                .filter(([cropId, crop]) => {
+                                    const cropState = crop.state;
+                                    return cropState === "ripe" || cropState === "dead" || cropState === "deadSeed";
+                                })
+                                .map(([cropId, crop]) => cropId);
+                                
+                                filteredCrops.length = updatedFilteredCrops.length;
+                                for (let i = 0; i < updatedFilteredCrops.length; i++) {
+                                    filteredCrops[i] = updatedFilteredCrops[i];
+                                }
+                            }
+                            window.game.clickedShears = undefined
+                            // e = "closeDialog"
+                            // t = {}
+                            // t.dialogId = "evt_barneyTutorial_step11_6"
+                            // t.event = "evt_barneyTutorial_step11"
+                            // t.npcId = "ent_npcBarney"
+                            // for (let i = 0; i < 10; i++) {
+                            //     this.room.send(e, t);
+                            // }
+                        } else if (t.id === "itm_rustyWateringCan" && window.game.clickedWater === undefined){
+                            window.game.clickedWater = true
+                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+                            let cropsNeedingWater = Array.from(window.game.scene.scenes[1].crops.entries())
+                                .filter(([cropId, crop]) => crop.needsWater)
+                                .map(([cropId, crop]) => cropId);
+                            
+                            // Iterate until no crop needs water
+
+                            while (cropsNeedingWater.length > 0) {
+                                for (let i = cropsNeedingWater.length - 1; i > 0; i--) {
+                                    const j = Math.floor(Math.random() * (i + 1));
+                                    [cropsNeedingWater[i], cropsNeedingWater[j]] = [cropsNeedingWater[j], cropsNeedingWater[i]];
+                                }
+                                // Iterate through the list with a delay of 0.1 for each
+                                for (let i = 0; i < cropsNeedingWater.length; i++) {
+                                    // Send room request with modified mid
+                                    // Replace t.mid with the current mid from the list
+                                    t.mid = cropsNeedingWater[i];
+                                    t.type = "entity"
+                                    t.x = undefined
+                                    t.y = undefined
+                                    this.room.send(e, t);
+                                    await delay(Math.floor(Math.random() * (delayMax - delayMin + 1)) + delayMin);
+                                }
+
+                                await delay(500);
+                                // Update the list of crops needing water
+                                cropsNeedingWater = Array.from(window.game.scene.scenes[1].crops.entries())
+                                .filter(([cropId, crop]) => crop.needsWater)
+                                .map(([cropId, crop]) => cropId);
+
+                                // Optional: Add a delay before checking again
+                                // You can adjust the delay based on your requirements
+                                
+                            }
+                            window.game.clickedWater = undefined
+                        } else if(t.id === "itm_fertilizer"){
+                            const filteredCrops = Object.keys(window.game.scene.scenes[1].crops)
+                            t.mid = filteredCrops[0];
+                            t.type = "entity";
+                            t.x = undefined;
+                            t.y = undefined;
+            
+                            this.room.send(e, t);
+                        }else {
+                            // Proceed with the send for other cases
+                            console.log(t);
+                            this.room.send(e, t);
+                            
+                        }
+                    }
+                    else {
+                        // Proceed with the send for other cases
+                        console.log(t);
+                        
+                        this.room.send(e, t);
+                        
+                    }
                 }
                 ;
                 Object.entries(ee).forEach(m=>{
@@ -11942,10 +12912,11 @@
                     B.ZP.emitEventNow(B.fb.ROOM_MEMBERS_CHANGED, m)
                 }
                 ),
-                null === (m = this.room) || void 0 === m || m.onMessage("*", (m,R)=>{
+                null === (m = this.room) || void 0 === m || m.onMessage("*", async (m,R)=>{
                     if (this.room)
                         try {
                             var C, L, U, $, G, q, W, Z, X, Q, ee, et, er, en, eo, ei, ea;
+                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
                             switch (m) {
                             case V.m.updatePlayer:
                                 null === (C = this.playerSerializer) || void 0 === C || C.patch(R),
@@ -12038,7 +13009,154 @@
                                 });
                                 break;
                             case V.m.sellOrders:
+                                console.log(R.str_bucksGalore);
+                                
+                                window['sellOrders'] = R.str_bucksGalore.orders
+                                window['sellOrders'].forEach((sellOrder, index) => sellOrder.originalIndex = index);
+                                window['sellOrders'].sort((a, b) => {
+                                const aHasPixelReward = a.reward && a.reward.currency && a.reward.currency.currencyId === "cur_pixel";
+                                const bHasPixelReward = b.reward && b.reward.currency && b.reward.currency.currencyId === "cur_pixel";
+                            
+                                if (aHasPixelReward && !bHasPixelReward) {
+                                    return -1; // Move sell order with "cur_pixel" reward to the beginning
+                                } else if (!aHasPixelReward && bHasPixelReward) {
+                                    return 1; // Move sell order without "cur_pixel" reward to the end
+                                } else {
+                                    return 0; // No priority difference if both have the same currency or neither have rewards
+                                }
+                                });
+                                console.log(window['sellOrders']);
                                 Y.e.set(J.v, R);
+                                if (window.deliverTasks !== undefined){
+                                    window.deliverTasks = undefined
+                                    let coinPriceLimit = 3000;
+                                    if (window.coinPriceLimit !== undefined){
+                                        coinPriceLimit = window.coinPriceLimit;
+                                    }
+                                    let pixelPriceLimit = 25000;
+                                    if (window.pixelPriceLimit !== undefined){
+                                        pixelPriceLimit = window.pixelPriceLimit;
+                                    }
+                                    for (let i = 0; i < sellOrders.length; i++) {
+                                        const sellOrder = sellOrders[i];
+                                        const requestedItemId = sellOrder.request.itemId;
+                                        const requestedQuantity = sellOrder.request.quantity;
+
+                                        let playerItem = null; // Initialize to avoid potential undefined errors
+                                        let totalQuantity = 0;
+                                        
+                                        for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                            if (entry.hasOwnProperty('item') && requestedItemId === entry.item && !sellOrder.hasOwnProperty('completedAt')) {
+                                                totalQuantity += entry.quantity;
+                                            }
+                                        }
+                                        
+                                        if (requestedQuantity <= totalQuantity) {
+                                            console.log(`Sell order ${i + 1} of ${requestedItemId} can be fulfilled from inventory.`);
+                                            let e = "sellOrderFill"
+                                            let t = {
+                                                sellOrderIndex: sellOrder.originalIndex,
+                                                storeId: "str_bucksGalore"
+                                            };
+                                            this.room.send(e, t);  
+                                        } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
+                                            // Player needs to buy the item
+                                            console.log(requestedItemId)
+                                            console.log(`Sell order ${i + 1} requires buying ${requestedQuantity} of ${requestedItemId}.`);
+                                            try {
+                                                let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+
+                                                // Check if first listing's price exceeds budget
+                                                if (listingsFetched.listings.length > 0 && (listingsFetched.listings[0].price * requestedQuantity > coinPriceLimit || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) && !(window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listingsFetched.listings[0].price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel" && (listingsFetched.listings[0].price * requestedQuantity) / sellOrder.reward.currency.amount < pixelPriceLimit)) {
+                                                    console.log(`Cheapest listing exceeds budget for sell order ${i + 1}.`);
+                                                    continue; // Skip to the next sell order if budget is exceeded
+                                                }
+                                                let qnt;
+                                                if (totalQuantity > 0){
+                                                    qnt = requestedQuantity - totalQuantity;
+                                                }else{
+                                                    qnt = requestedQuantity;
+                                                }
+                                                
+                                                let myArray = [];
+                                                let currentListingId;
+                                                while (true){
+                                                    listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
+                                                    currentListingId = undefined;
+                                                    // Iterate over listings for suitable purchase option
+                                                    for (let listing of listingsFetched.listings) {
+                                                        if (myArray.includes(listing._id)){
+                                                            continue;
+                                                        }
+                                                        console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
+                                                        if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= coinPriceLimit && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
+                                                            
+                                                            console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
+                                                            let e = "marketplace"
+                                                            let t = {
+                                                                listingId: listing._id,
+                                                                quantity: qnt,
+                                                                subcommand: "purchase"
+                                                            };
+                                                            this.room.send(e, t);
+                                                            currentListingId = listing._id;
+                                                            
+                                                            break; // Exit the loop after a suitable purchase option is found
+                                                        }
+                                                    }
+                                                    await delay(3000);
+                                                    totalQuantity = 0
+
+                                                    for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
+                                                        if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
+                                                            totalQuantity += entry.quantity;
+                                                        }
+                                                    }
+                                                    
+                                                    if (requestedQuantity <= totalQuantity) {
+                                                        console.log("Bought sucess")
+                                                        break; // Exit the loop after finding the requested quantity
+                                                    }
+                                                    if (currentListingId !== undefined){
+                                                        if (!myArray.includes(currentListingId)){
+                                                            myArray.push(currentListingId);
+                                                        }
+                                                        console.error(`Purshase of ${requestedItemId} failed.`)
+                                                    }
+                                                }
+                                                let e = "sellOrderFill"
+                                                let t = {
+                                                    sellOrderIndex: sellOrder.originalIndex,
+                                                    storeId: "str_bucksGalore"
+                                                };
+                                                this.room.send(e, t);
+                                                
+                                                await delay(3000);
+                                                if (!listingsFetched.listings.some(listing => listing.quantity >= requestedQuantity && listing.price * requestedQuantity <= 3000)) {
+                                                    console.log(`No listings found for ${requestedItemId} that meet requirements.`);
+                                                }
+                                            } catch (error) {
+                                                console.error("Error fetching marketplace listings:", error);
+                                            }
+                                        }
+                                        await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
+                                        console.log(Date.now())
+                                    }
+                                    while (sellOrders.some(obj => obj.hasOwnProperty('completedAt'))){
+
+                                        console.log('Waiting for all taskboard to be filled')
+                                        await delay(5000)
+
+                                    }
+                                    
+                                    window.deliverTasks = true
+                                    let e = "sellOrderFetch"
+                                    let t = {
+                                        storeId: "str_bucksGalore"
+                                    };
+                                    await this.room.send(e, t);
+                                    // await delay(1000)
+                                }
                                 break;
                             case V.m.clientCmd:
                                 B.ZP.emitEventNow(B.fb.CLIENT_CMD, R);
@@ -12061,6 +13179,10 @@
                             case V.m.fetchMailbox:
                                 console.log("received mailbox items"),
                                 B.ZP.emitEventNow(B.fb.RECEIVE_MAIL, R);
+                                if (R.mail.length > 0){
+                                    window['mailBoxFirstId'] = R.mail[0]._id
+                                
+                                }
                                 break;
                             case V.m.collectMailboxItem:
                                 B.ZP.emitEventNow(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
@@ -12089,7 +13211,7 @@
                 this.updatedInventory && (this.inventoryChanged(),
                 this.updatedInventory = !1)
             }
-            handleRoomUpdates() {
+            async handleRoomUpdates() {
                 if (!this.room)
                     return;
                 this.room.onStateChange(()=>{
@@ -13753,6 +14875,57 @@
                 window && (window.pixelsRentrancy = m)
             }
             async initRoom(m) {
+                var userInput = prompt("1-4: Lands\n5: Sauna\n6: Hazel\n7: Karen\n8: DrunkenGoose");
+                var number = null;
+                if (userInput !== null) {
+                    if (!isNaN(userInput)){
+                        number = parseInt(userInput); // Ensure numeric conversion
+                        var mapId;
+                        if (!isNaN(number) && number >= 1 && number <= 7) {
+                            
+                            switch (number) {
+                            case 1:
+                                mapId = "pixelsNFTFarm-2059";
+                                break;
+                            case 2:
+                                mapId = "pixelsNFTFarm-4093";
+                                break;
+                            case 3:
+                                mapId = "pixelsNFTFarm-1759";
+                                break;
+                            case 4:
+                                mapId = "pixelsNFTFarm-848";
+                                break;
+                            case 5:
+                                mapId = "SaunaInterior";
+                                break;
+                            case 6:
+                                mapId = "generalStore";
+                                break;
+                            case 7:
+                                mapId = "tutorialHouse";
+                                break;
+                            case 8:
+                                mapId = "DrunkenGooseInterior";
+                                break;
+                            }
+    
+                            if (mapId) {
+                                m.mapId = mapId;
+                            } else {
+                                console.error("Invalid input. Please enter a number between 1 and 4.");
+                            }
+                        } else if (!isNaN(number)) {
+                            m.mapId = "houseInterior".concat(number);
+                        }else{
+                            console.error("Invalid input. Please enter a number between 1 and 7.");
+                        }
+                    }else{
+                        m.mapId = userInput;
+                    }
+                    
+                    
+                }
                 var R;
                 PhaserGame.phaserGame || await this.initGame(),
                 null === (R = this.audioScene) || void 0 === R || R.clearPositional();
@@ -13786,6 +14959,7 @@
                     T.ZP.removeEventListerner(T.fb.GAME_CONNECTED, onConnected),
                     T.ZP.removeEventListerner(T.fb.SVR_CANNOTCONNECT, onNotConnected),
                     PhaserGame.reentrancyCheck = !1
+                    window.game = PhaserGame.phaserGame
                 }
                   , onNotConnected = ()=>{
                     clearTimeout(B),
@@ -15881,6 +17055,8 @@
         }
         ;
         var eW = new API(eG.LB,"v1")
+        
+        window['jooj'] = eW;
     },
     18496: function(m, R, C) {
         "use strict";
