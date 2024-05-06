@@ -1612,18 +1612,18 @@
                             W = C,
                             ei = J[eo](R, W);
                         else {
-                            var ed = U[Object.keys(eo)[0]]
-                              , ef = number(R, C)
-                              , ep = H.refs.has(ef) ? ea || H.refs.get(ef) : new ed.constructor;
-                            if ((ei = ep.clone(!0)).$changes.refId = ef,
+                            var ef = U[Object.keys(eo)[0]]
+                              , ed = number(R, C)
+                              , ep = H.refs.has(ed) ? ea || H.refs.get(ed) : new ef.constructor;
+                            if ((ei = ep.clone(!0)).$changes.refId = ed,
                             ea && (ei.$callbacks = ea.$callbacks,
-                            ea.$changes.refId && ef !== ea.$changes.refId)) {
+                            ea.$changes.refId && ed !== ea.$changes.refId)) {
                                 H.removeRef(ea.$changes.refId);
                                 for (var eh = ea.entries(), eg = void 0; (eg = eh.next()) && !eg.done; ) {
                                     var em = (B = eg.value)[0]
                                       , ey = B[1];
                                     V.push({
-                                        refId: ef,
+                                        refId: ed,
                                         op: m.OPERATION.DELETE,
                                         field: em,
                                         value: void 0,
@@ -1631,7 +1631,7 @@
                                     })
                                 }
                             }
-                            H.addRef(ef, ei, ep !== ea)
+                            H.addRef(ed, ei, ep !== ea)
                         }
                         if (null != ei) {
                             if (ei.$changes && ei.$changes.setParent(K.ref, K.root, er),
@@ -2856,8 +2856,8 @@
           , el = Object.defineProperties
           , eu = Object.getOwnPropertyDescriptors
           , ec = Object.getOwnPropertySymbols
-          , ed = Object.prototype.hasOwnProperty
-          , ef = Object.prototype.propertyIsEnumerable
+          , ef = Object.prototype.hasOwnProperty
+          , ed = Object.prototype.propertyIsEnumerable
           , __defNormalProp = function(m, R, C) {
             return R in m ? es(m, R, {
                 enumerable: !0,
@@ -2868,11 +2868,11 @@
         }
           , __spreadValues = function(m, R) {
             for (var C in R || (R = {}))
-                ed.call(R, C) && __defNormalProp(m, C, R[C]);
+                ef.call(R, C) && __defNormalProp(m, C, R[C]);
             if (ec)
                 for (var T = 0, L = ec(R); T < L.length; T++) {
                     var C = L[T];
-                    ef.call(R, C) && __defNormalProp(m, C, R[C])
+                    ed.call(R, C) && __defNormalProp(m, C, R[C])
                 }
             return m
         }
@@ -6434,12 +6434,12 @@
         var T;
         m = C.nmd(m),
         (function() {
-            var L, U = "Expected a function", $ = "__lodash_hash_undefined__", B = "__lodash_placeholder__", V = 1 / 0, H = 0 / 0, G = [["ary", 128], ["bind", 1], ["bindKey", 2], ["curry", 8], ["curryRight", 16], ["flip", 512], ["partial", 32], ["partialRight", 64], ["rearg", 256]], q = "[object Arguments]", W = "[object Array]", Z = "[object Boolean]", Y = "[object Date]", K = "[object Error]", J = "[object Function]", X = "[object GeneratorFunction]", Q = "[object Map]", ee = "[object Number]", et = "[object Object]", er = "[object Promise]", en = "[object RegExp]", eo = "[object Set]", ei = "[object String]", ea = "[object Symbol]", es = "[object WeakMap]", el = "[object ArrayBuffer]", eu = "[object DataView]", ec = "[object Float32Array]", ed = "[object Float64Array]", ef = "[object Int8Array]", ep = "[object Int16Array]", eh = "[object Int32Array]", eg = "[object Uint8Array]", em = "[object Uint8ClampedArray]", ey = "[object Uint16Array]", ev = "[object Uint32Array]", eb = /\b__p \+= '';/g, eE = /\b(__p \+=) '' \+/g, e_ = /(__e\(.*?\)|\b__t\)) \+\n'';/g, eS = /&(?:amp|lt|gt|quot|#39);/g, eO = /[&<>"']/g, eA = RegExp(eS.source), ew = RegExp(eO.source), eI = /<%-([\s\S]+?)%>/g, eR = /<%([\s\S]+?)%>/g, eP = /<%=([\s\S]+?)%>/g, ek = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, eC = /^\w*$/, eT = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, ex = /[\\^$.*+?()[\]{}|]/g, eL = RegExp(ex.source), eN = /^\s+/, eM = /\s/, ej = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/, eD = /\{\n\/\* \[wrapped with (.+)\] \*/, eU = /,? & /, e$ = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, eB = /[()=,{}\[\]\/\s]/, eF = /\\(\\)?/g, eV = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g, ez = /\w*$/, eH = /^[-+]0x[0-9a-f]+$/i, eG = /^0b[01]+$/i, eW = /^\[object .+?Constructor\]$/, eZ = /^0o[0-7]+$/i, eY = /^(?:0|[1-9]\d*)$/, eK = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, eJ = /($^)/, eX = /['\n\r\u2028\u2029\\]/g, eQ = "\ud800-\udfff", e0 = "\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff", e1 = "\\u2700-\\u27bf", e2 = "a-z\\xdf-\\xf6\\xf8-\\xff", e3 = "A-Z\\xc0-\\xd6\\xd8-\\xde", e4 = "\\ufe0e\\ufe0f", e6 = "\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", e8 = "['’]", e5 = "[" + e6 + "]", e9 = "[" + e0 + "]", e7 = "[" + e2 + "]", te = "[^" + eQ + e6 + "\\d+" + e1 + e2 + e3 + "]", tt = "\ud83c[\udffb-\udfff]", tr = "[^" + eQ + "]", tn = "(?:\ud83c[\udde6-\uddff]){2}", to = "[\ud800-\udbff][\udc00-\udfff]", ti = "[" + e3 + "]", ta = "\\u200d", ts = "(?:" + e7 + "|" + te + ")", tl = "(?:" + e8 + "(?:d|ll|m|re|s|t|ve))?", tu = "(?:" + e8 + "(?:D|LL|M|RE|S|T|VE))?", tc = "(?:" + e9 + "|" + tt + ")?", td = "[" + e4 + "]?", tf = "(?:" + ta + "(?:" + [tr, tn, to].join("|") + ")" + td + tc + ")*", tp = td + tc + tf, th = "(?:" + ["[" + e1 + "]", tn, to].join("|") + ")" + tp, tg = "(?:" + [tr + e9 + "?", e9, tn, to, "[" + eQ + "]"].join("|") + ")", tm = RegExp(e8, "g"), ty = RegExp(e9, "g"), tv = RegExp(tt + "(?=" + tt + ")|" + tg + tp, "g"), tb = RegExp([ti + "?" + e7 + "+" + tl + "(?=" + [e5, ti, "$"].join("|") + ")", "(?:" + ti + "|" + te + ")+" + tu + "(?=" + [e5, ti + ts, "$"].join("|") + ")", ti + "?" + ts + "+" + tl, ti + "+" + tu, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", "\\d+", th].join("|"), "g"), tE = RegExp("[" + ta + eQ + e0 + e4 + "]"), t_ = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, tS = ["Array", "Buffer", "DataView", "Date", "Error", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Math", "Object", "Promise", "RegExp", "Set", "String", "Symbol", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "WeakMap", "_", "clearTimeout", "isFinite", "parseInt", "setTimeout"], tO = -1, tA = {};
-            tA[ec] = tA[ed] = tA[ef] = tA[ep] = tA[eh] = tA[eg] = tA[em] = tA[ey] = tA[ev] = !0,
-            tA[q] = tA[W] = tA[el] = tA[Z] = tA[eu] = tA[Y] = tA[K] = tA[J] = tA[Q] = tA[ee] = tA[et] = tA[en] = tA[eo] = tA[ei] = tA[es] = !1;
-            var tw = {};
-            tw[q] = tw[W] = tw[el] = tw[eu] = tw[Z] = tw[Y] = tw[ec] = tw[ed] = tw[ef] = tw[ep] = tw[eh] = tw[Q] = tw[ee] = tw[et] = tw[en] = tw[eo] = tw[ei] = tw[ea] = tw[eg] = tw[em] = tw[ey] = tw[ev] = !0,
-            tw[K] = tw[J] = tw[es] = !1;
+            var L, U = "Expected a function", $ = "__lodash_hash_undefined__", B = "__lodash_placeholder__", V = 1 / 0, H = 0 / 0, G = [["ary", 128], ["bind", 1], ["bindKey", 2], ["curry", 8], ["curryRight", 16], ["flip", 512], ["partial", 32], ["partialRight", 64], ["rearg", 256]], q = "[object Arguments]", W = "[object Array]", Z = "[object Boolean]", Y = "[object Date]", K = "[object Error]", J = "[object Function]", X = "[object GeneratorFunction]", Q = "[object Map]", ee = "[object Number]", et = "[object Object]", er = "[object Promise]", en = "[object RegExp]", eo = "[object Set]", ei = "[object String]", ea = "[object Symbol]", es = "[object WeakMap]", el = "[object ArrayBuffer]", eu = "[object DataView]", ec = "[object Float32Array]", ef = "[object Float64Array]", ed = "[object Int8Array]", ep = "[object Int16Array]", eh = "[object Int32Array]", eg = "[object Uint8Array]", em = "[object Uint8ClampedArray]", ey = "[object Uint16Array]", ev = "[object Uint32Array]", eb = /\b__p \+= '';/g, eE = /\b(__p \+=) '' \+/g, e_ = /(__e\(.*?\)|\b__t\)) \+\n'';/g, eS = /&(?:amp|lt|gt|quot|#39);/g, ew = /[&<>"']/g, eO = RegExp(eS.source), eA = RegExp(ew.source), eI = /<%-([\s\S]+?)%>/g, eR = /<%([\s\S]+?)%>/g, eP = /<%=([\s\S]+?)%>/g, ek = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, eC = /^\w*$/, eT = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, ex = /[\\^$.*+?()[\]{}|]/g, eN = RegExp(ex.source), eL = /^\s+/, eM = /\s/, ej = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/, eD = /\{\n\/\* \[wrapped with (.+)\] \*/, eU = /,? & /, e$ = /[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g, eB = /[()=,{}\[\]\/\s]/, eF = /\\(\\)?/g, eV = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g, ez = /\w*$/, eH = /^[-+]0x[0-9a-f]+$/i, eG = /^0b[01]+$/i, eW = /^\[object .+?Constructor\]$/, eZ = /^0o[0-7]+$/i, eY = /^(?:0|[1-9]\d*)$/, eK = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, eJ = /($^)/, eX = /['\n\r\u2028\u2029\\]/g, eQ = "\ud800-\udfff", e0 = "\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff", e1 = "\\u2700-\\u27bf", e2 = "a-z\\xdf-\\xf6\\xf8-\\xff", e3 = "A-Z\\xc0-\\xd6\\xd8-\\xde", e4 = "\\ufe0e\\ufe0f", e6 = "\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000", e8 = "['’]", e5 = "[" + e6 + "]", e9 = "[" + e0 + "]", e7 = "[" + e2 + "]", te = "[^" + eQ + e6 + "\\d+" + e1 + e2 + e3 + "]", tt = "\ud83c[\udffb-\udfff]", tr = "[^" + eQ + "]", tn = "(?:\ud83c[\udde6-\uddff]){2}", to = "[\ud800-\udbff][\udc00-\udfff]", ti = "[" + e3 + "]", ta = "\\u200d", ts = "(?:" + e7 + "|" + te + ")", tl = "(?:" + e8 + "(?:d|ll|m|re|s|t|ve))?", tu = "(?:" + e8 + "(?:D|LL|M|RE|S|T|VE))?", tc = "(?:" + e9 + "|" + tt + ")?", tf = "[" + e4 + "]?", td = "(?:" + ta + "(?:" + [tr, tn, to].join("|") + ")" + tf + tc + ")*", tp = tf + tc + td, th = "(?:" + ["[" + e1 + "]", tn, to].join("|") + ")" + tp, tg = "(?:" + [tr + e9 + "?", e9, tn, to, "[" + eQ + "]"].join("|") + ")", tm = RegExp(e8, "g"), ty = RegExp(e9, "g"), tv = RegExp(tt + "(?=" + tt + ")|" + tg + tp, "g"), tb = RegExp([ti + "?" + e7 + "+" + tl + "(?=" + [e5, ti, "$"].join("|") + ")", "(?:" + ti + "|" + te + ")+" + tu + "(?=" + [e5, ti + ts, "$"].join("|") + ")", ti + "?" + ts + "+" + tl, ti + "+" + tu, "\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])", "\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])", "\\d+", th].join("|"), "g"), tE = RegExp("[" + ta + eQ + e0 + e4 + "]"), t_ = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/, tS = ["Array", "Buffer", "DataView", "Date", "Error", "Float32Array", "Float64Array", "Function", "Int8Array", "Int16Array", "Int32Array", "Map", "Math", "Object", "Promise", "RegExp", "Set", "String", "Symbol", "TypeError", "Uint8Array", "Uint8ClampedArray", "Uint16Array", "Uint32Array", "WeakMap", "_", "clearTimeout", "isFinite", "parseInt", "setTimeout"], tw = -1, tO = {};
+            tO[ec] = tO[ef] = tO[ed] = tO[ep] = tO[eh] = tO[eg] = tO[em] = tO[ey] = tO[ev] = !0,
+            tO[q] = tO[W] = tO[el] = tO[Z] = tO[eu] = tO[Y] = tO[K] = tO[J] = tO[Q] = tO[ee] = tO[et] = tO[en] = tO[eo] = tO[ei] = tO[es] = !1;
+            var tA = {};
+            tA[q] = tA[W] = tA[el] = tA[eu] = tA[Z] = tA[Y] = tA[ec] = tA[ef] = tA[ed] = tA[ep] = tA[eh] = tA[Q] = tA[ee] = tA[et] = tA[en] = tA[eo] = tA[ei] = tA[ea] = tA[eg] = tA[em] = tA[ey] = tA[ev] = !0,
+            tA[K] = tA[J] = tA[es] = !1;
             var tI = {
                 "\\": "\\",
                 "'": "'",
@@ -6454,12 +6454,12 @@
               , tC = "object" == typeof self && self && self.Object === Object && self
               , tT = tk || tC || Function("return this")()
               , tx = R && !R.nodeType && R
-              , tL = tx && m && !m.nodeType && m
-              , tN = tL && tL.exports === tx
-              , tM = tN && tk.process
+              , tN = tx && m && !m.nodeType && m
+              , tL = tN && tN.exports === tx
+              , tM = tL && tk.process
               , tj = function() {
                 try {
-                    var m = tL && tL.require && tL.require("util").types;
+                    var m = tN && tN.require && tN.require("util").types;
                     if (m)
                         return m;
                     return tM && tM.binding && tM.binding("util")
@@ -6614,7 +6614,7 @@
                 return T
             }
             function baseTrim(m) {
-                return m ? m.slice(0, trimmedEndIndex(m) + 1).replace(eN, "") : m
+                return m ? m.slice(0, trimmedEndIndex(m) + 1).replace(eL, "") : m
             }
             function baseUnary(m) {
                 return function(R) {
@@ -6896,13 +6896,13 @@
                 "&#39;": "'"
             })
               , tW = function runInContext(m) {
-                var R, C, T, eM, eQ = (m = null == m ? tT : tW.defaults(tT.Object(), m, tW.pick(tT, tS))).Array, e0 = m.Date, e1 = m.Error, e2 = m.Function, e3 = m.Math, e4 = m.Object, e6 = m.RegExp, e8 = m.String, e5 = m.TypeError, e9 = eQ.prototype, e7 = e2.prototype, te = e4.prototype, tt = m["__core-js_shared__"], tr = e7.toString, tn = te.hasOwnProperty, to = 0, ti = (R = /[^.]+$/.exec(tt && tt.keys && tt.keys.IE_PROTO || "")) ? "Symbol(src)_1." + R : "", ta = te.toString, ts = tr.call(e4), tl = tT._, tu = e6("^" + tr.call(tn).replace(ex, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"), tc = tN ? m.Buffer : L, td = m.Symbol, tf = m.Uint8Array, tp = tc ? tc.allocUnsafe : L, th = overArg(e4.getPrototypeOf, e4), tg = e4.create, tv = te.propertyIsEnumerable, tE = e9.splice, tI = td ? td.isConcatSpreadable : L, tk = td ? td.iterator : L, tC = td ? td.toStringTag : L, tx = function() {
+                var R, C, T, eM, eQ = (m = null == m ? tT : tW.defaults(tT.Object(), m, tW.pick(tT, tS))).Array, e0 = m.Date, e1 = m.Error, e2 = m.Function, e3 = m.Math, e4 = m.Object, e6 = m.RegExp, e8 = m.String, e5 = m.TypeError, e9 = eQ.prototype, e7 = e2.prototype, te = e4.prototype, tt = m["__core-js_shared__"], tr = e7.toString, tn = te.hasOwnProperty, to = 0, ti = (R = /[^.]+$/.exec(tt && tt.keys && tt.keys.IE_PROTO || "")) ? "Symbol(src)_1." + R : "", ta = te.toString, ts = tr.call(e4), tl = tT._, tu = e6("^" + tr.call(tn).replace(ex, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"), tc = tL ? m.Buffer : L, tf = m.Symbol, td = m.Uint8Array, tp = tc ? tc.allocUnsafe : L, th = overArg(e4.getPrototypeOf, e4), tg = e4.create, tv = te.propertyIsEnumerable, tE = e9.splice, tI = tf ? tf.isConcatSpreadable : L, tk = tf ? tf.iterator : L, tC = tf ? tf.toStringTag : L, tx = function() {
                     try {
                         var m = getNative(e4, "defineProperty");
                         return m({}, "", {}),
                         m
                     } catch (m) {}
-                }(), tL = m.clearTimeout !== tT.clearTimeout && m.clearTimeout, tM = e0 && e0.now !== tT.Date.now && e0.now, tj = m.setTimeout !== tT.setTimeout && m.setTimeout, tz = e3.ceil, tZ = e3.floor, tY = e4.getOwnPropertySymbols, tK = tc ? tc.isBuffer : L, tJ = m.isFinite, tX = e9.join, tQ = overArg(e4.keys, e4), t0 = e3.max, t1 = e3.min, t2 = e0.now, t3 = m.parseInt, t4 = e3.random, t6 = e9.reverse, t8 = getNative(m, "DataView"), t5 = getNative(m, "Map"), t9 = getNative(m, "Promise"), t7 = getNative(m, "Set"), re = getNative(m, "WeakMap"), rt = getNative(e4, "create"), rr = re && new re, rn = {}, ro = toSource(t8), ri = toSource(t5), ra = toSource(t9), rs = toSource(t7), rl = toSource(re), ru = td ? td.prototype : L, rc = ru ? ru.valueOf : L, rd = ru ? ru.toString : L;
+                }(), tN = m.clearTimeout !== tT.clearTimeout && m.clearTimeout, tM = e0 && e0.now !== tT.Date.now && e0.now, tj = m.setTimeout !== tT.setTimeout && m.setTimeout, tz = e3.ceil, tZ = e3.floor, tY = e4.getOwnPropertySymbols, tK = tc ? tc.isBuffer : L, tJ = m.isFinite, tX = e9.join, tQ = overArg(e4.keys, e4), t0 = e3.max, t1 = e3.min, t2 = e0.now, t3 = m.parseInt, t4 = e3.random, t6 = e9.reverse, t8 = getNative(m, "DataView"), t5 = getNative(m, "Map"), t9 = getNative(m, "Promise"), t7 = getNative(m, "Set"), re = getNative(m, "WeakMap"), rt = getNative(e4, "create"), rr = re && new re, rn = {}, ro = toSource(t8), ri = toSource(t5), ra = toSource(t9), rs = toSource(t7), rl = toSource(re), ru = tf ? tf.prototype : L, rc = ru ? ru.valueOf : L, rf = ru ? ru.toString : L;
                 function lodash(m) {
                     if (isObjectLike(m) && !no(m) && !(m instanceof LazyWrapper)) {
                         if (m instanceof LodashWrapper)
@@ -6912,7 +6912,7 @@
                     }
                     return new LodashWrapper(m)
                 }
-                var rf = function() {
+                var rd = function() {
                     function object() {}
                     return function(m) {
                         if (!isObject(m))
@@ -6980,7 +6980,7 @@
                     var C = no(m)
                       , T = !C && nn(m)
                       , L = !C && !T && na(m)
-                      , U = !C && !T && !L && nd(m)
+                      , U = !C && !T && !L && nf(m)
                       , $ = C || T || L || U
                       , B = $ ? baseTimes(m.length, e8) : []
                       , V = B.length;
@@ -7049,17 +7049,17 @@
                         !V)
                             return copyArray(m, B)
                     } else {
-                        var K, er, es, eb, eE, e_ = rA(m), eS = e_ == J || e_ == X;
+                        var K, er, es, eb, eE, e_ = rO(m), eS = e_ == J || e_ == X;
                         if (na(m))
                             return cloneBuffer(m, V);
                         if (e_ == et || e_ == q || eS && !U) {
                             if (B = H || eS ? {} : initCloneObject(m),
                             !V)
                                 return H ? (es = (eE = B) && copyObject(m, keysIn(m), eE),
-                                copyObject(m, rO(m), es)) : (eb = baseAssign(B, m),
+                                copyObject(m, rw(m), es)) : (eb = baseAssign(B, m),
                                 copyObject(m, rS(m), eb))
                         } else {
-                            if (!tw[e_])
+                            if (!tA[e_])
                                 return U ? m : {};
                             B = function(m, R, C) {
                                 var T, L, U = m.constructor;
@@ -7073,8 +7073,8 @@
                                     return T = C ? cloneArrayBuffer(m.buffer) : m.buffer,
                                     new m.constructor(T,m.byteOffset,m.byteLength);
                                 case ec:
-                                case ed:
                                 case ef:
+                                case ed:
                                 case ep:
                                 case eh:
                                 case eg:
@@ -7099,19 +7099,19 @@
                         }
                     }
                     $ || ($ = new Stack);
-                    var eO = $.get(m);
-                    if (eO)
-                        return eO;
+                    var ew = $.get(m);
+                    if (ew)
+                        return ew;
                     $.set(m, B),
                     nc(m) ? m.forEach(function(T) {
                         B.add(baseClone(T, R, C, T, m, $))
                     }) : nl(m) && m.forEach(function(T, L) {
                         B.set(L, baseClone(T, R, C, L, m, $))
                     });
-                    var eA = G ? H ? getAllKeysIn : getAllKeys : H ? keysIn : keys
-                      , ew = W ? L : eA(m);
-                    return arrayEach(ew || m, function(T, L) {
-                        ew && (T = m[L = T]),
+                    var eO = G ? H ? getAllKeysIn : getAllKeys : H ? keysIn : keys
+                      , eA = W ? L : eO(m);
+                    return arrayEach(eA || m, function(T, L) {
+                        eA && (T = m[L = T]),
                         assignValue(B, L, baseClone(T, R, C, L, m, $))
                     }),
                     B
@@ -7175,9 +7175,9 @@
                 },
                 lodash.prototype = baseLodash.prototype,
                 lodash.prototype.constructor = lodash,
-                LodashWrapper.prototype = rf(baseLodash.prototype),
+                LodashWrapper.prototype = rd(baseLodash.prototype),
                 LodashWrapper.prototype.constructor = LodashWrapper,
-                LazyWrapper.prototype = rf(baseLodash.prototype),
+                LazyWrapper.prototype = rd(baseLodash.prototype),
                 LazyWrapper.prototype.constructor = LazyWrapper,
                 Hash.prototype.clear = function() {
                     this.__data__ = rt ? rt(null) : {},
@@ -7436,8 +7436,8 @@
                     return m === R || (null != m && null != R && (isObjectLike(m) || isObjectLike(R)) ? function(m, R, C, T, U, $) {
                         var B = no(m)
                           , V = no(R)
-                          , H = B ? W : rA(m)
-                          , G = V ? W : rA(R);
+                          , H = B ? W : rO(m)
+                          , G = V ? W : rO(R);
                         H = H == q ? et : H,
                         G = G == q ? et : G;
                         var J = H == et
@@ -7451,7 +7451,7 @@
                         }
                         if (er && !J)
                             return $ || ($ = new Stack),
-                            B || nd(m) ? equalArrays(m, R, C, T, U, $) : function(m, R, C, T, L, U, $) {
+                            B || nf(m) ? equalArrays(m, R, C, T, U, $) : function(m, R, C, T, L, U, $) {
                                 switch (C) {
                                 case eu:
                                     if (m.byteLength != R.byteLength || m.byteOffset != R.byteOffset)
@@ -7459,7 +7459,7 @@
                                     m = m.buffer,
                                     R = R.buffer;
                                 case el:
-                                    if (m.byteLength != R.byteLength || !U(new tf(m), new tf(R)))
+                                    if (m.byteLength != R.byteLength || !U(new td(m), new td(R)))
                                         break;
                                     return !0;
                                 case Z:
@@ -7496,10 +7496,10 @@
                             var es = J && tn.call(m, "__wrapped__")
                               , ec = X && tn.call(R, "__wrapped__");
                             if (es || ec) {
-                                var ed = es ? m.value() : m
-                                  , ef = ec ? R.value() : R;
+                                var ef = es ? m.value() : m
+                                  , ed = ec ? R.value() : R;
                                 return $ || ($ = new Stack),
-                                U(ed, ef, C, T, $)
+                                U(ef, ed, C, T, $)
                             }
                         }
                         return !!er && ($ || ($ = new Stack),
@@ -7626,7 +7626,7 @@
                                 if (W) {
                                     var Z = no(H)
                                       , Y = !Z && na(H)
-                                      , K = !Z && !Y && nd(H);
+                                      , K = !Z && !Y && nf(H);
                                     q = H,
                                     Z || Y || K ? no(V) ? q = V : isArrayLikeObject(V) ? q = copyArray(V) : Y ? (W = !1,
                                     q = cloneBuffer(H, !0)) : K ? (W = !1,
@@ -7837,7 +7837,7 @@
                     if (no(m))
                         return arrayMap(m, baseToString) + "";
                     if (isSymbol(m))
-                        return rd ? rd.call(m) : "";
+                        return rf ? rf.call(m) : "";
                     var R = m + "";
                     return "0" == R && 1 / m == -V ? "-0" : R
                 }
@@ -7925,7 +7925,7 @@
                     return C = L === C ? T : C,
                     !R && C >= T ? m : baseSlice(m, R, C)
                 }
-                var rb = tL || function(m) {
+                var rb = tN || function(m) {
                     return tT.clearTimeout(m)
                 }
                 ;
@@ -7939,7 +7939,7 @@
                 }
                 function cloneArrayBuffer(m) {
                     var R = new m.constructor(m.byteLength);
-                    return new tf(R).set(new tf(m)),
+                    return new td(R).set(new td(m)),
                     R
                 }
                 function cloneTypedArray(m, R) {
@@ -8078,7 +8078,7 @@
                         case 7:
                             return new m(R[0],R[1],R[2],R[3],R[4],R[5],R[6])
                         }
-                        var C = rf(m.prototype)
+                        var C = rd(m.prototype)
                           , T = m.apply(C, R);
                         return isObject(T) ? T : C
                     }
@@ -8263,7 +8263,7 @@
                 : noop;
                 function createToPairs(m) {
                     return function(R) {
-                        var C, T, L = rA(R);
+                        var C, T, L = rO(R);
                         return L == Q ? mapToArray(R) : L == eo ? (C = -1,
                         T = Array(R.size),
                         R.forEach(function(m) {
@@ -8348,13 +8348,13 @@
                         }
                         );
                     else
-                        var X, Q, ee, et, er, en, eo, ei, ea, es, el, eu, ec, ed, ef, ep = (el = m,
+                        var X, Q, ee, et, er, en, eo, ei, ea, es, el, eu, ec, ef, ed, ep = (el = m,
                         eu = R,
                         ec = C,
-                        ed = 1 & eu,
-                        ef = createCtor(el),
+                        ef = 1 & eu,
+                        ed = createCtor(el),
                         function wrapper() {
-                            return (this && this !== tT && this instanceof wrapper ? ef : el).apply(ed ? ec : this, arguments)
+                            return (this && this !== tT && this instanceof wrapper ? ed : el).apply(ef ? ec : this, arguments)
                         }
                         );
                     return setWrapToString((K ? ry : rI)(ep, J), m, R)
@@ -8420,7 +8420,7 @@
                     return baseGetAllKeys(m, keys, rS)
                 }
                 function getAllKeysIn(m) {
-                    return baseGetAllKeys(m, keysIn, rO)
+                    return baseGetAllKeys(m, keysIn, rw)
                 }
                 var r_ = rr ? function(m) {
                     return rr.get(m)
@@ -8465,14 +8465,14 @@
                     })
                 }
                 : stubArray
-                  , rO = tY ? function(m) {
+                  , rw = tY ? function(m) {
                     for (var R = []; m; )
                         arrayPush(R, rS(m)),
                         m = th(m);
                     return R
                 }
                 : stubArray
-                  , rA = baseGetTag;
+                  , rO = baseGetTag;
                 function hasPath(m, R, C) {
                     R = castPath(R, m);
                     for (var T = -1, L = R.length, U = !1; ++T < L; ) {
@@ -8484,7 +8484,7 @@
                     return U || ++T != L ? U : !!(L = null == m ? 0 : m.length) && isLength(L) && isIndex($, L) && (no(m) || nn(m))
                 }
                 function initCloneObject(m) {
-                    return "function" != typeof m.constructor || isPrototype(m) ? {} : rf(th(m))
+                    return "function" != typeof m.constructor || isPrototype(m) ? {} : rd(th(m))
                 }
                 function isFlattenable(m) {
                     return no(m) || nn(m) || !!(tI && m && m[tI])
@@ -8515,7 +8515,7 @@
                     var T = r_(C);
                     return !!T && m === T[0]
                 }
-                (t8 && rA(new t8(new ArrayBuffer(1))) != eu || t5 && rA(new t5) != Q || t9 && rA(t9.resolve()) != er || t7 && rA(new t7) != eo || re && rA(new re) != es) && (rA = function(m) {
+                (t8 && rO(new t8(new ArrayBuffer(1))) != eu || t5 && rO(new t5) != Q || t9 && rO(t9.resolve()) != er || t7 && rO(new t7) != eo || re && rO(new re) != es) && (rO = function(m) {
                     var R = baseGetTag(m)
                       , C = R == et ? m.constructor : L
                       , T = C ? toSource(C) : "";
@@ -8535,7 +8535,7 @@
                     return R
                 }
                 );
-                var rw = tt ? isFunction : stubFalse;
+                var rA = tt ? isFunction : stubFalse;
                 function isPrototype(m) {
                     var R = m && m.constructor;
                     return m === ("function" == typeof R && R.prototype || te)
@@ -8688,11 +8688,11 @@
                 function head(m) {
                     return m && m.length ? m[0] : L
                 }
-                var rL = baseRest(function(m) {
+                var rN = baseRest(function(m) {
                     var R = arrayMap(m, castArrayLikeObject);
                     return R.length && R[0] === m[0] ? baseIntersection(R) : []
                 })
-                  , rN = baseRest(function(m) {
+                  , rL = baseRest(function(m) {
                     var R = last(m)
                       , C = arrayMap(m, castArrayLikeObject);
                     return R === last(C) ? R = L : C.pop(),
@@ -9066,7 +9066,7 @@
                     return null != m && "object" == typeof m
                 }
                 var nl = t$ ? baseUnary(t$) : function(m) {
-                    return isObjectLike(m) && rA(m) == Q
+                    return isObjectLike(m) && rO(m) == Q
                 }
                 ;
                 function isNumber(m) {
@@ -9085,7 +9085,7 @@
                     return isObjectLike(m) && baseGetTag(m) == en
                 }
                   , nc = tF ? baseUnary(tF) : function(m) {
-                    return isObjectLike(m) && rA(m) == eo
+                    return isObjectLike(m) && rO(m) == eo
                 }
                 ;
                 function isString(m) {
@@ -9094,10 +9094,10 @@
                 function isSymbol(m) {
                     return "symbol" == typeof m || isObjectLike(m) && baseGetTag(m) == ea
                 }
-                var nd = tV ? baseUnary(tV) : function(m) {
-                    return isObjectLike(m) && isLength(m.length) && !!tA[baseGetTag(m)]
+                var nf = tV ? baseUnary(tV) : function(m) {
+                    return isObjectLike(m) && isLength(m.length) && !!tO[baseGetTag(m)]
                 }
-                  , nf = createRelationalOperation(baseLt)
+                  , nd = createRelationalOperation(baseLt)
                   , np = createRelationalOperation(function(m, R) {
                     return m <= R
                 });
@@ -9112,7 +9112,7 @@
                                 C.push(R.value);
                             return C
                         }(m[tk]());
-                    var R = rA(m);
+                    var R = rO(m);
                     return (R == Q ? mapToArray : R == eo ? setToArray : values)(m)
                 }
                 function toFinite(m) {
@@ -9180,7 +9180,7 @@
                 })
                   , nE = baseRest(function(m) {
                     return m.push(L, customDefaultsMerge),
-                    apply(nw, L, m)
+                    apply(nA, L, m)
                 });
                 function get(m, R, C) {
                     var T = null == m ? L : baseGet(m, R);
@@ -9197,7 +9197,7 @@
                     null != R && "function" != typeof R.toString && (R = ta.call(R)),
                     tn.call(m, R) ? m[R].push(C) : m[R] = [C]
                 }, getIteratee)
-                  , nO = baseRest(baseInvoke);
+                  , nw = baseRest(baseInvoke);
                 function keys(m) {
                     return isArrayLike(m) ? arrayLikeKeys(m) : baseKeys(m)
                 }
@@ -9218,10 +9218,10 @@
                         return C
                     }(m)
                 }
-                var nA = createAssigner(function(m, R, C) {
+                var nO = createAssigner(function(m, R, C) {
                     baseMerge(m, R, C)
                 })
-                  , nw = createAssigner(function(m, R, C, T) {
+                  , nA = createAssigner(function(m, R, C, T) {
                     baseMerge(m, R, C, T)
                 })
                   , nI = flatRest(function(m, R) {
@@ -9277,8 +9277,8 @@
                   , nx = createCompounder(function(m, R, C) {
                     return m + (C ? " " : "") + R.toLowerCase()
                 })
-                  , nL = createCaseFirst("toLowerCase")
-                  , nN = createCompounder(function(m, R, C) {
+                  , nN = createCaseFirst("toLowerCase")
+                  , nL = createCompounder(function(m, R, C) {
                     return m + (C ? "_" : "") + R.toLowerCase()
                 })
                   , nM = createCompounder(function(m, R, C) {
@@ -9479,7 +9479,7 @@
                 lodash.constant = constant,
                 lodash.countBy = rZ,
                 lodash.create = function(m, R) {
-                    var C = rf(m);
+                    var C = rd(m);
                     return null == R ? C : baseAssign(C, R)
                 }
                 ,
@@ -9590,8 +9590,8 @@
                     return (null == m ? 0 : m.length) ? baseSlice(m, 0, -1) : []
                 }
                 ,
-                lodash.intersection = rL,
-                lodash.intersectionBy = rN,
+                lodash.intersection = rN,
+                lodash.intersectionBy = rL,
                 lodash.intersectionWith = rM,
                 lodash.invert = n_,
                 lodash.invertBy = nS,
@@ -9628,8 +9628,8 @@
                 }
                 ,
                 lodash.memoize = memoize,
-                lodash.merge = nA,
-                lodash.mergeWith = nw,
+                lodash.merge = nO,
+                lodash.mergeWith = nA,
                 lodash.method = nV,
                 lodash.methodOf = nz,
                 lodash.mixin = mixin,
@@ -9830,11 +9830,11 @@
                 lodash.toPlainObject = toPlainObject,
                 lodash.transform = function(m, R, C) {
                     var T = no(m)
-                      , L = T || na(m) || nd(m);
+                      , L = T || na(m) || nf(m);
                     if (R = getIteratee(R, 4),
                     null == C) {
                         var U = m && m.constructor;
-                        C = L ? T ? new U : [] : isObject(m) && isFunction(U) ? rf(th(m)) : {}
+                        C = L ? T ? new U : [] : isObject(m) && isFunction(U) ? rd(th(m)) : {}
                     }
                     return (L ? arrayEach : baseForOwn)(m, function(m, T, L) {
                         return R(C, m, T, L)
@@ -9955,11 +9955,11 @@
                 ,
                 lodash.eq = eq,
                 lodash.escape = function(m) {
-                    return (m = toString(m)) && ew.test(m) ? m.replace(eO, tG) : m
+                    return (m = toString(m)) && eA.test(m) ? m.replace(ew, tG) : m
                 }
                 ,
                 lodash.escapeRegExp = function(m) {
-                    return (m = toString(m)) && eL.test(m) ? m.replace(ex, "\\$&") : m
+                    return (m = toString(m)) && eN.test(m) ? m.replace(ex, "\\$&") : m
                 }
                 ,
                 lodash.every = function(m, R, C) {
@@ -10034,7 +10034,7 @@
                     (T = m = toNumber(m)) >= t1(U = R, $ = C) && T < t0(U, $)
                 }
                 ,
-                lodash.invoke = nO,
+                lodash.invoke = nw,
                 lodash.isArguments = nn,
                 lodash.isArray = no,
                 lodash.isArrayBuffer = ni,
@@ -10053,9 +10053,9 @@
                 lodash.isEmpty = function(m) {
                     if (null == m)
                         return !0;
-                    if (isArrayLike(m) && (no(m) || "string" == typeof m || "function" == typeof m.splice || na(m) || nd(m) || nn(m)))
+                    if (isArrayLike(m) && (no(m) || "string" == typeof m || "function" == typeof m.splice || na(m) || nf(m) || nn(m)))
                         return !m.length;
-                    var R = rA(m);
+                    var R = rO(m);
                     if (R == Q || R == eo)
                         return !m.size;
                     if (isPrototype(m))
@@ -10098,7 +10098,7 @@
                 }
                 ,
                 lodash.isNative = function(m) {
-                    if (rw(m))
+                    if (rA(m))
                         throw new e1("Unsupported core-js use. Try https://npms.io/search?q=ponyfill.");
                     return baseIsNative(m)
                 }
@@ -10123,13 +10123,13 @@
                 lodash.isSet = nc,
                 lodash.isString = isString,
                 lodash.isSymbol = isSymbol,
-                lodash.isTypedArray = nd,
+                lodash.isTypedArray = nf,
                 lodash.isUndefined = function(m) {
                     return L === m
                 }
                 ,
                 lodash.isWeakMap = function(m) {
-                    return isObjectLike(m) && rA(m) == es
+                    return isObjectLike(m) && rO(m) == es
                 }
                 ,
                 lodash.isWeakSet = function(m) {
@@ -10156,8 +10156,8 @@
                 }
                 ,
                 lodash.lowerCase = nx,
-                lodash.lowerFirst = nL,
-                lodash.lt = nf,
+                lodash.lowerFirst = nN,
+                lodash.lt = nd,
                 lodash.lte = np,
                 lodash.max = function(m) {
                     return m && m.length ? baseExtremum(m, identity, baseGt) : L
@@ -10232,7 +10232,7 @@
                 ,
                 lodash.parseInt = function(m, R, C) {
                     return C || null == R ? R = 0 : R && (R = +R),
-                    t3(toString(m).replace(eN, ""), R || 0)
+                    t3(toString(m).replace(eL, ""), R || 0)
                 }
                 ,
                 lodash.random = function(m, R, C) {
@@ -10307,11 +10307,11 @@
                         return 0;
                     if (isArrayLike(m))
                         return isString(m) ? stringSize(m) : m.length;
-                    var R = rA(m);
+                    var R = rO(m);
                     return R == Q || R == eo ? m.size : baseKeys(m).length
                 }
                 ,
-                lodash.snakeCase = nN,
+                lodash.snakeCase = nL,
                 lodash.some = function(m, R, C) {
                     var T = no(m) ? arraySome : baseSome;
                     return C && isIterateeCall(m, R, C) && (R = L),
@@ -10375,7 +10375,7 @@
                     C && isIterateeCall(m, R, C) && (R = L),
                     m = toString(m),
                     R = nm({}, R, T, customDefaultsAssignIn);
-                    var U, $, B = nm({}, R.imports, T.imports, customDefaultsAssignIn), V = keys(B), H = baseValues(B, V), G = 0, q = R.interpolate || eJ, W = "__p += '", Z = e6((R.escape || eJ).source + "|" + q.source + "|" + (q === eP ? eV : eJ).source + "|" + (R.evaluate || eJ).source + "|$", "g"), Y = "//# sourceURL=" + (tn.call(R, "sourceURL") ? (R.sourceURL + "").replace(/\s/g, " ") : "lodash.templateSources[" + ++tO + "]") + "\n";
+                    var U, $, B = nm({}, R.imports, T.imports, customDefaultsAssignIn), V = keys(B), H = baseValues(B, V), G = 0, q = R.interpolate || eJ, W = "__p += '", Z = e6((R.escape || eJ).source + "|" + q.source + "|" + (q === eP ? eV : eJ).source + "|" + (R.evaluate || eJ).source + "|$", "g"), Y = "//# sourceURL=" + (tn.call(R, "sourceURL") ? (R.sourceURL + "").replace(/\s/g, " ") : "lodash.templateSources[" + ++tw + "]") + "\n";
                     m.replace(Z, function(R, C, T, L, B, V) {
                         return T || (T = L),
                         W += m.slice(G, V).replace(eX, escapeStringChar),
@@ -10458,7 +10458,7 @@
                 ,
                 lodash.trimStart = function(m, R, C) {
                     if ((m = toString(m)) && (C || L === R))
-                        return m.replace(eN, "");
+                        return m.replace(eL, "");
                     if (!m || !(R = baseToString(R)))
                         return m;
                     var T = stringToArray(m)
@@ -10504,7 +10504,7 @@
                 }
                 ,
                 lodash.unescape = function(m) {
-                    return (m = toString(m)) && eA.test(m) ? m.replace(eS, tq) : m
+                    return (m = toString(m)) && eO.test(m) ? m.replace(eS, tq) : m
                 }
                 ,
                 lodash.uniqueId = function(m) {
@@ -11779,978 +11779,12 @@
                 return "pixelsNFTFarm-".concat(C)
             }
             registerEvents() {
-                let sendCommand = async (e, t, r) => {
-                    if (!r || !this.room || this.room.sessionId !== r) {
-                        console.log("Message ignored because room not loaded", e);
-                        return;
+                let sendCommand = (m,R,C)=>{
+                    if (!C || !this.room || this.room.sessionId !== C) {
+                        console.log("message ignored because room not loaded", m);
+                        return
                     }
-                    let delayMin;
-                    let delayMax;
-
-                    if (window.game.fastFarm !== undefined){
-                        delayMin = 100
-                        delayMax = 150
-                    }else{
-                        delayMin = 150
-                        delayMax = 200
-
-                    }
-                    
-                    // Check if e is "mv" and the last two items of the t array are not zero
-                    if (e === "mv" && (((t[1] === 3119 && t[2] === 2855) || (t[1] === 3284 && t[2] === 2829)) && t[3] === 0 && t[4] === 0)) {
-                        console.log("Message ignored because conditions not met", e, t);
-                        return;
-                    }
-                    
-                    // Check if e is "ui" and t.id is "itm_rustyWateringCan"
-                    if (e === "ui" && !t.id.includes("Fruit")) {
-                        // Check if t.id is one of the seed items
-                        if (
-                            (t.id === "itm_wintermintSeeds" ||
-                            t.id === "itm_cloverSeeds" ||
-                            t.id === "itm_popberrySeeds" ||
-                            t.id === "itm_coffeeseed" ||
-                            t.id === "itm_perfectPopberrySeeds") && window.game.clickedSeed === undefined
-                        ) {
-                            
-                            window.game.clickedSeed = true
-                            // Additional code for seeds goes here
-                            // Get the number from window.game.plantQnt
-                            let plantQnt;
-                            if (window.game.plantQnt === undefined && t.id === "itm_perfectPopberrySeeds"){
-                                plantQnt = 1;
-                            }else if (window.game.plantQnt === undefined){
-                                plantQnt = 60;
-                            }else{
-                                plantQnt = window.game.plantQnt;
-                            }
-                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-                            // Get all entities with entityType equal to "soil"
-                            
-                            // const cropMids = Object.values(window.game.scene.scenes[1].crops)
-                            // .flatMap(crop => crop.mid);
-                            
-                            // // Filter out soil entities that are already in crops based on mid
-                            // const unusedSoilEntities = soilEntities.filter(entityMid =>
-                            //     !cropMids.includes(entityMid)
-                            // );
-                            const sentEntityMids = new Set();
-                            const soilEntities = Array.from(window.game.scene.scenes[1].entities.entries())
-                                .filter(([entityId, entity]) => {
-                                    return entity.entityType === "soil" && entity.state === "normal";
-                                })
-                                .map(([entityId, entity]) => entity.mid);
-                            // Iterate through the list with a delay of 0.2s for each
-                            console.log('plant qnt')
-                            console.log(plantQnt)
-                            while (Array.from(window.game.scene.scenes[1].crops.entries()).length < plantQnt){
-                                const soilEntities = Array.from(window.game.scene.scenes[1].entities.entries())
-                                .filter(([entityId, entity]) => {
-                                    return entity.entityType === "soil" && entity.state === "normal";
-                                })
-                                .map(([entityId, entity]) => entity.mid);
-                                
-                                for (let i = soilEntities.length - 1; i > 0; i--) {
-                                    const j = Math.floor(Math.random() * (i + 1));
-                                    [soilEntities[i], soilEntities[j]] = [soilEntities[j], soilEntities[i]];
-                                }
-                                for (let i = 0; i <  Math.min(plantQnt, soilEntities.length); i++) {
-                                    // Check if the entity mid was not sent before
-                                    if (!sentEntityMids.has(soilEntities[i])) {
-                                        // Send room request with modified mid
-                                        // (replace the next line with the actual logic for sending the room request)
-                                        t.mid = soilEntities[i];
-                                        t.type = "entity";
-                                        t.x = undefined;
-                                        t.y = undefined;
-                                        this.room.send(e, t);
-                                        console.log(sentEntityMids)
-
-                                        sentEntityMids.add(soilEntities[i]);
-                                        // Add a delay for each request
-                                        await delay(Math.floor(Math.random() * (delayMax - delayMin + 1)) + delayMin);
-                                    }else{
-                                        console.log(soilEntities[i])
-                                    }
-                                    // continue
-                                }
-                                await delay(1500);
-                                console.log("size after loop: " + soilEntities.length);
-                                const excludedSoilEntities = Array.from(window.game.scene.scenes[1].entities.entries())
-                                    .filter(([entityId, entity]) => {
-                                        return soilEntities.includes(entityId) && entity.state === "normal" && entity.entityType === "soil";
-                                    })
-                                    .map(([entityId, entity]) => entityId);
-                                
-                                excludedSoilEntities.forEach(excludedEntity => sentEntityMids.delete(excludedEntity));
-                                console.log('planted entities excluded from sent')
-                                console.log(excludedSoilEntities)
-                                // Remove the excluded soil entities from the sentEntityMids set
-                                  
-                            } 
-                            window.game.clickedSeed = undefined
-                            
-                        } else if (t.id === "itm_shears" && window.game.clickedShears === undefined) {
-
-                            
-                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-                            if (window.game.sellitems !== undefined){
-                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-
-                                // Find items with specific IDs
-                                let targetItemIds = ["itm_wintermintFruit", "itm_clover4LeafFruit", "itm_cloverFruit"];
-
-                                // Iterate through maps with specific item IDs
-                                for (let itemId of targetItemIds) {
-                                    for (let [key, value] of itemsMap) {
-                                        if (value.hasOwnProperty('item') && value.item === itemId) {
-                                            // Get quantity and slot properties
-                                            let quantity = value.quantity;
-                                            let slot = value.slot; // Assuming the key is the slot property
-
-                                            // Log or perform operations with quantity and slot
-                                            console.log(`Item ID: ${itemId}, Quantity: ${quantity}, Slot: ${slot}`);
-
-                                            // Check if window.game.sellitems is defined and perform actions
-                                            let e = "sellStoreItem";
-                                            let t = {
-                                            itemId: itemId,
-                                            quantity: quantity,
-                                            slot: slot,
-                                            storeId: "str_bucksGalore"
-                                            };
-                                            this.room.send(e, t);
-                                        }
-                                    }
-                                }
-                                window.game.sellitems = undefined
-                                return
-                            }else if (window.game.buyitems !== undefined){
-                                let e = "buyStoreItem"
-                                this.room.send(e, window.game.buyitemsObj)
-                                window.game.buyitems = undefined
-                                return
-                            }else if (window.game.swapItems !== undefined){
-                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-
-                                // Items to search for
-                                let targetItems = ["itm_wintermintSeeds", "itm_cloverSeeds"];
-
-                                // Initialize variables to store quantities
-                                let winterQuantity = 0;
-                                let cloverQuantity = 0;
-                                let cloverSlot = undefined
-                                let winterSlot = undefined
-
-                                // Iterate through the map entries
-                                for (let [key, entry] of itemsMap) {
-                                    if (entry.hasOwnProperty('item') && targetItems.includes(entry.item)) {
-                                        // Check if the item is wintermintSeeds or cloverSeeds
-                                        if (entry.item === "itm_wintermintSeeds") {
-                                            winterQuantity += entry.quantity;
-                                            winterSlot = entry.slot;
-                                        } else if (entry.item === "itm_cloverSeeds") {
-                                            cloverQuantity += entry.quantity;
-                                            cloverSlot = entry.slot;
-                                        }
-                                    }
-                                }
-                                if (cloverQuantity > 0) {
-                                    // console.log(cloverQuantity);
-                                    // console.log(cloverSlot);
-                                    if (cloverSlot !== 2){
-                                        let k = "swapOrCombineInventorySlots"
-                                        let j = {
-                                            sourceContainer: undefined,
-                                            sourceIndex: cloverSlot,
-                                            targetIndex: 2
-                                        }
-                                        
-                                        this.room.send(k, j)
-                                    }
-                                } else if (window.game.scene.scenes[1].stateManager.playerSerializer.state.levels.get("farming").level >= 11) {
-                                    // console.log(winterQuantity);
-                                    // console.log(winterSlot);
-                                    if (winterSlot !== 2){
-                                        let k = "swapOrCombineInventorySlots"
-                                        let j = {
-                                            sourceContainer: undefined,
-                                            sourceIndex: winterSlot,
-                                            targetIndex: 2
-                                        }
-                                        
-                                        this.room.send(k, j)
-                                    }
-                                }else{
-                                    // console.log(0);
-                                    // console.log(cloverSlot);
-                                    if (cloverSlot !== 2){
-                                        let k = "swapOrCombineInventorySlots"
-                                        let j = {
-                                            sourceContainer: undefined,
-                                            sourceIndex: cloverSlot,
-                                            targetIndex: 2
-                                        }
-                                        
-                                        this.room.send(k, j)
-                                    }
-                                }
-                                window.game.swapItems = undefined
-                                return
-                            }else if (window.game.marketplace !== undefined){
-                                let e = "marketplace"
-                                let t = {
-                                    listingId: "6568ecee4a4e955736a0a95c",
-                                    quantity: 1,
-                                    subcommand: "purchase"
-                                }
-                                this.room.send(e, t)
-                                window.game.marketplace = undefined
-                                return
-                            }else if (window.game.tasks !== undefined){
-                                let e = "sellOrderFill"
-                                for (let i=0;i<9;i++){
-                                    let t = {
-                                        sellOrderIndex: i,
-                                        storeId: "str_bucksGalore"
-                                    };
-                                    this.room.send(e, t);
-
-                                    await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
-                                    console.log(Date.now())
-                                }
-                                
-                                window.game.tasks = undefined
-                                return
-                            }else if (window.game.marketBuy !== undefined){
-                                const requestedItemId = window.game.marketBuyItemId;
-                                const requestedQuantity = window.game.marketBuyQuantity;
-                                let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                
-                                // Check if first listing's price exceeds budget
-                                if (listingsFetched.listings.length > 0 &&  await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
-                                    console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
-                                    window.game.marketBuy = undefined
-                                    return; // Skip to the next sell order if budget is exceeded
-                                }
-                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                let itmQntBeforeBuy = 0
-                    
-                                // Iterate through the map entries
-                                for (let [key, entry] of itemsMap) {
-                                    if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
-                                        itmQntBeforeBuy += entry.quantity;
-                                    }
-                                }
-                                let myArray = [];
-                                let currentListingId;
-                                while (true){
-                                    listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                    currentListingId = undefined;
-                                    let beforeBuyQnt = 0
-                                    itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                    // Iterate through the map entries
-                                    for (let [key, entry] of itemsMap) {
-                                        if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
-                                            beforeBuyQnt += entry.quantity;
-                                        }
-                                    }
-                                    
-                                    for (let listing of listingsFetched.listings) {
-                                        if (myArray.includes(listing._id)){
-                                            continue;
-                                        }
-                                        
-                                        console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                        
-                                        if (requestedQuantity < window.game.marketBuyMaxQuantity){
-                                            if (listing.quantity >= requestedQuantity) {
-                                            // if (listing.quantity >= requestedQuantity && (window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )    
-                                                console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                                let e = "marketplace"
-                                                let t = {
-                                                    listingId: listing._id,
-                                                    quantity: requestedQuantity,
-                                                    subcommand: "purchase"
-                                                };
-                                                this.room.send(e, t);
-                                                currentListingId = listing._id;
-                                                break; // Exit the loop after a suitable purchase option is found
-                                            }
-                                        }else{
-                                            if (listing.quantity > window.game.marketBuyListingMinimum) {
-
-                                                itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                                let itmQnt = 0
-                                    
-                                                // Iterate through the map entries
-                                                for (let [key, entry] of itemsMap) {
-                                                    if (entry.hasOwnProperty('item') && entry.item === requestedItemId) {
-                                                        itmQnt += entry.quantity;
-                                                    }
-                                                }
-                                                console.log("Requested quantity: ".concat(requestedQuantity))
-                                                console.log("Total bougth: ".concat(itmQnt - itmQntBeforeBuy))
-                                                let quantity = 0
-                                                
-                                                if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > window.game.marketBuyListingMinimum){
-                                                    if (requestedQuantity - (itmQnt - itmQntBeforeBuy) < listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
-                                                        quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
-                                                    }else if (requestedQuantity - (itmQnt - itmQntBeforeBuy) > listing.quantity && listing.quantity > window.game.marketBuyListingMinimum){
-                                                        quantity = listing.quantity - (listing.quantity * 0.1)
-                                                        quantity = Math.floor(quantity)
-                                                    }
-                                                    
-                                                }else if(requestedQuantity - (itmQnt - itmQntBeforeBuy) > 1){
-                                                    quantity = requestedQuantity - (itmQnt - itmQntBeforeBuy)
-                                                }else{
-                                                    break
-                                                }
-
-                                                
-                                                console.log(`Attempting to buy ${quantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                                let e = "marketplace"
-                                                let t = {
-                                                    listingId: listing._id,
-                                                    quantity: quantity,
-                                                    subcommand: "purchase"
-                                                };
-                                                this.room.send(e, t);
-                                                
-                                                currentListingId = listing._id;
-                                                
-                                                break; // Exit the loop after a suitable purchase option is found
-                                            }
-                                        }
-                                    }
-                                    await delay(4000);
-                                    
-                                    let totalQuantity = 0;
-                                    for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                        if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
-                                            totalQuantity += entry.quantity;
-                                        }
-                                    }
-                                    
-                                    console.log("Requested quantity: ".concat(requestedQuantity))
-                                    console.log("Total bougth: ".concat(totalQuantity - itmQntBeforeBuy))
-                                    if (requestedQuantity <= totalQuantity - itmQntBeforeBuy) {
-                                        console.log("Bougth sucess")
-                                        break; // Exit the loop after finding the requested quantity
-                                    }
-                                    // if (window.game.notification !== 'marketplace-purchase-failed'){
-                                    //     break;
-                                    // }
-                                    if (totalQuantity == beforeBuyQnt && currentListingId !== undefined){
-                                        if (!myArray.includes(currentListingId)){
-                                            myArray.push(currentListingId);
-                                        }
-                                        console.error(`Purshase of ${requestedItemId} failed.`)
-                                    }
-                                    
-                                }
-                                window.game.marketBuy = undefined
-                                return; // Skip to the next sell order if budget is exceeded
-                            }else if(window.game.marketSell !== undefined){
-                                
-                                let e = "marketplace"
-                                let t = {
-                                    currency: "cur_coins",
-                                    itemId: window.game.marketSellItem,
-                                    price: window.game.marketSellPrice,
-                                    quantity: window.game.marketSellQuantity,
-                                    subcommand: "create"
-                                };
-                                await this.room.send(e, t);
-                                
-                                window.game.marketSell = undefined
-                                return
-                            }else if(window.game.cancelListing !== undefined){
-                                let e = "marketplace"
-                                let t = {
-                                    listingId: window.game.listingId,
-                                    subcommand: "claim"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2500);
-                                
-                                window.game.cancelListing = undefined
-                                return
-                            }else if (window.deliverTasks !== undefined){
-                                let e = "sellOrderFetch"
-                                let t = {
-                                    storeId: "str_bucksGalore"
-                                };
-                                await this.room.send(e, t);
-                                
-                                
-                                // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
-                                
-                                await delay(2000);
-                                // sellOrders.forEach((sellOrder, index) => sellOrder.originalIndex = index);
-                                // console.log(window.sellOrders)
-                                // sellOrders.sort((a, b) => {
-                                //     const aHasPixelReward = a.reward && a.reward.currency && a.reward.currency.currencyId === "cur_pixel";
-                                //     const bHasPixelReward = b.reward && b.reward.currency && b.reward.currency.currencyId === "cur_pixel";
-                                
-                                //     if (aHasPixelReward && !bHasPixelReward) {
-                                //       return -1; // Move sell order with "cur_pixel" reward to the beginning
-                                //     } else if (!aHasPixelReward && bHasPixelReward) {
-                                //       return 1; // Move sell order without "cur_pixel" reward to the end
-                                //     } else {
-                                //       return 0; // No priority difference if both have the same currency or neither have rewards
-                                //     }
-                                //   });
-                                  
-                                // console.log(window.sellOrders)
-                                // let playerInventory = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                // // await delay(30000)
-                                // for (let i = 0; i < sellOrders.length; i++) {
-                                //     const sellOrder = sellOrders[i];
-                                //     const requestedItemId = sellOrder.request.itemId;
-                                //     const requestedQuantity = sellOrder.request.quantity;
-
-                                //     let playerItem = null; // Initialize to avoid potential undefined errors
-                                //     let totalQuantity = 0;
-                                    
-                                //     for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                //         if (entry.hasOwnProperty('item') && requestedItemId === entry.item && !sellOrder.hasOwnProperty('completedAt')) {
-                                //             totalQuantity += entry.quantity;
-                                //         }
-                                //     }
-                                    
-                                //     if (requestedQuantity <= totalQuantity) {
-                                //         console.log(`Sell order ${i + 1} of ${requestedItemId} can be fulfilled from inventory.`);
-                                //         let e = "sellOrderFill"
-                                //         let t = {
-                                //             sellOrderIndex: sellOrder.originalIndex,
-                                //             storeId: "str_bucksGalore"
-                                //         };
-                                //         this.room.send(e, t);  
-                                //     } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
-                                //         // Player needs to buy the item
-                                //         console.log(requestedItemId)
-                                //         console.log(`Sell order ${i + 1} requires buying ${requestedQuantity} of ${requestedItemId}.`);
-                                //         try {
-                                //             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-
-                                //             // Check if first listing's price exceeds budget
-                                //             if (listingsFetched.listings.length > 0 && (listingsFetched.listings[0].price * requestedQuantity > 3000 || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) && !(window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listingsFetched.listings[0].price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
-                                //                 console.log(`Cheapest listing exceeds budget for sell order ${i + 1}.`);
-                                //                 continue; // Skip to the next sell order if budget is exceeded
-                                //             }
-                                //             let qnt;
-                                //             if (totalQuantity > 0){
-                                //                 qnt = requestedQuantity - totalQuantity;
-                                //             }else{
-                                //                 qnt = requestedQuantity;
-                                //             }
-
-                                //             while (true){
-                                //                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                //                 // Iterate over listings for suitable purchase option
-                                //                 for (let listing of listingsFetched.listings) {
-                                //                     console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                //                     if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= 3000 && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
-                                                        
-                                //                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                //                         let e = "marketplace"
-                                //                         let t = {
-                                //                             listingId: listing._id,
-                                //                             quantity: qnt,
-                                //                             subcommand: "purchase"
-                                //                         };
-                                //                         this.room.send(e, t);
-                                                        
-                                //                         break; // Exit the loop after a suitable purchase option is found
-                                //                     }
-                                //                 }
-                                //                 totalQuantity = 0
-
-                                //                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                //                     if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
-                                //                         totalQuantity += entry.quantity;
-                                //                     }
-                                //                 }
-                                                
-                                //                 if (requestedQuantity <= totalQuantity) {
-                                //                     console.log("Bought sucess")
-                                //                     break; // Exit the loop after finding the requested quantity
-                                //                 }
-                                //                 // if (window.game.notification !== 'marketplace-purchase-failed'){
-                                //                 //     break;
-                                //                 // }
-                                //                 console.error(`Purshase of ${requestedItemId} failed.`)
-                                //             }
-                                //             let e = "sellOrderFill"
-                                //             let t = {
-                                //                 sellOrderIndex: sellOrder.originalIndex,
-                                //                 storeId: "str_bucksGalore"
-                                //             };
-                                //             this.room.send(e, t);
-                                //             if (!listingsFetched.listings.some(listing => listing.quantity >= requestedQuantity && listing.price * requestedQuantity <= 3000)) {
-                                //                 console.log(`No listings found for ${requestedItemId} that meet requirements.`);
-                                //             }
-                                //         } catch (error) {
-                                //             console.error("Error fetching marketplace listings:", error);
-                                //         }
-                                //     }
-                                //     await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
-                                //     console.log(Date.now())
-                                // }
-
-
-                                return
-                            }else if (window.game.loadStove !== undefined){
-                                let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-
-                                
-                                let woodSlot = undefined
-                                
-                                // Iterate through the map entries
-                                for (let [key, entry] of itemsMap) {
-                                    if (entry.hasOwnProperty('item') && entry.item === "itm_wood") {
-                                        woodSlot = entry.slot;
-                                    }
-                                }
-                                let e = "ui"
-                                let t = {
-                                    id: "itm_wood",
-                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
-                                    slot: woodSlot,
-                                    tiles: undefined,
-                                    type: "entity",
-                                    x: undefined,
-                                    y: undefined
-
-                                };
-                                await this.room.send(e, t);
-                                
-                                
-                                // console.log(await window.jooj.fetchMarketplaceListingsForItem("itm_cloverFruit","6572eaec4bba74cc55f03b7b"))
-                                window.game.loadStove = undefined
-                                await delay(500);
-                                return
-                            }else if(window.game.startCraft !== undefined){
-                                let craftAmount = window.game.qntCraft;
-                                let craftItem = window.game.itemCraft;
-
-                                // if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === "ready"){
-                                //     e = "clickEntity"
-
-                                //     t = {
-                                //         entity: "ent_stove",
-                                //         impact: "claim",
-                                //         inputs: undefined,
-                                //         mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                //     };
-                                //     await this.room.send(e, t);
-                                //     await delay(1500);
-                                //     if (Array.from(window.game.scene.scenes[1].entities.entries())[0][1].state === 'empty'){
-                                //         let itemsMap = window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items;
-                                //         let woodSlot = undefined
-                                        
-                                //         // Iterate through the map entries
-                                //         for (let [key, entry] of itemsMap) {
-                                //             if (entry.hasOwnProperty('item') && entry.item === "itm_wood" && entry.quantity >= 6) {
-                                //                 woodSlot = entry.slot;
-                                //             }
-                                //         }
-                                //         if (woodSlot === undefined){
-                                            
-                                //             const requestedItemId = "itm_wood"
-                                //             const requestedQuantity = 6
-                                //             let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-
-                                //             // Check if first listing's price exceeds budget
-                                //             if (listingsFetched.listings.length > 0 && await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) {
-                                //                 console.log(`Cheapest listing exceeds budget for buy order ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listingsFetched.listings[0]._id}, Qnt: ${listingsFetched.listings[0].quantity} with price:  ${listingsFetched.listings[0].price}`);
-                                //                 window.game.marketBuy = undefined
-                                //                 return; // Skip to the next sell order if budget is exceeded
-                                //             }
-                                //             while (true){
-                                //                 await delay(1000)
-                                //                 listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                //                 // Iterate over listings for suitable purchase option
-                                //                 for (let listing of listingsFetched.listings) {
-                                //                     console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                                    
-                                //                     if (listing.quantity >= requestedQuantity && (await window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity )) {
-                                                        
-                                //                         console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                //                         let e = "marketplace"
-                                //                         let t = {
-                                //                             listingId: listing._id,
-                                //                             quantity: requestedQuantity,
-                                //                             subcommand: "purchase"
-                                //                         };
-                                //                         this.room.send(e, t);
-                                                        
-                                //                         break; // Exit the loop after a suitable purchase option is found
-                                //                     }
-                                //                 }
-                                //                 let totalQuantity = 0;
-                                //                 await delay(3500);
-                                                
-                                //                 for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                //                     if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
-                                //                         totalQuantity += entry.quantity;
-                                //                     }
-                                //                 }
-                                                
-                                //                 if (requestedQuantity <= totalQuantity) {
-                                //                     console.log("Bought sucess")
-                                //                     break; // Exit the loop after finding the requested quantity
-                                //                 }
-                                //                 // if (window.game.notification !== 'marketplace-purchase-failed'){
-                                //                 //     break;
-                                //                 // }
-                                //                 console.error(`Purshase of ${requestedItemId} failed.`)
-                                //             }
-                                //         }
-                                //         let e = "ui"
-                                //         let t = {
-                                //             id: "itm_wood",
-                                //             mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0],
-                                //             slot: woodSlot,
-                                //             tiles: undefined,
-                                //             type: "entity",
-                                //             x: undefined,
-                                //             y: undefined
-
-                                //         };
-                                //         await this.room.send(e, t);
-                                //         await delay(1500);
-                                //     }
-                                // }
-                                
-                                e = "clickEntity"
-
-                                t = {
-                                    entity: "ent_stove",
-                                    impact: "startCraft",
-                                    inputs: [craftItem, craftAmount],
-                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                };
-                                
-                                await this.room.send(e, t);
-                                await delay(1500);
-                                
-                                window.game.startCraft = undefined
-                                await delay(500);
-                                return
-                            }else if(window.game.claimCraft !== undefined){
-                                
-                                let e = "clickEntity"
-
-                                let t = {
-                                    entity: "ent_stove",
-                                    impact: "claim",
-                                    inputs: undefined,
-                                    mid: Array.from(window.game.scene.scenes[1].entities.entries())[0][0]
-                                };
-                                await this.room.send(e, t);
-                                window.game.claimCraft = undefined
-                                await delay(500);
-                                return
-                            }else if (window.game.fetchMail !== undefined){
-                                let e = "fetchMailbox"
-                                await this.room.send(e, undefined);
-                                window.game.fetchMail = undefined
-                                await delay(500);
-                                return
-                            }else if (window.game.claimMail !== undefined){
-                                console.log(window.mailBoxFirstId)
-                                e = "collectMailboxItem"
-                                t = {
-                                    mailId: window.mailBoxFirstId,
-                                    similar: true
-                                };
-                                await this.room.send(e, t);
-                                window.game.claimMail = undefined
-                                await delay(500);
-                                return
-                            }else if (window.game.yggquest1 !== undefined){
-                                
-                                // inicia quest 1
-                                e = "talkToNPC"
-                                t = {
-                                    mid: "65fb708e7e3d4867d9e3dd20",
-                                    npcId: "ent_npcPlayerW3"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-
-                                //closeDialog
-                                e = "closeDialog"
-                                t = {
-                                    dialogId: "evt_ygg_01_step1_1_4",
-                                    event: "evt_ygg_01_step1_1",
-                                    npcId: "ent_npcPlayerW3"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-
-                                //pega lupa
-                                e = "clickEntity"
-                                t = {
-                                    entity: "ent_pickup_exploretool",
-                                    impact: "click",
-                                    inputs: [2144.5, 2569.5],
-                                    mid: "65fb70f2d4b9b0c552f0e2ad"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                //entrega lupa
-                                e = "talkToNPC"
-                                t = {
-                                    mid: "65fb708e7e3d4867d9e3dd20",
-                                    npcId: "ent_npcPlayerW3"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                //closeDialog
-                                e = "closeDialog"
-                                t = {
-                                    dialogId: "evt_ygg_01_step2_2_3",
-                                    event: "evt_ygg_01_step2_2",
-                                    npcId: "ent_npcPlayerW3"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                
-                                
-                                window.game.yggquest1 = undefined
-                                await delay(500);
-                                return
-                            }else if (window.game.yggquest2 !== undefined){
-                                // inicia quest 2
-                                e = "talkToNPC"
-                                t = {
-                                    mid: "65fb709f7e3d4867d9e3df53",
-                                    npcId: "ent_npcAMA_Luke"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-
-                                //closeDialog
-                                e = "closeDialog"
-                                t = {
-                                    dialogId: "evt_ygg_02_step1_1_4",
-                                    event: "evt_ygg_02_step1_1",
-                                    npcId: "ent_npcAMA_Luke"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-
-                                //pegar fingerprint
-                                e = "ui"
-                                t = {
-                                    id: "itm_exploretool_01",
-                                    mid: "65fb6fc49c2033e1365ccc9a",
-                                    slot: 2,
-                                    tiles: undefined,
-                                    type: "entity",
-                                    x: undefined,
-                                    y: undefined
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-
-                                // entrega fingerprint
-                                e = "talkToNPC"
-                                t = {
-                                    mid: "65fb709f7e3d4867d9e3df53",
-                                    npcId: "ent_npcAMA_Luke"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                //closeDialog
-                                e = "closeDialog"
-                                t = {
-                                    dialogId: "evt_ygg_02_step2_1_3",
-                                    event: "evt_ygg_02_step2_1",
-                                    npcId: "ent_npcAMA_Luke"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                
-                                window.game.yggquest2 = undefined
-                                await delay(500);
-                                return
-                                
-                            }else if (window.game.yggquest3 !== undefined){
-                                // iniciar quest3
-                                e = "talkToNPC"
-                                t = {
-                                    mid: "65fb70b87e3d4867d9e3e2bb",
-                                    npcId: "ent_npcGabbyYGG"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                //closeDialog
-                                e = "closeDialog"
-                                t = {
-                                    dialogId: "evt_ygg_03_step1_1_3",
-                                    event: "evt_ygg_03_step1_1",
-                                    npcId: "ent_npcGabbyYGG"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                
-
-
-                                // pega o power pixel, precisa pegar num de slot
-                                e = "ui"
-                                t = {
-                                    id: "itm_exploretool_01",
-                                    mid: "65e76ffe99c035186f5be9e0",
-                                    slot: 2,
-                                    tiles: undefined,
-                                    type: "entity",
-                                    x: undefined,
-                                    y: undefined
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-
-                                //finaliza quest 3
-                                e = "talkToNPC"
-                                t = {
-                                    mid: "65fb70b87e3d4867d9e3e2bb",
-                                    npcId: "ent_npcGabbyYGG"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                //closeDialog
-                                e = "closeDialog"
-                                t = {
-                                    dialogId: "evt_ygg_03_step2_2_4",
-                                    event: "evt_ygg_03_step2_2",
-                                    npcId: "ent_npcGabbyYGG"
-                                };
-                                await this.room.send(e, t);
-                                await delay(2000);
-                                
-                                window.game.yggquest3 = undefined
-                                await delay(500);
-                                return
-                            }
-                            window.game.clickedShears = true
-                            const filteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
-                                .filter(([cropId, crop]) => {
-                                    const cropState = crop.state;
-                                    return cropState === "ripe" || cropState === "dead" || cropState === "deadSeed";
-                                })
-                                .map(([cropId, crop]) => cropId);
-                            
-
-                            while (filteredCrops.length > 0) {
-                                for (let i = filteredCrops.length - 1; i > 0; i--) {
-                                    const j = Math.floor(Math.random() * (i + 1));
-                                    [filteredCrops[i], filteredCrops[j]] = [filteredCrops[j], filteredCrops[i]];
-                                }
-                                
-                                for (let i = 0; i < filteredCrops.length; i++) {
-                                    
-                                    // Send room request with modified mid
-                                    // Replace the next line with the actual logic for sending the room request
-                                    t.mid = filteredCrops[i];
-                                    t.type = "entity";
-                                    t.x = undefined;
-                                    t.y = undefined;
-                    
-                                    this.room.send(e, t);
-                                    await delay(Math.floor(Math.random() * (delayMax - delayMin + 1)) + delayMin);
-                                }
-                                    
-                    
-                                // Optional: Add a delay before the next iteration of the while loop
-                                // delay(500);
-                                
-                                await delay(500);
-                                // Update filtered crops for the next iteration
-                                const updatedFilteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
-                                .filter(([cropId, crop]) => {
-                                    const cropState = crop.state;
-                                    return cropState === "ripe" || cropState === "dead" || cropState === "deadSeed";
-                                })
-                                .map(([cropId, crop]) => cropId);
-                                
-                                filteredCrops.length = updatedFilteredCrops.length;
-                                for (let i = 0; i < updatedFilteredCrops.length; i++) {
-                                    filteredCrops[i] = updatedFilteredCrops[i];
-                                }
-                            }
-                            window.game.clickedShears = undefined
-                            // e = "closeDialog"
-                            // t = {}
-                            // t.dialogId = "evt_barneyTutorial_step11_6"
-                            // t.event = "evt_barneyTutorial_step11"
-                            // t.npcId = "ent_npcBarney"
-                            // for (let i = 0; i < 10; i++) {
-                            //     this.room.send(e, t);
-                            // }
-                        } else if (t.id === "itm_rustyWateringCan" && window.game.clickedWater === undefined){
-                            window.game.clickedWater = true
-                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-                            let cropsNeedingWater = Array.from(window.game.scene.scenes[1].crops.entries())
-                                .filter(([cropId, crop]) => crop.needsWater)
-                                .map(([cropId, crop]) => cropId);
-                            
-                            // Iterate until no crop needs water
-
-                            while (cropsNeedingWater.length > 0) {
-                                for (let i = cropsNeedingWater.length - 1; i > 0; i--) {
-                                    const j = Math.floor(Math.random() * (i + 1));
-                                    [cropsNeedingWater[i], cropsNeedingWater[j]] = [cropsNeedingWater[j], cropsNeedingWater[i]];
-                                }
-                                // Iterate through the list with a delay of 0.1 for each
-                                for (let i = 0; i < cropsNeedingWater.length; i++) {
-                                    // Send room request with modified mid
-                                    // Replace t.mid with the current mid from the list
-                                    t.mid = cropsNeedingWater[i];
-                                    t.type = "entity"
-                                    t.x = undefined
-                                    t.y = undefined
-                                    this.room.send(e, t);
-                                    await delay(Math.floor(Math.random() * (delayMax - delayMin + 1)) + delayMin);
-                                }
-
-                                await delay(500);
-                                // Update the list of crops needing water
-                                cropsNeedingWater = Array.from(window.game.scene.scenes[1].crops.entries())
-                                .filter(([cropId, crop]) => crop.needsWater)
-                                .map(([cropId, crop]) => cropId);
-
-                                // Optional: Add a delay before checking again
-                                // You can adjust the delay based on your requirements
-                                
-                            }
-                            window.game.clickedWater = undefined
-                        } else if(t.id === "itm_fertilizer"){
-                            const filteredCrops = Object.keys(window.game.scene.scenes[1].crops)
-                            t.mid = filteredCrops[0];
-                            t.type = "entity";
-                            t.x = undefined;
-                            t.y = undefined;
-            
-                            this.room.send(e, t);
-                        }else {
-                            // Proceed with the send for other cases
-                            console.log(t);
-                            this.room.send(e, t);
-                            
-                        }
-                    }
-                    else {
-                        // Proceed with the send for other cases
-                        console.log(t);
-                        
-                        this.room.send(e, t);
-                        
-                    }
+                    this.room.send(m, R)
                 }
                 ;
                 Object.entries(ee).forEach(m=>{
@@ -12833,7 +11867,7 @@
                         null === (T = this.room) || void 0 === T || T.removeAllListeners();
                         return
                     }
-                    if (B.ZP.sendEvent(B.fb.ROOM_LEAVE),
+                    if (B.ZP.emitEventNow(B.fb.ROOM_LEAVE),
                     this.room) {
                         if (console.log("disconnected, code=", m),
                         this.room.removeAllListeners(),
@@ -12842,19 +11876,19 @@
                         this.selfPlayer = void 0,
                         this.room = void 0,
                         4999 === m) {
-                            B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                            B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                                 message: ["playerKicked", "We offer our humble apologies. You have been disconnected from the game server as a result of joining from another device or browser window. Multiple connections are not permitted."]
                             });
                             return
                         }
-                        B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: "lostConnection"
                         })
                     }
                 }
                 )
             }
-            async handleRoomEvents() {
+            handleRoomEvents() {
                 var m;
                 this.room && (this.room.onMessage(V.m.timeSync, m=>{
                     (null == m ? void 0 : m.ms) && (this.serverTimeDelta = Date.now() - m.ms,
@@ -12862,67 +11896,66 @@
                 }
                 ),
                 this.room.state.listen("ownerAddress", m=>{
-                    B.ZP.sendEvent(B.fb.ROOM_OWNER_CHANGED, m)
+                    B.ZP.emitEventNow(B.fb.ROOM_OWNER_CHANGED, m)
                 }
                 ),
                 this.room.state.listen("name", ()=>{
-                    this.room && B.ZP.sendEvent(B.fb.ROOM_NAME_CHANGED, this.room.state.name)
+                    this.room && B.ZP.emitEventNow(B.fb.ROOM_NAME_CHANGED, this.room.state.name)
                 }
                 ),
                 this.room.state.listen("guild", ()=>{
-                    this.room && B.ZP.sendEvent(B.fb.ROOM_GUILD_CHANGED, this.room.state.guild)
+                    this.room && B.ZP.emitEventNow(B.fb.ROOM_GUILD_CHANGED, this.room.state.guild)
                 }
                 ),
                 this.room.state.permissions.onChange(()=>{
                     if (!this.room)
                         return;
                     let m = JSON.parse(JSON.stringify(this.room.state.permissions));
-                    B.ZP.sendEvent(B.fb.ROOM_PERMISSIONS_CHANGED, m)
+                    B.ZP.emitEventNow(B.fb.ROOM_PERMISSIONS_CHANGED, m)
                 }
                 ),
                 this.room.state.restrictions.onChange(()=>{
                     if (!this.room)
                         return;
                     let m = JSON.parse(JSON.stringify(this.room.state.restrictions));
-                    B.ZP.sendEvent(B.fb.ROOM_RESTRICTIONS_CHANGED, m)
+                    B.ZP.emitEventNow(B.fb.ROOM_RESTRICTIONS_CHANGED, m)
                 }
                 ),
                 this.room.state.ownership && this.room.state.ownership.onChange(()=>{
                     if (!this.room)
                         return;
                     let m = JSON.parse(JSON.stringify(this.room.state.ownership));
-                    B.ZP.sendEvent(B.fb.ROOM_OWNERSHIP_CHANGED, m)
+                    B.ZP.emitEventNow(B.fb.ROOM_OWNERSHIP_CHANGED, m)
                 }
                 ),
                 this.room.state.members.onAdd(()=>{
                     if (!this.room)
                         return;
                     let m = JSON.parse(JSON.stringify(this.room.state.members));
-                    B.ZP.sendEvent(B.fb.ROOM_MEMBERS_CHANGED, m)
+                    B.ZP.emitEventNow(B.fb.ROOM_MEMBERS_CHANGED, m)
                 }
                 ),
                 this.room.state.members.onRemove(()=>{
                     if (!this.room)
                         return;
                     let m = JSON.parse(JSON.stringify(this.room.state.members));
-                    B.ZP.sendEvent(B.fb.ROOM_MEMBERS_CHANGED, m)
+                    B.ZP.emitEventNow(B.fb.ROOM_MEMBERS_CHANGED, m)
                 }
                 ),
-                null === (m = this.room) || void 0 === m || m.onMessage("*", async (m,R)=>{
+                null === (m = this.room) || void 0 === m || m.onMessage("*", (m,R)=>{
                     if (this.room)
                         try {
                             var C, L, U, $, G, q, W, Z, X, Q, ee, et, er, en, eo, ei, ea;
-                            const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
                             switch (m) {
                             case V.m.updatePlayer:
                                 null === (C = this.playerSerializer) || void 0 === C || C.patch(R),
                                 this.applyStateChanges();
                                 break;
                             case V.m.talkToNPC:
-                                B.ZP.sendEvent(B.fb.NPC_SPEAKS, R);
+                                B.ZP.emitEventNow(B.fb.NPC_SPEAKS, R);
                                 break;
                             case V.m.receiveMessageInChat:
-                                B.ZP.sendEvent(B.fb.CHAT_MESSAGE_RCV, {
+                                B.ZP.emitEventNow(B.fb.CHAT_MESSAGE_RCV, {
                                     ...R,
                                     whisper: !0
                                 });
@@ -12930,7 +11963,7 @@
                             case V.m.buildObject:
                                 T && "add" === R.action && T.pushNewObject(R._id),
                                 "add" === R.action || "update" === R.action ? H.Z.addMapObject(R) : "remove" === R.action && H.Z.removeMapObject(R),
-                                B.ZP.sendEvent(B.fb.SERVER_BUILD_NODE, {
+                                B.ZP.emitEventNow(B.fb.SERVER_BUILD_NODE, {
                                     ...R,
                                     type: "object"
                                 });
@@ -12938,13 +11971,13 @@
                             case V.m.buildTile:
                                 R.update && (T && "update" !== R.action && T.pushTiles(R.update, H.Z.getMapTiles()),
                                 H.Z.updateMapTiles(R.update)),
-                                B.ZP.sendEvent(B.fb.SERVER_BUILD_NODE, {
+                                B.ZP.emitEventNow(B.fb.SERVER_BUILD_NODE, {
                                     type: "tile",
                                     ...R
                                 });
                                 break;
                             case V.m.useItem:
-                                B.ZP.postEvent("CONFIRM_USEITEM", R),
+                                B.ZP.sendEventDelayed("CONFIRM_USEITEM", R),
                                 null === (L = this.scene) || void 0 === L || L.playerUsedItem(R);
                                 break;
                             case V.m.useItemError:
@@ -12963,7 +11996,7 @@
                                 Y.e.set(K.W_, [el]);
                                 break;
                             case V.m.teleportPlayer:
-                                B.ZP.sendEvent(B.fb.ROOM_WARP, {
+                                B.ZP.emitEventNow(B.fb.ROOM_WARP, {
                                     mapId: R.mapId,
                                     spawn: R.spawn,
                                     source: R.source,
@@ -12979,7 +12012,7 @@
                                     emoji: R.emoji,
                                     pet: !1
                                 }) : null === (G = this.scene) || void 0 === G || G.playPlayerAnimation(R.animation.name))) : "stop" === R.action ? R.sound && (console.log("stopping sound ".concat(R.sound)),
-                                B.ZP.postEvent("STOP_SOUND", R.sound)) : "petplay" === R.action ? R.emoji && (null === (X = this.scene) || void 0 === X || X.playNodeAnimation({
+                                B.ZP.sendEventDelayed("STOP_SOUND", R.sound)) : "petplay" === R.action ? R.emoji && (null === (X = this.scene) || void 0 === X || X.playNodeAnimation({
                                     mid: null !== (Q = R.target) && void 0 !== Q ? Q : "",
                                     animation: null !== (ee = null === (W = R.animation) || void 0 === W ? void 0 : W.name) && void 0 !== ee ? ee : "",
                                     position: null === (Z = R.animation) || void 0 === Z ? void 0 : Z.position,
@@ -13000,192 +12033,40 @@
                                 break;
                             case V.m.playerNotification:
                                 Y.e.set(K.W_, [R]),
-                                (null == R ? void 0 : R.source) === "item" && (null === (ei = R.text) || void 0 === ei ? void 0 : ei.count) > 0 && (null === (ea = R.stacking) || void 0 === ea ? void 0 : ea.key) && B.ZP.sendEvent(B.fb.PLAYER_INVENTORY_NEW, {
+                                (null == R ? void 0 : R.source) === "item" && (null === (ei = R.text) || void 0 === ei ? void 0 : ei.count) > 0 && (null === (ea = R.stacking) || void 0 === ea ? void 0 : ea.key) && B.ZP.emitEventNow(B.fb.PLAYER_INVENTORY_NEW, {
                                     item: R.stacking.key
                                 });
                                 break;
                             case V.m.sellOrders:
-                                console.log(R.str_bucksGalore);
-                                
-                                window['sellOrders'] = R.str_bucksGalore.orders
-                                window['sellOrders'].forEach((sellOrder, index) => sellOrder.originalIndex = index);
-                                window['sellOrders'].sort((a, b) => {
-                                const aHasPixelReward = a.reward && a.reward.currency && a.reward.currency.currencyId === "cur_pixel";
-                                const bHasPixelReward = b.reward && b.reward.currency && b.reward.currency.currencyId === "cur_pixel";
-                            
-                                if (aHasPixelReward && !bHasPixelReward) {
-                                    return -1; // Move sell order with "cur_pixel" reward to the beginning
-                                } else if (!aHasPixelReward && bHasPixelReward) {
-                                    return 1; // Move sell order without "cur_pixel" reward to the end
-                                } else {
-                                    return 0; // No priority difference if both have the same currency or neither have rewards
-                                }
-                                });
-                                console.log(window['sellOrders']);
                                 Y.e.set(J.v, R);
-                                if (window.deliverTasks !== undefined){
-                                    window.deliverTasks = undefined
-                                    let coinPriceLimit = 3000;
-                                    if (window.coinPriceLimit !== undefined){
-                                        coinPriceLimit = window.coinPriceLimit;
-                                    }
-                                    let pixelPriceLimit = 25000;
-                                    if (window.pixelPriceLimit !== undefined){
-                                        pixelPriceLimit = window.pixelPriceLimit;
-                                    }
-                                    for (let i = 0; i < sellOrders.length; i++) {
-                                        const sellOrder = sellOrders[i];
-                                        const requestedItemId = sellOrder.request.itemId;
-                                        const requestedQuantity = sellOrder.request.quantity;
-
-                                        let playerItem = null; // Initialize to avoid potential undefined errors
-                                        let totalQuantity = 0;
-                                        
-                                        for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                            if (entry.hasOwnProperty('item') && requestedItemId === entry.item && !sellOrder.hasOwnProperty('completedAt')) {
-                                                totalQuantity += entry.quantity;
-                                            }
-                                        }
-                                        
-                                        if (requestedQuantity <= totalQuantity) {
-                                            console.log(`Sell order ${i + 1} of ${requestedItemId} can be fulfilled from inventory.`);
-                                            let e = "sellOrderFill"
-                                            let t = {
-                                                sellOrderIndex: sellOrder.originalIndex,
-                                                storeId: "str_bucksGalore"
-                                            };
-                                            this.room.send(e, t);  
-                                        } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
-                                            // Player needs to buy the item
-                                            console.log(requestedItemId)
-                                            console.log(`Sell order ${i + 1} requires buying ${requestedQuantity} of ${requestedItemId}.`);
-                                            try {
-                                                let listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-
-                                                // Check if first listing's price exceeds budget
-                                                if (listingsFetched.listings.length > 0 && (listingsFetched.listings[0].price * requestedQuantity > coinPriceLimit || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance < listingsFetched.listings[0].price * requestedQuantity) && !(window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listingsFetched.listings[0].price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel" && (listingsFetched.listings[0].price * requestedQuantity) / sellOrder.reward.currency.amount < pixelPriceLimit)) {
-                                                    console.log(`Cheapest listing exceeds budget for sell order ${i + 1}.`);
-                                                    continue; // Skip to the next sell order if budget is exceeded
-                                                }
-                                                let qnt;
-                                                if (totalQuantity > 0){
-                                                    qnt = requestedQuantity - totalQuantity;
-                                                }else{
-                                                    qnt = requestedQuantity;
-                                                }
-                                                
-                                                let myArray = [];
-                                                let currentListingId;
-                                                while (true){
-                                                    listingsFetched = await window.jooj.fetchMarketplaceListingsForItem(requestedItemId, "6572eaec4bba74cc55f03b7b");
-                                                    currentListingId = undefined;
-                                                    // Iterate over listings for suitable purchase option
-                                                    for (let listing of listingsFetched.listings) {
-                                                        if (myArray.includes(listing._id)){
-                                                            continue;
-                                                        }
-                                                        console.log(`will try to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity} with price:  ${listingsFetched.listings[0].price}`)
-                                                        if (listing.quantity >= requestedQuantity && ((listing.price * requestedQuantity <= coinPriceLimit && window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity) || window.game.scene.scenes[1].stateManager.playerSerializer.state.coinInventory.$items.get(8).balance >= listing.price * requestedQuantity && sellOrder.reward.currency.currencyId === "cur_pixel")) {
-                                                            
-                                                            console.log(`Attempting to buy ${requestedQuantity} of ${requestedItemId} from listing: Id: ${listing._id}, Qnt: ${listing.quantity}`);
-                                                            let e = "marketplace"
-                                                            let t = {
-                                                                listingId: listing._id,
-                                                                quantity: qnt,
-                                                                subcommand: "purchase"
-                                                            };
-                                                            this.room.send(e, t);
-                                                            currentListingId = listing._id;
-                                                            
-                                                            break; // Exit the loop after a suitable purchase option is found
-                                                        }
-                                                    }
-                                                    await delay(3000);
-                                                    totalQuantity = 0
-
-                                                    for (let [key, entry] of window.game.scene.scenes[1].stateManager.playerSerializer.state.inventory.slots.$items) {
-                                                        if (entry.hasOwnProperty('item') && requestedItemId === entry.item) {
-                                                            totalQuantity += entry.quantity;
-                                                        }
-                                                    }
-                                                    
-                                                    if (requestedQuantity <= totalQuantity) {
-                                                        console.log("Bought sucess")
-                                                        break; // Exit the loop after finding the requested quantity
-                                                    }
-                                                    if (currentListingId !== undefined){
-                                                        if (!myArray.includes(currentListingId)){
-                                                            myArray.push(currentListingId);
-                                                        }
-                                                        console.error(`Purshase of ${requestedItemId} failed.`)
-                                                    }
-                                                }
-                                                let e = "sellOrderFill"
-                                                let t = {
-                                                    sellOrderIndex: sellOrder.originalIndex,
-                                                    storeId: "str_bucksGalore"
-                                                };
-                                                this.room.send(e, t);
-                                                
-                                                await delay(3000);
-                                                if (!listingsFetched.listings.some(listing => listing.quantity >= requestedQuantity && listing.price * requestedQuantity <= 3000)) {
-                                                    console.log(`No listings found for ${requestedItemId} that meet requirements.`);
-                                                }
-                                            } catch (error) {
-                                                console.error("Error fetching marketplace listings:", error);
-                                            }
-                                        }
-                                        await delay(Math.floor(Math.random() * (2000 - 1400 + 1)) + 1400);
-                                        console.log(Date.now())
-                                    }
-                                    while (sellOrders.some(obj => obj.hasOwnProperty('completedAt'))){
-
-                                        console.log('Waiting for all taskboard to be filled')
-                                        await delay(5000)
-
-                                    }
-                                    
-                                    window.deliverTasks = true
-                                    let e = "sellOrderFetch"
-                                    let t = {
-                                        storeId: "str_bucksGalore"
-                                    };
-                                    await this.room.send(e, t);
-                                    // await delay(1000)
-                                }
-                                
                                 break;
                             case V.m.clientCmd:
-                                B.ZP.sendEvent(B.fb.CLIENT_CMD, R);
+                                B.ZP.emitEventNow(B.fb.CLIENT_CMD, R);
                                 break;
                             case V.m.presentUI:
-                                B.ZP.sendEvent(B.fb.PRESENT_UI, R);
+                                B.ZP.emitEventNow(B.fb.PRESENT_UI, R);
                                 break;
                             case V.m.trade:
-                                B.ZP.sendEvent(B.fb.TRADE_RECEIVE, R);
+                                B.ZP.emitEventNow(B.fb.TRADE_RECEIVE, R);
                                 break;
                             case V.m.marketplace:
-                                B.ZP.sendEvent(B.fb.MARKETPLACE_RECEIVE, R);
+                                B.ZP.emitEventNow(B.fb.MARKETPLACE_RECEIVE, R);
                                 break;
                             case V.m.setAvatar:
-                                B.ZP.sendEvent(B.fb.PLAYER_AVATAR, R);
+                                B.ZP.emitEventNow(B.fb.PLAYER_AVATAR, R);
                                 break;
                             case V.m.bookmarkMap:
-                                B.ZP.sendEvent(B.fb.BOOKMARK_MAP, R);
+                                B.ZP.emitEventNow(B.fb.BOOKMARK_MAP, R);
                                 break;
                             case V.m.fetchMailbox:
                                 console.log("received mailbox items"),
-                                B.ZP.sendEvent(B.fb.RECEIVE_MAIL, R);
-                                if (R.mail.length > 0){
-                                    window['mailBoxFirstId'] = R.mail[0]._id
-                                
-                                }
+                                B.ZP.emitEventNow(B.fb.RECEIVE_MAIL, R);
                                 break;
                             case V.m.collectMailboxItem:
-                                B.ZP.sendEvent(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
+                                B.ZP.emitEventNow(B.fb.COLLECT_MAIL_ITEM_RESPONSE, R);
                                 break;
                             case V.m.findNFTs:
-                                B.ZP.sendEvent(B.Yi.FOUND_NFT, R);
+                                B.ZP.emitEventNow(B.Yi.FOUND_NFT, R);
                                 break;
                             default:
                                 console.warn("Unhandled server message", m, R)
@@ -13224,7 +12105,7 @@
                     null === (R = this.scene) || void 0 === R || R.addEntityElement(void 0, m.toJSON()),
                     T && T.pushNewEntity(m.mid),
                     this.monitorEntity(m),
-                    B.ZP.sendEvent(B.fb.SERVER_BUILD_NODE, {
+                    B.ZP.emitEventNow(B.fb.SERVER_BUILD_NODE, {
                         _id: m.mid,
                         action: "add",
                         type: "entity"
@@ -13235,7 +12116,7 @@
                     var R;
                     let C = H.Z.getGameEntity(m.entity);
                     null === (R = this.scene) || void 0 === R || R.removeEntityElement(m.mid, null == C ? void 0 : C.type),
-                    B.ZP.sendEvent(B.fb.SERVER_BUILD_NODE, {
+                    B.ZP.emitEventNow(B.fb.SERVER_BUILD_NODE, {
                         _id: m.mid,
                         action: "remove",
                         type: "entity"
@@ -13244,7 +12125,7 @@
                 ),
                 this.room.state.chatMessages.onAdd(m=>{
                     var R;
-                    (null === (R = this.room) || void 0 === R ? void 0 : R.state) && "private" !== this.room.state.type && "tutorial" !== this.room.state.type && B.ZP.sendEvent(B.fb.CHAT_MESSAGE_RCV, {
+                    (null === (R = this.room) || void 0 === R ? void 0 : R.state) && "private" !== this.room.state.type && "tutorial" !== this.room.state.type && B.ZP.emitEventNow(B.fb.CHAT_MESSAGE_RCV, {
                         ...m
                     })
                 }
@@ -13257,7 +12138,7 @@
                 m.slots.onRemove(()=>this.updatedInventory = !0)),
                 this.room.state.levels.onAdd((m,R)=>{
                     let C = JSON.parse(JSON.stringify(m));
-                    B.ZP.sendEvent(B.fb.ROOM_LEVEL_ADD, {
+                    B.ZP.emitEventNow(B.fb.ROOM_LEVEL_ADD, {
                         key: R,
                         level: C
                     }),
@@ -13267,7 +12148,7 @@
                 this.room.state.players.onAdd((m,R)=>{
                     var C, T, L;
                     this.room && ((null === (C = this.room.state) || void 0 === C ? void 0 : C.type) === "private" || (null === (T = this.room.state) || void 0 === T ? void 0 : T.type) === "tutorial" || (null === (L = this.players) || void 0 === L || L.set(m.mid, m),
-                    B.ZP.sendEvent(B.fb.PLAYER_JOINED, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_JOINED, {
                         username: m.username,
                         sessionId: R,
                         id: m.mid
@@ -13278,7 +12159,7 @@
                 this.room.state.players.onRemove((m,R)=>{
                     var C, T, L, U;
                     this.room && (null === (C = this.room.state) || void 0 === C ? void 0 : C.type) !== "private" && (null === (T = this.room.state) || void 0 === T ? void 0 : T.type) !== "tutorial" && (null === (L = this.players) || void 0 === L || L.delete(m.mid),
-                    B.ZP.sendEvent(B.fb.PLAYER_REMOVED, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_REMOVED, {
                         username: m.username,
                         id: m.mid
                     }),
@@ -13299,7 +12180,7 @@
                 let T = C.leave(!0);
                 return null === (R = this.players) || void 0 === R || R.clear(),
                 this.scene = void 0,
-                B.ZP.sendEvent(B.fb.ROOM_LEAVE),
+                B.ZP.emitEventNow(B.fb.ROOM_LEAVE),
                 T
             }
             doJoin(m) {
@@ -13308,7 +12189,7 @@
                       , L = ""
                       , retryJoin = async()=>{
                         if ("need-recaptcha" !== L || m.recaptcha)
-                            T > 1 && B.ZP.postEvent(B.fb.SLOW_LOAD, {
+                            T > 1 && B.ZP.sendEventDelayed(B.fb.SLOW_LOAD, {
                                 retry: T
                             });
                         else {
@@ -13381,7 +12262,7 @@
                     })
                 } catch (m) {
                     if ((null == m ? void 0 : m.code) === U.SERVER_MAINTENANCE)
-                        B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: null !== (K = m.message) && void 0 !== K ? K : "server-maintenance"
                         });
                     else if ((null == m ? void 0 : m.code) === U.PLAYER_BANNED) {
@@ -13390,37 +12271,37 @@
                           , T = "It's cool to be in a band. Not so cool to get BANNED. You can find the appeal form in our help center";
                         R.length > 1 && R[1] && (C = R[1],
                         T = R[1]),
-                        B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: [C, T]
                         })
                     } else
-                        (null == m ? void 0 : m.message) ? "room-is-full" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        (null == m ? void 0 : m.message) ? "room-is-full" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: "roomFull"
-                        }) : "join-in-progress" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "join-in-progress" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["joinInProgress", "Your account was in process of joining a room already. You cannot be connected until the prior attempt completes"]
-                        }) : "user-logging-out" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "user-logging-out" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["userLoggingOut", "Sorry, it is taking longer than expected to save your progress from the previous location. You can try again in a few seconds"]
-                        }) : "velocity-control" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "velocity-control" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["velocityControl", "The room you tried to join has too many players. Try choosing a different world."]
-                        }) : "invalid-token" === m.message || "player-not-found" === m.message || "could-not-authenticate" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "invalid-token" === m.message || "player-not-found" === m.message || "could-not-authenticate" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["authenticationFailed", "To say you are who you are may be contrary to fact. Your authentication was not so authenticated."]
-                        }) : "authentication-expired" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "authentication-expired" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["authenticationExpired", "You were there, now you are here. My head is spinning. Just...try again, please."]
-                        }) : "invalid-permissions" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "invalid-permissions" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["invalidPermissionsToJoinRoom", "The room owner did not let you in. Did you remember to knock nicely? Permission denied!"]
-                        }) : "user-already-logged-in" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "user-already-logged-in" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: "alreadyLoggedIn"
-                        }) : "transfer-in-progress" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "transfer-in-progress" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["transferInProgress", "There is a lot at stake, so you must take a break, and wait for your transfer to take"]
-                        }) : "invalid-client-version" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "invalid-client-version" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["updateClient", "No matter how hard you try to avoid it, things change. And so do you. Please refresh page for a new beginning."]
-                        }) : "no-recaptcha-available" === m.message || "no-telemetryId-available" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "no-recaptcha-available" === m.message || "no-telemetryId-available" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["noRecaptcha", "Dude, where's my server? Please disable ad blockers or other plugins"]
-                        }) : "invalid-map" === m.message ? B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : "invalid-map" === m.message ? B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["mapNotFound", "I see you brought your ticket to the dance, but there is no dancehall here. invalid-map"]
-                        }) : B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: [m.message, "Sorry, we couldn't enter you into the game. Care to try again? (".concat(m.message, ")")]
-                        }) : B.ZP.sendEvent(B.fb.SVR_CANNOTCONNECT, {
+                        }) : B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
                             message: ["joinFailed", "It appears likely your destination failed to exist. If you attempt to join again, who knows where you might land? Get it? L-A-N-D. Me, neither."]
                         });
                     return
@@ -13457,7 +12338,7 @@
                     this.initPlayers(),
                     this.setupSelfPlayerListeners(this.selfPlayer, er),
                     this.scene.initSelfPlayerState(m),
-                    B.ZP.sendEvent(B.fb.ROOM_LOADED, {
+                    B.ZP.emitEventNow(B.fb.ROOM_LOADED, {
                         player: m,
                         roomType: this.room.state.type,
                         mapId: this.room.state.id,
@@ -13468,13 +12349,13 @@
                         messages: JSON.parse(JSON.stringify(this.room.state.chatMessages)),
                         templateName: this.room.state.templateName
                     }),
-                    B.ZP.sendEvent(B.fb.ROOM_NAME_CHANGED, this.room.state.name),
-                    B.ZP.sendEvent(B.fb.PLAYER_ENERGY_CHANGE, {
+                    B.ZP.emitEventNow(B.fb.ROOM_NAME_CHANGED, this.room.state.name),
+                    B.ZP.emitEventNow(B.fb.PLAYER_ENERGY_CHANGE, {
                         energy: JSON.parse(JSON.stringify(this.selfPlayer.energy))
                     })
                 }
                 return this.handleRoomUpdates(),
-                Q && V && (B.ZP.sendEvent(B.Yi.CLIENT_TRIGGER, {
+                Q && V && (B.ZP.emitEventNow(B.Yi.CLIENT_TRIGGER, {
                     trigger: Q
                 }),
                 Q = null),
@@ -13486,7 +12367,7 @@
                 if (R) {
                     var C;
                     let m = R.toJSON();
-                    B.ZP.sendEvent(B.fb.ENTITY_UPDATE, m),
+                    B.ZP.emitEventNow(B.fb.ENTITY_UPDATE, m),
                     null === (C = this.scene) || void 0 === C || C.updateEntity(m)
                 } else
                     console.error("entity ".concat(m, " changed but not found"))
@@ -13545,7 +12426,7 @@
                 let R = m.achievementId;
                 m.onChange(()=>{
                     let m = JSON.parse(JSON.stringify(this.selfPlayer.achievements.get(R)));
-                    B.ZP.sendEvent(B.fb.PLAYER_ACHIEVEMENT_CHANGED, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_ACHIEVEMENT_CHANGED, {
                         achievement: m
                     })
                 }
@@ -13558,14 +12439,14 @@
                     if ("player" === C) {
                         if (this.selfPlayer) {
                             let R = JSON.parse(JSON.stringify(this.selfPlayer.levels.get(m)));
-                            B.ZP.sendEvent(B.fb.PLAYER_LEVEL_CHANGED, {
+                            B.ZP.emitEventNow(B.fb.PLAYER_LEVEL_CHANGED, {
                                 key: m,
                                 level: R
                             })
                         }
                     } else if (null === (T = this.room) || void 0 === T ? void 0 : null === (R = T.state) || void 0 === R ? void 0 : R.levels) {
                         let R = JSON.parse(JSON.stringify(null === (L = this.room) || void 0 === L ? void 0 : L.state.levels.get(m)));
-                        B.ZP.sendEvent(B.fb.ROOM_LEVEL_CHANGED, {
+                        B.ZP.emitEventNow(B.fb.ROOM_LEVEL_CHANGED, {
                             key: m,
                             level: R
                         })
@@ -13576,7 +12457,7 @@
             inventoryChanged() {
                 if (this.selfPlayer) {
                     let m = JSON.parse(JSON.stringify(this.selfPlayer.inventory));
-                    B.ZP.sendEvent("PLAYER_INVENTORY_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_INVENTORY_CHANGE", {
                         inventory: m
                     })
                 }
@@ -13592,7 +12473,7 @@
                 m.onChange(m=>{
                     let R = m.find(m=>"balance" === m.field && m.value > m.previousValue)
                       , C = JSON.parse(JSON.stringify(this.selfPlayer.coinInventory));
-                    B.ZP.sendEvent("PLAYER_COIN_INVENTORY_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_COIN_INVENTORY_CHANGE", {
                         coinInventory: C,
                         added: R ? R.value - R.previousValue : 0
                     })
@@ -13604,7 +12485,7 @@
                 let R = null === (m = this.selfPlayer) || void 0 === m ? void 0 : m.pet;
                 if (R) {
                     let m = JSON.parse(JSON.stringify(R));
-                    B.ZP.sendEvent(B.fb.PLAYER_PET_UPDATE, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_PET_UPDATE, {
                         full: {
                             pet: m
                         }
@@ -13623,7 +12504,7 @@
                   , R = null == m ? void 0 : m.full.pet;
                 if (null == R ? void 0 : R.avatar) {
                     let C = JSON.parse(JSON.stringify(R));
-                    B.ZP.sendEvent(B.fb.PLAYER_PET_CHANGE, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_PET_CHANGE, {
                         core: {
                             petAvatar: C.avatar,
                             position: {
@@ -13637,7 +12518,7 @@
                     }),
                     this.monitorPet(R)
                 } else
-                    B.ZP.sendEvent(B.fb.PLAYER_PET_CHANGE, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_PET_CHANGE, {
                         core: {
                             petAvatar: void 0
                         },
@@ -13650,7 +12531,7 @@
                 var C, T;
                 m.inventory.onChange(()=>{
                     let m = JSON.parse(JSON.stringify(this.selfPlayer.inventory));
-                    B.ZP.sendEvent("PLAYER_INVENTORY_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_INVENTORY_CHANGE", {
                         inventory: m
                     })
                 }
@@ -13659,21 +12540,21 @@
                 m.listen("pet", ()=>this.petChange()),
                 m.energy.onChange(()=>{
                     let m = JSON.parse(JSON.stringify(this.selfPlayer.energy));
-                    B.ZP.sendEvent("PLAYER_ENERGY_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_ENERGY_CHANGE", {
                         energy: m
                     })
                 }
                 ),
                 R.currentAvatar.onChange(()=>{
                     let m = R.currentAvatar.toJSON();
-                    B.ZP.sendEvent("PLAYER_CURRENTAVATAR_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_CURRENTAVATAR_CHANGE", {
                         currentAvatar: m
                     })
                 }
                 );
                 let membershipChange = ()=>{
                     let m = R.memberships.toJSON();
-                    B.ZP.sendEvent("PLAYER_MEMBERSHIPS_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_MEMBERSHIPS_CHANGE", {
                         memberships: m
                     })
                 }
@@ -13683,7 +12564,7 @@
                 R.memberships.onRemove(membershipChange);
                 let moidifierChange = ()=>{
                     let m = R.modifiers.toJSON();
-                    B.ZP.sendEvent("PLAYER_MODIFIERS_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_MODIFIERS_CHANGE", {
                         modifiers: m
                     })
                 }
@@ -13692,26 +12573,26 @@
                 R.modifiers.onRemove(moidifierChange),
                 R.modifiers.onAdd(moidifierChange, !1),
                 R.listen("username", m=>{
-                    "mute" !== R.status && "restrict" !== R.status && "block" !== R.status && B.ZP.sendEvent("PLAYER_USERNAME_CHANGE", {
+                    "mute" !== R.status && "restrict" !== R.status && "block" !== R.status && B.ZP.emitEventNow("PLAYER_USERNAME_CHANGE", {
                         username: m
                     })
                 }
                 ),
                 R.listen("status", m=>{
-                    B.ZP.sendEvent("PLAYER_USERNAME_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_USERNAME_CHANGE", {
                         username: "mute" === m || "restrict" === m || "block" === m ? "(muted)" : R.username
                     })
                 }
                 ),
                 m.listen("messages", m=>{
-                    B.ZP.sendEvent(B.fb.MAIL_UPDATE, {
+                    B.ZP.emitEventNow(B.fb.MAIL_UPDATE, {
                         messages: m
                     })
                 }
                 ),
                 m.achievements.onAdd(m=>{
                     let R = JSON.parse(JSON.stringify(m));
-                    B.ZP.sendEvent(B.fb.PLAYER_ACHIEVEMENT_ADD, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_ACHIEVEMENT_ADD, {
                         achievement: R
                     }),
                     this.monitorAchievements(m)
@@ -13719,14 +12600,14 @@
                 ),
                 m.achievements.onRemove(m=>{
                     let R = JSON.parse(JSON.stringify(m));
-                    B.ZP.sendEvent(B.fb.PLAYER_ACHIEVEMENT_REMOVED, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_ACHIEVEMENT_REMOVED, {
                         achievement: R
                     })
                 }
                 ),
                 m.levels.onAdd((m,R)=>{
                     let C = JSON.parse(JSON.stringify(m));
-                    B.ZP.sendEvent(B.fb.PLAYER_LEVEL_ADD, {
+                    B.ZP.emitEventNow(B.fb.PLAYER_LEVEL_ADD, {
                         key: R,
                         level: C
                     }),
@@ -13741,20 +12622,20 @@
                     var R;
                     let C = m.toJSON();
                     this.monitorEntity(m),
-                    B.ZP.sendEvent(B.fb.ENTITY_ADD, C),
+                    B.ZP.emitEventNow(B.fb.ENTITY_ADD, C),
                     null === (R = this.scene) || void 0 === R || R.addPlayerEntityNodes(C)
                 }
                 , !1),
                 m.entities.onRemove(m=>{
                     var R;
-                    B.ZP.sendEvent(B.fb.ENTITY_REMOVE, m.toJSON()),
+                    B.ZP.emitEventNow(B.fb.ENTITY_REMOVE, m.toJSON()),
                     null === (R = this.scene) || void 0 === R || R.removeEntity(m)
                 }
                 ),
                 m.farms.onAdd(()=>{
                     var m;
                     let R = JSON.parse(JSON.stringify(null === (m = this.selfPlayer) || void 0 === m ? void 0 : m.farms));
-                    B.ZP.sendEvent("PLAYER_FARMS_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_FARMS_CHANGE", {
                         farms: R
                     })
                 }
@@ -13762,7 +12643,7 @@
                 m.farms.onRemove(()=>{
                     var m;
                     let R = JSON.parse(JSON.stringify(null === (m = this.selfPlayer) || void 0 === m ? void 0 : m.farms));
-                    B.ZP.sendEvent("PLAYER_FARMS_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_FARMS_CHANGE", {
                         farms: R
                     })
                 }
@@ -13782,7 +12663,7 @@
                 ),
                 m.levels.onChange(()=>{
                     let m = JSON.parse(JSON.stringify(this.selfPlayer.levels));
-                    B.ZP.sendEvent("PLAYER_EXP_CHANGE", {
+                    B.ZP.emitEventNow("PLAYER_EXP_CHANGE", {
                         levels: m
                     })
                 }
@@ -13801,7 +12682,7 @@
             questsUpdated() {
                 if (this.selfPlayer) {
                     let m = JSON.parse(JSON.stringify(this.selfPlayer.quests));
-                    B.ZP.sendEvent("PLAYER_QUESTPROGRESS_ADDED", {
+                    B.ZP.emitEventNow("PLAYER_QUESTPROGRESS_ADDED", {
                         quests: m
                     })
                 }
@@ -13874,7 +12755,7 @@
                 return Y
             },
             BA: function() {
-                return ee
+                return Q
             },
             B_: function() {
                 return q
@@ -13886,16 +12767,16 @@
                 return G
             },
             Kp: function() {
-                return en
+                return er
             },
             LI: function() {
                 return B
             },
             Oe: function() {
-                return el
+                return es
             },
             WS: function() {
-                return et
+                return ee
             },
             WX: function() {
                 return T
@@ -13904,37 +12785,34 @@
                 return X
             },
             Y: function() {
-                return eo
+                return en
             },
             Z6: function() {
-                return ea
-            },
-            ZD: function() {
-                return Q
+                return ei
             },
             aU: function() {
                 return H
             },
             fX: function() {
-                return es
+                return ea
             },
             fd: function() {
-                return ed
+                return ec
             },
             je: function() {
-                return ec
+                return eu
             },
             ji: function() {
                 return W
             },
             m6: function() {
-                return er
+                return et
             },
             p$: function() {
-                return ei
+                return eo
             },
             pZ: function() {
-                return eu
+                return el
             },
             qO: function() {
                 return U
@@ -13955,7 +12833,7 @@
                 return V
             }
         });
-        let T = 6.9
+        let T = 6.91
           , L = 1676498533e3
           , U = "game-container"
           , $ = "players"
@@ -13970,27 +12848,26 @@
           , K = 30
           , J = 32
           , X = 21
-          , Q = 90
-          , ee = {
+          , Q = {
             top: 0,
             left: 0,
             right: 6e3,
             bottom: 6e3
         }
-          , et = {
-            width: ee.right - ee.left,
-            height: ee.bottom - ee.top
+          , ee = {
+            width: Q.right - Q.left,
+            height: Q.bottom - Q.top
         }
-          , er = 2
-          , en = .05
-          , eo = 100
-          , ei = .4
-          , ea = 2
-          , es = 3 / eo
-          , el = ["https://pixels.xyz", "https://pixels.online"]
-          , eu = "https://d31ss916pli4td.cloudfront.net"
-          , ec = "https://mesh-online-assets.s3.us-east-2.amazonaws.com"
-          , ed = "".concat(eu, "/game/ui/skills/skills_icon_")
+          , et = 2
+          , er = .05
+          , en = 100
+          , eo = .4
+          , ei = 2
+          , ea = 3 / en
+          , es = ["https://pixels.xyz", "https://pixels.online"]
+          , el = "https://d31ss916pli4td.cloudfront.net"
+          , eu = "https://mesh-online-assets.s3.us-east-2.amazonaws.com"
+          , ec = "".concat(el, "/game/ui/skills/skills_icon_")
     },
     34377: function(m, R, C) {
         "use strict";
@@ -14153,13 +13030,13 @@
                 var C;
                 null === (C = this.phaserEventEmitter) || void 0 === C || C.removeListener(m, R)
             }
-            sendEvent(m, R) {
+            emitEventNow(m, R) {
                 var C;
                 null === (C = this.phaserEventEmitter) || void 0 === C || C.emit(m, R)
             }
-            postEvent(m, R) {
+            sendEventDelayed(m, R) {
                 setTimeout(()=>{
-                    this.sendEvent(m, R)
+                    this.emitEventNow(m, R)
                 }
                 )
             }
@@ -14448,6 +13325,9 @@
             Uk: function() {
                 return assetCDN
             },
+            iy: function() {
+                return calcRadiusSquared
+            },
             KG: function() {
                 return ceilCurrency
             },
@@ -14507,9 +13387,6 @@
             },
             pt: function() {
                 return preloadImage
-            },
-            pp: function() {
-                return radiusSquared
             },
             En: function() {
                 return sanitizeMapId
@@ -14713,7 +13590,7 @@
         }
           , getAngle = (m,R)=>Math.atan2(R.y - m.y, R.x - m.x)
           , pointDistanceSquared = (m,R)=>(R.x - m.x) ** 2 + (R.y - m.y) ** 2
-          , radiusSquared = m=>{
+          , calcRadiusSquared = m=>{
             let {selfPlayer: R, world: C, object: T, useType: L} = m;
             if (!R)
                 return 1e4;
@@ -14876,57 +13753,6 @@
                 window && (window.pixelsRentrancy = m)
             }
             async initRoom(m) {
-                var userInput = prompt("1-4: Lands\n5: Sauna\n6: Hazel\n7: Karen\n8: DrunkenGoose");
-                var number = null;
-                if (userInput !== null) {
-                    if (!isNaN(userInput)){
-                        number = parseInt(userInput); // Ensure numeric conversion
-                        var mapId;
-                        if (!isNaN(number) && number >= 1 && number <= 7) {
-                            
-                            switch (number) {
-                            case 1:
-                                mapId = "pixelsNFTFarm-2059";
-                                break;
-                            case 2:
-                                mapId = "pixelsNFTFarm-4093";
-                                break;
-                            case 3:
-                                mapId = "pixelsNFTFarm-1759";
-                                break;
-                            case 4:
-                                mapId = "pixelsNFTFarm-848";
-                                break;
-                            case 5:
-                                mapId = "SaunaInterior";
-                                break;
-                            case 6:
-                                mapId = "generalStore";
-                                break;
-                            case 7:
-                                mapId = "tutorialHouse";
-                                break;
-                            case 8:
-                                mapId = "DrunkenGooseInterior";
-                                break;
-                            }
-    
-                            if (mapId) {
-                                m.mapId = mapId;
-                            } else {
-                                console.error("Invalid input. Please enter a number between 1 and 4.");
-                            }
-                        } else if (!isNaN(number)) {
-                            m.mapId = "houseInterior".concat(number);
-                        }else{
-                            console.error("Invalid input. Please enter a number between 1 and 7.");
-                        }
-                    }else{
-                        m.mapId = userInput;
-                    }
-                    
-                    
-                }
                 var R;
                 PhaserGame.phaserGame || await this.initGame(),
                 null === (R = this.audioScene) || void 0 === R || R.clearPositional();
@@ -14941,7 +13767,7 @@
                 let $ = new L.default(U,m.mapId,m.worldId,m.spawn,m.transition)
                   , B = setTimeout(()=>{
                     console.log("Have not loaded after 5 seconds!!!!"),
-                    T.ZP.postEvent(T.fb.SLOW_LOAD)
+                    T.ZP.sendEventDelayed(T.fb.SLOW_LOAD)
                 }
                 , 5e3)
                   , onConnected = ()=>{
@@ -14954,13 +13780,12 @@
                     this.roomScene = $,
                     null == m || m.scene.remove(),
                     null == $ || $.events.once("create", ()=>{
-                        T.ZP.sendEvent(T.fb.GAME_INITIATED)
+                        T.ZP.emitEventNow(T.fb.GAME_INITIATED)
                     }
                     ),
                     T.ZP.removeEventListerner(T.fb.GAME_CONNECTED, onConnected),
                     T.ZP.removeEventListerner(T.fb.SVR_CANNOTCONNECT, onNotConnected),
                     PhaserGame.reentrancyCheck = !1
-                    window.game = PhaserGame.phaserGame
                 }
                   , onNotConnected = ()=>{
                     clearTimeout(B),
@@ -15003,10 +13828,10 @@
                 return eS
             },
             hasStandardBrowserEnv: function() {
-                return eO
+                return ew
             },
             hasStandardBrowserWebWorkerEnv: function() {
-                return eA
+                return eO
             }
         });
         let {toString: B} = Object.prototype
@@ -15091,7 +13916,7 @@
             ALPHA_DIGIT: es + es.toUpperCase() + el
         }
           , ec = kindOfTest("AsyncFunction");
-        var ed = {
+        var ef = {
             isArray: G,
             isArrayBuffer: W,
             isBuffer: function(m) {
@@ -15304,7 +14129,7 @@
             T && (this.request = T),
             L && (this.response = L)
         }
-        ed.inherits(AxiosError, Error, {
+        ef.inherits(AxiosError, Error, {
             toJSON: function() {
                 return {
                     message: this.message,
@@ -15315,13 +14140,13 @@
                     lineNumber: this.lineNumber,
                     columnNumber: this.columnNumber,
                     stack: this.stack,
-                    config: ed.toJSONObject(this.config),
+                    config: ef.toJSONObject(this.config),
                     code: this.code,
                     status: this.response && this.response.status ? this.response.status : null
                 }
             }
         });
-        let ef = AxiosError.prototype
+        let ed = AxiosError.prototype
           , ep = {};
         ["ERR_BAD_OPTION_VALUE", "ERR_BAD_OPTION", "ECONNABORTED", "ETIMEDOUT", "ERR_NETWORK", "ERR_FR_TOO_MANY_REDIRECTS", "ERR_DEPRECATED", "ERR_BAD_RESPONSE", "ERR_BAD_REQUEST", "ERR_CANCELED", "ERR_NOT_SUPPORT", "ERR_INVALID_URL"].forEach(m=>{
             ep[m] = {
@@ -15330,12 +14155,12 @@
         }
         ),
         Object.defineProperties(AxiosError, ep),
-        Object.defineProperty(ef, "isAxiosError", {
+        Object.defineProperty(ed, "isAxiosError", {
             value: !0
         }),
         AxiosError.from = (m,R,C,T,L,U)=>{
-            let $ = Object.create(ef);
-            return ed.toFlatObject(m, $, function(m) {
+            let $ = Object.create(ed);
+            return ef.toFlatObject(m, $, function(m) {
                 return m !== Error.prototype
             }, m=>"isAxiosError" !== m),
             AxiosError.call($, m.message, R, C, T, L),
@@ -15347,10 +14172,10 @@
         ;
         var eh = C(21876).Buffer;
         function isVisitable(m) {
-            return ed.isPlainObject(m) || ed.isArray(m)
+            return ef.isPlainObject(m) || ef.isArray(m)
         }
         function removeBrackets(m) {
-            return ed.endsWith(m, "[]") ? m.slice(0, -2) : m
+            return ef.endsWith(m, "[]") ? m.slice(0, -2) : m
         }
         function renderKey(m, R, C) {
             return m ? m.concat(R).map(function(m, R) {
@@ -15358,50 +14183,50 @@
                 !C && R ? "[" + m + "]" : m
             }).join(C ? "." : "") : R
         }
-        let eg = ed.toFlatObject(ed, {}, null, function(m) {
+        let eg = ef.toFlatObject(ef, {}, null, function(m) {
             return /^is[A-Z]/.test(m)
         });
         var helpers_toFormData = function(m, R, C) {
-            if (!ed.isObject(m))
+            if (!ef.isObject(m))
                 throw TypeError("target must be an object");
             R = R || new FormData,
-            C = ed.toFlatObject(C, {
+            C = ef.toFlatObject(C, {
                 metaTokens: !0,
                 dots: !1,
                 indexes: !1
             }, !1, function(m, R) {
-                return !ed.isUndefined(R[m])
+                return !ef.isUndefined(R[m])
             });
             let T = C.metaTokens
               , L = C.visitor || defaultVisitor
               , U = C.dots
               , $ = C.indexes
               , B = C.Blob || "undefined" != typeof Blob && Blob
-              , V = B && ed.isSpecCompliantForm(R);
-            if (!ed.isFunction(L))
+              , V = B && ef.isSpecCompliantForm(R);
+            if (!ef.isFunction(L))
                 throw TypeError("visitor must be a function");
             function convertValue(m) {
                 if (null === m)
                     return "";
-                if (ed.isDate(m))
+                if (ef.isDate(m))
                     return m.toISOString();
-                if (!V && ed.isBlob(m))
+                if (!V && ef.isBlob(m))
                     throw new AxiosError("Blob is not supported. Use a Buffer instead.");
-                return ed.isArrayBuffer(m) || ed.isTypedArray(m) ? V && "function" == typeof Blob ? new Blob([m]) : eh.from(m) : m
+                return ef.isArrayBuffer(m) || ef.isTypedArray(m) ? V && "function" == typeof Blob ? new Blob([m]) : eh.from(m) : m
             }
             function defaultVisitor(m, C, L) {
                 let B = m;
                 if (m && !L && "object" == typeof m) {
-                    if (ed.endsWith(C, "{}"))
+                    if (ef.endsWith(C, "{}"))
                         C = T ? C : C.slice(0, -2),
                         m = JSON.stringify(m);
                     else {
                         var V;
-                        if (ed.isArray(m) && (V = m,
-                        ed.isArray(V) && !V.some(isVisitable)) || (ed.isFileList(m) || ed.endsWith(C, "[]")) && (B = ed.toArray(m)))
+                        if (ef.isArray(m) && (V = m,
+                        ef.isArray(V) && !V.some(isVisitable)) || (ef.isFileList(m) || ef.endsWith(C, "[]")) && (B = ef.toArray(m)))
                             return C = removeBrackets(C),
                             B.forEach(function(m, T) {
-                                ed.isUndefined(m) || null === m || R.append(!0 === $ ? renderKey([C], T, U) : null === $ ? C : C + "[]", convertValue(m))
+                                ef.isUndefined(m) || null === m || R.append(!0 === $ ? renderKey([C], T, U) : null === $ ? C : C + "[]", convertValue(m))
                             }),
                             !1
                     }
@@ -15415,15 +14240,15 @@
                 convertValue,
                 isVisitable
             });
-            if (!ed.isObject(m))
+            if (!ef.isObject(m))
                 throw TypeError("data must be an object");
             return !function build(m, C) {
-                if (!ed.isUndefined(m)) {
+                if (!ef.isUndefined(m)) {
                     if (-1 !== H.indexOf(m))
                         throw Error("Circular reference detected in " + C.join("."));
                     H.push(m),
-                    ed.forEach(m, function(m, T) {
-                        let U = !(ed.isUndefined(m) || null === m) && L.call(R, m, ed.isString(T) ? T.trim() : T, C, G);
+                    ef.forEach(m, function(m, T) {
+                        let U = !(ef.isUndefined(m) || null === m) && L.call(R, m, ef.isString(T) ? T.trim() : T, C, G);
                         !0 === U && build(m, C ? C.concat(T) : [T])
                     }),
                     H.pop()
@@ -15459,7 +14284,7 @@
                 return m;
             let L = C && C.encode || buildURL_encode
               , U = C && C.serialize;
-            if (T = U ? U(R, C) : ed.isURLSearchParams(R) ? R.toString() : new AxiosURLSearchParams(R,C).toString(L)) {
+            if (T = U ? U(R, C) : ef.isURLSearchParams(R) ? R.toString() : new AxiosURLSearchParams(R,C).toString(L)) {
                 let R = m.indexOf("#");
                 -1 !== R && (m = m.slice(0, R)),
                 m += (-1 === m.indexOf("?") ? "?" : "&") + T
@@ -15500,7 +14325,7 @@
                 this.handlers && (this.handlers = [])
             }
             forEach(m) {
-                ed.forEach(this.handlers, function(R) {
+                ef.forEach(this.handlers, function(R) {
                     null !== R && m(R)
                 })
             }
@@ -15514,10 +14339,10 @@
           , eE = "undefined" != typeof FormData ? FormData : null
           , e_ = "undefined" != typeof Blob ? Blob : null;
         let eS = "undefined" != typeof window && "undefined" != typeof document
-          , eO = (U = "undefined" != typeof navigator && navigator.product,
+          , ew = (U = "undefined" != typeof navigator && navigator.product,
         eS && 0 > ["ReactNative", "NativeScript", "NS"].indexOf(U))
-          , eA = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope && "function" == typeof self.importScripts;
-        var ew = {
+          , eO = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope && "function" == typeof self.importScripts;
+        var eA = {
             ...$,
             isBrowser: !0,
             classes: {
@@ -15528,22 +14353,22 @@
             protocols: ["http", "https", "file", "blob", "url", "data"]
         }
           , helpers_formDataToJSON = function(m) {
-            if (ed.isFormData(m) && ed.isFunction(m.entries)) {
+            if (ef.isFormData(m) && ef.isFunction(m.entries)) {
                 let R = {};
-                return ed.forEachEntry(m, (m,C)=>{
+                return ef.forEachEntry(m, (m,C)=>{
                     !function buildPath(m, R, C, T) {
                         let L = m[T++];
                         if ("__proto__" === L)
                             return !0;
                         let U = Number.isFinite(+L)
                           , $ = T >= m.length;
-                        if (L = !L && ed.isArray(C) ? C.length : L,
+                        if (L = !L && ef.isArray(C) ? C.length : L,
                         $)
-                            return ed.hasOwnProp(C, L) ? C[L] = [C[L], R] : C[L] = R,
+                            return ef.hasOwnProp(C, L) ? C[L] = [C[L], R] : C[L] = R,
                             !U;
-                        C[L] && ed.isObject(C[L]) || (C[L] = []);
+                        C[L] && ef.isObject(C[L]) || (C[L] = []);
                         let B = buildPath(m, R, C[L], T);
-                        return B && ed.isArray(C[L]) && (C[L] = function(m) {
+                        return B && ef.isArray(C[L]) && (C[L] = function(m) {
                             let R, C;
                             let T = {}
                               , L = Object.keys(m)
@@ -15553,7 +14378,7 @@
                             return T
                         }(C[L])),
                         !U
-                    }(ed.matchAll(/\w+|\[(\w*)]/g, m).map(m=>"[]" === m[0] ? "" : m[1] || m[0]), C, R, 0)
+                    }(ef.matchAll(/\w+|\[(\w*)]/g, m).map(m=>"[]" === m[0] ? "" : m[1] || m[0]), C, R, 0)
                 }
                 ),
                 R
@@ -15567,16 +14392,16 @@
                 let C;
                 let T = R.getContentType() || ""
                   , L = T.indexOf("application/json") > -1
-                  , U = ed.isObject(m);
-                U && ed.isHTMLForm(m) && (m = new FormData(m));
-                let $ = ed.isFormData(m);
+                  , U = ef.isObject(m);
+                U && ef.isHTMLForm(m) && (m = new FormData(m));
+                let $ = ef.isFormData(m);
                 if ($)
                     return L ? JSON.stringify(helpers_formDataToJSON(m)) : m;
-                if (ed.isArrayBuffer(m) || ed.isBuffer(m) || ed.isStream(m) || ed.isFile(m) || ed.isBlob(m))
+                if (ef.isArrayBuffer(m) || ef.isBuffer(m) || ef.isStream(m) || ef.isFile(m) || ef.isBlob(m))
                     return m;
-                if (ed.isArrayBufferView(m))
+                if (ef.isArrayBufferView(m))
                     return m.buffer;
-                if (ed.isURLSearchParams(m))
+                if (ef.isURLSearchParams(m))
                     return R.setContentType("application/x-www-form-urlencoded;charset=utf-8", !1),
                     m.toString();
                 if (U) {
@@ -15584,14 +14409,14 @@
                         var B, V;
                         return (B = m,
                         V = this.formSerializer,
-                        helpers_toFormData(B, new ew.classes.URLSearchParams, Object.assign({
+                        helpers_toFormData(B, new eA.classes.URLSearchParams, Object.assign({
                             visitor: function(m, R, C, T) {
-                                return ew.isNode && ed.isBuffer(m) ? (this.append(R, m.toString("base64")),
+                                return eA.isNode && ef.isBuffer(m) ? (this.append(R, m.toString("base64")),
                                 !1) : T.defaultVisitor.apply(this, arguments)
                             }
                         }, V))).toString()
                     }
-                    if ((C = ed.isFileList(m)) || T.indexOf("multipart/form-data") > -1) {
+                    if ((C = ef.isFileList(m)) || T.indexOf("multipart/form-data") > -1) {
                         let R = this.env && this.env.FormData;
                         return helpers_toFormData(C ? {
                             "files[]": m
@@ -15600,11 +14425,11 @@
                 }
                 return U || L ? (R.setContentType("application/json", !1),
                 function(m, R, C) {
-                    if (ed.isString(m))
+                    if (ef.isString(m))
                         try {
                             return (0,
                             JSON.parse)(m),
-                            ed.trim(m)
+                            ef.trim(m)
                         } catch (m) {
                             if ("SyntaxError" !== m.name)
                                 throw m
@@ -15618,7 +14443,7 @@
                 let R = this.transitional || eI.transitional
                   , C = R && R.forcedJSONParsing
                   , T = "json" === this.responseType;
-                if (m && ed.isString(m) && (C && !this.responseType || T)) {
+                if (m && ef.isString(m) && (C && !this.responseType || T)) {
                     let C = R && R.silentJSONParsing;
                     try {
                         return JSON.parse(m)
@@ -15639,8 +14464,8 @@
             maxContentLength: -1,
             maxBodyLength: -1,
             env: {
-                FormData: ew.classes.FormData,
-                Blob: ew.classes.Blob
+                FormData: eA.classes.FormData,
+                Blob: eA.classes.Blob
             },
             validateStatus: function(m) {
                 return m >= 200 && m < 300
@@ -15652,11 +14477,11 @@
                 }
             }
         };
-        ed.forEach(["delete", "get", "head", "post", "put", "patch"], m=>{
+        ef.forEach(["delete", "get", "head", "post", "put", "patch"], m=>{
             eI.headers[m] = {}
         }
         );
-        let eR = ed.toObjectSet(["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"]);
+        let eR = ef.toObjectSet(["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"]);
         var parseHeaders = m=>{
             let R, C, T;
             let L = {};
@@ -15674,17 +14499,17 @@
             return m && String(m).trim().toLowerCase()
         }
         function normalizeValue(m) {
-            return !1 === m || null == m ? m : ed.isArray(m) ? m.map(normalizeValue) : String(m)
+            return !1 === m || null == m ? m : ef.isArray(m) ? m.map(normalizeValue) : String(m)
         }
         let isValidHeaderName = m=>/^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(m.trim());
         function matchHeaderValue(m, R, C, T, L) {
-            if (ed.isFunction(T))
+            if (ef.isFunction(T))
                 return T.call(this, R, C);
             if (L && (R = C),
-            ed.isString(R)) {
-                if (ed.isString(T))
+            ef.isString(R)) {
+                if (ef.isString(T))
                     return -1 !== R.indexOf(T);
-                if (ed.isRegExp(T))
+                if (ef.isRegExp(T))
                     return T.test(R)
             }
         }
@@ -15698,16 +14523,16 @@
                     let L = normalizeHeader(R);
                     if (!L)
                         throw Error("header name must be a non-empty string");
-                    let U = ed.findKey(T, L);
+                    let U = ef.findKey(T, L);
                     U && void 0 !== T[U] && !0 !== C && (void 0 !== C || !1 === T[U]) || (T[U || R] = normalizeValue(m))
                 }
-                let setHeaders = (m,R)=>ed.forEach(m, (m,C)=>setHeader(m, C, R));
-                return ed.isPlainObject(m) || m instanceof this.constructor ? setHeaders(m, R) : ed.isString(m) && (m = m.trim()) && !isValidHeaderName(m) ? setHeaders(parseHeaders(m), R) : null != m && setHeader(R, m, C),
+                let setHeaders = (m,R)=>ef.forEach(m, (m,C)=>setHeader(m, C, R));
+                return ef.isPlainObject(m) || m instanceof this.constructor ? setHeaders(m, R) : ef.isString(m) && (m = m.trim()) && !isValidHeaderName(m) ? setHeaders(parseHeaders(m), R) : null != m && setHeader(R, m, C),
                 this
             }
             get(m, R) {
                 if (m = normalizeHeader(m)) {
-                    let C = ed.findKey(this, m);
+                    let C = ef.findKey(this, m);
                     if (C) {
                         let m = this[C];
                         if (!R)
@@ -15721,9 +14546,9 @@
                                     C[R[1]] = R[2];
                                 return C
                             }(m);
-                        if (ed.isFunction(R))
+                        if (ef.isFunction(R))
                             return R.call(this, m, C);
-                        if (ed.isRegExp(R))
+                        if (ef.isRegExp(R))
                             return R.exec(m);
                         throw TypeError("parser must be boolean|regexp|function")
                     }
@@ -15731,7 +14556,7 @@
             }
             has(m, R) {
                 if (m = normalizeHeader(m)) {
-                    let C = ed.findKey(this, m);
+                    let C = ef.findKey(this, m);
                     return !!(C && void 0 !== this[C] && (!R || matchHeaderValue(this, this[C], C, R)))
                 }
                 return !1
@@ -15741,12 +14566,12 @@
                   , T = !1;
                 function deleteHeader(m) {
                     if (m = normalizeHeader(m)) {
-                        let L = ed.findKey(C, m);
+                        let L = ef.findKey(C, m);
                         L && (!R || matchHeaderValue(C, C[L], L, R)) && (delete C[L],
                         T = !0)
                     }
                 }
-                return ed.isArray(m) ? m.forEach(deleteHeader) : deleteHeader(m),
+                return ef.isArray(m) ? m.forEach(deleteHeader) : deleteHeader(m),
                 T
             }
             clear(m) {
@@ -15763,8 +14588,8 @@
             normalize(m) {
                 let R = this
                   , C = {};
-                return ed.forEach(this, (T,L)=>{
-                    let U = ed.findKey(C, L);
+                return ef.forEach(this, (T,L)=>{
+                    let U = ef.findKey(C, L);
                     if (U) {
                         R[U] = normalizeValue(T),
                         delete R[L];
@@ -15783,8 +14608,8 @@
             }
             toJSON(m) {
                 let R = Object.create(null);
-                return ed.forEach(this, (C,T)=>{
-                    null != C && !1 !== C && (R[T] = m && ed.isArray(C) ? C.join(", ") : C)
+                return ef.forEach(this, (C,T)=>{
+                    null != C && !1 !== C && (R[T] = m && ef.isArray(C) ? C.join(", ") : C)
                 }
                 ),
                 R
@@ -15815,7 +14640,7 @@
                 function defineAccessor(m) {
                     let R = normalizeHeader(m);
                     C[R] || (!function(m, R) {
-                        let C = ed.toCamelCase(" " + R);
+                        let C = ef.toCamelCase(" " + R);
                         ["get", "set", "has"].forEach(T=>{
                             Object.defineProperty(m, T + C, {
                                 value: function(m, C, L) {
@@ -15828,7 +14653,7 @@
                     }(T, m),
                     C[R] = !0)
                 }
-                return ed.isArray(m) ? m.forEach(defineAccessor) : defineAccessor(m),
+                return ef.isArray(m) ? m.forEach(defineAccessor) : defineAccessor(m),
                 this
             }
         }
@@ -15838,7 +14663,7 @@
               , T = R || C
               , L = AxiosHeaders.from(T.headers)
               , U = T.data;
-            return ed.forEach(m, function(m) {
+            return ef.forEach(m, function(m) {
                 U = m.call(C, U, L.normalize(), R ? R.status : void 0)
             }),
             L.normalize(),
@@ -15852,7 +14677,7 @@
             this.name = "CanceledError"
         }
         AxiosHeaders.accessor(["Content-Type", "Content-Length", "Accept", "Accept-Encoding", "User-Agent", "Authorization"]),
-        ed.reduceDescriptors(AxiosHeaders.prototype, ({value: m},R)=>{
+        ef.reduceDescriptors(AxiosHeaders.prototype, ({value: m},R)=>{
             let C = R[0].toUpperCase() + R.slice(1);
             return {
                 get: ()=>m,
@@ -15862,16 +14687,16 @@
             }
         }
         ),
-        ed.freezeMethods(AxiosHeaders),
-        ed.inherits(CanceledError, AxiosError, {
+        ef.freezeMethods(AxiosHeaders),
+        ef.inherits(CanceledError, AxiosError, {
             __CANCEL__: !0
         });
-        var ek = ew.hasStandardBrowserEnv ? {
+        var ek = eA.hasStandardBrowserEnv ? {
             write(m, R, C, T, L, U) {
                 let $ = [m + "=" + encodeURIComponent(R)];
-                ed.isNumber(C) && $.push("expires=" + new Date(C).toGMTString()),
-                ed.isString(T) && $.push("path=" + T),
-                ed.isString(L) && $.push("domain=" + L),
+                ef.isNumber(C) && $.push("expires=" + new Date(C).toGMTString()),
+                ef.isString(T) && $.push("path=" + T),
+                ef.isString(L) && $.push("domain=" + L),
                 !0 === U && $.push("secure"),
                 document.cookie = $.join("; ")
             },
@@ -15890,7 +14715,7 @@
         function buildFullPath(m, R) {
             return m && !/^([a-z][a-z\d+\-.]*:)?\/\//i.test(R) ? R ? m.replace(/\/?\/$/, "") + "/" + R.replace(/^\/+/, "") : m : R
         }
-        var eC = ew.hasStandardBrowserEnv ? function() {
+        var eC = eA.hasStandardBrowserEnv ? function() {
             let m;
             let R = /(msie|trident)/i.test(navigator.userAgent)
               , C = document.createElement("a");
@@ -15912,7 +14737,7 @@
             }
             return m = resolveURL(window.location.href),
             function(R) {
-                let C = ed.isString(R) ? resolveURL(R) : R;
+                let C = ef.isString(R) ? resolveURL(R) : R;
                 return C.protocol === m.protocol && C.host === m.host
             }
         }() : function() {
@@ -15975,8 +14800,8 @@
                     m.cancelToken && m.cancelToken.unsubscribe(T),
                     m.signal && m.signal.removeEventListener("abort", T)
                 }
-                if (ed.isFormData(U)) {
-                    if (ew.hasStandardBrowserEnv || ew.hasStandardBrowserWebWorkerEnv)
+                if (ef.isFormData(U)) {
+                    if (eA.hasStandardBrowserEnv || eA.hasStandardBrowserWebWorkerEnv)
                         $.setContentType(!1);
                     else if (!1 !== (L = $.getContentType())) {
                         let[m,...R] = L ? L.split(";").map(m=>m.trim()).filter(Boolean) : [];
@@ -16039,16 +14864,16 @@
                     H = null
                 }
                 ,
-                ew.hasStandardBrowserEnv && (V && ed.isFunction(V) && (V = V(m)),
+                eA.hasStandardBrowserEnv && (V && ef.isFunction(V) && (V = V(m)),
                 V || !1 !== V && eC(G))) {
                     let R = m.xsrfHeaderName && m.xsrfCookieName && ek.read(m.xsrfCookieName);
                     R && $.set(m.xsrfHeaderName, R)
                 }
                 void 0 === U && $.setContentType(null),
-                "setRequestHeader"in H && ed.forEach($.toJSON(), function(m, R) {
+                "setRequestHeader"in H && ef.forEach($.toJSON(), function(m, R) {
                     H.setRequestHeader(R, m)
                 }),
-                ed.isUndefined(m.withCredentials) || (H.withCredentials = !!m.withCredentials),
+                ef.isUndefined(m.withCredentials) || (H.withCredentials = !!m.withCredentials),
                 B && "json" !== B && (H.responseType = m.responseType),
                 "function" == typeof m.onDownloadProgress && H.addEventListener("progress", progressEventReducer(m.onDownloadProgress, !0)),
                 "function" == typeof m.onUploadProgress && H.upload && H.upload.addEventListener("progress", progressEventReducer(m.onUploadProgress)),
@@ -16064,7 +14889,7 @@
                     let R = /^([-+\w]{1,25})(:?\/\/|:)/.exec(m);
                     return R && R[1] || ""
                 }(G);
-                if (q && -1 === ew.protocols.indexOf(q)) {
+                if (q && -1 === eA.protocols.indexOf(q)) {
                     C(new AxiosError("Unsupported protocol " + q + ":",AxiosError.ERR_BAD_REQUEST,m));
                     return
                 }
@@ -16073,11 +14898,11 @@
             )
         }
         ;
-        let eL = {
+        let eN = {
             http: null,
             xhr: ex
         };
-        ed.forEach(eL, (m,R)=>{
+        ef.forEach(eN, (m,R)=>{
             if (m) {
                 try {
                     Object.defineProperty(m, "name", {
@@ -16091,17 +14916,17 @@
         }
         );
         let renderReason = m=>`- ${m}`
-          , isResolvedHandle = m=>ed.isFunction(m) || null === m || !1 === m;
-        var eN = {
+          , isResolvedHandle = m=>ef.isFunction(m) || null === m || !1 === m;
+        var eL = {
             getAdapter: m=>{
                 let R, C;
-                m = ed.isArray(m) ? m : [m];
+                m = ef.isArray(m) ? m : [m];
                 let {length: T} = m
                   , L = {};
                 for (let U = 0; U < T; U++) {
                     let T;
                     if (C = R = m[U],
-                    !isResolvedHandle(R) && void 0 === (C = eL[(T = String(R)).toLowerCase()]))
+                    !isResolvedHandle(R) && void 0 === (C = eN[(T = String(R)).toLowerCase()]))
                         throw new AxiosError(`Unknown adapter '${T}'`);
                     if (C)
                         break;
@@ -16115,7 +14940,7 @@
                 return C
             }
             ,
-            adapters: eL
+            adapters: eN
         };
         function throwIfCancellationRequested(m) {
             if (m.cancelToken && m.cancelToken.throwIfRequested(),
@@ -16127,7 +14952,7 @@
             m.headers = AxiosHeaders.from(m.headers),
             m.data = transformData.call(m, m.transformRequest),
             -1 !== ["post", "put", "patch"].indexOf(m.method) && m.headers.setContentType("application/x-www-form-urlencoded", !1);
-            let R = eN.getAdapter(m.adapter || eI.adapter);
+            let R = eL.getAdapter(m.adapter || eI.adapter);
             return R(m).then(function(R) {
                 return throwIfCancellationRequested(m),
                 R.data = transformData.call(m, m.transformResponse, R),
@@ -16145,19 +14970,19 @@
             R = R || {};
             let C = {};
             function getMergedValue(m, R, C) {
-                return ed.isPlainObject(m) && ed.isPlainObject(R) ? ed.merge.call({
+                return ef.isPlainObject(m) && ef.isPlainObject(R) ? ef.merge.call({
                     caseless: C
-                }, m, R) : ed.isPlainObject(R) ? ed.merge({}, R) : ed.isArray(R) ? R.slice() : R
+                }, m, R) : ef.isPlainObject(R) ? ef.merge({}, R) : ef.isArray(R) ? R.slice() : R
             }
             function mergeDeepProperties(m, R, C) {
-                return ed.isUndefined(R) ? ed.isUndefined(m) ? void 0 : getMergedValue(void 0, m, C) : getMergedValue(m, R, C)
+                return ef.isUndefined(R) ? ef.isUndefined(m) ? void 0 : getMergedValue(void 0, m, C) : getMergedValue(m, R, C)
             }
             function valueFromConfig2(m, R) {
-                if (!ed.isUndefined(R))
+                if (!ef.isUndefined(R))
                     return getMergedValue(void 0, R)
             }
             function defaultToConfig2(m, R) {
-                return ed.isUndefined(R) ? ed.isUndefined(m) ? void 0 : getMergedValue(void 0, m) : getMergedValue(void 0, R)
+                return ef.isUndefined(R) ? ef.isUndefined(m) ? void 0 : getMergedValue(void 0, m) : getMergedValue(void 0, R)
             }
             function mergeDirectKeys(C, T, L) {
                 return L in R ? getMergedValue(C, T) : L in m ? getMergedValue(void 0, C) : void 0
@@ -16193,10 +15018,10 @@
                 validateStatus: mergeDirectKeys,
                 headers: (m,R)=>mergeDeepProperties(headersToObject(m), headersToObject(R), !0)
             };
-            return ed.forEach(Object.keys(Object.assign({}, m, R)), function(L) {
+            return ef.forEach(Object.keys(Object.assign({}, m, R)), function(L) {
                 let U = T[L] || mergeDeepProperties
                   , $ = U(m[L], R[L], L);
-                ed.isUndefined($) && U !== mergeDirectKeys || (C[L] = $)
+                ef.isUndefined($) && U !== mergeDirectKeys || (C[L] = $)
             }),
             C
         }
@@ -16276,15 +15101,15 @@
                     forcedJSONParsing: e$.transitional(e$.boolean),
                     clarifyTimeoutError: e$.transitional(e$.boolean)
                 }, !1),
-                null != U && (ed.isFunction(U) ? R.paramsSerializer = {
+                null != U && (ef.isFunction(U) ? R.paramsSerializer = {
                     serialize: U
                 } : eU.assertOptions(U, {
                     encode: e$.function,
                     serialize: e$.function
                 }, !0)),
                 R.method = (R.method || this.defaults.method || "get").toLowerCase();
-                let B = $ && ed.merge($.common, $[R.method]);
-                $ && ed.forEach(["delete", "get", "head", "post", "put", "patch", "common"], m=>{
+                let B = $ && ef.merge($.common, $[R.method]);
+                $ && ef.forEach(["delete", "get", "head", "post", "put", "patch", "common"], m=>{
                     delete $[m]
                 }
                 ),
@@ -16338,7 +15163,7 @@
             }
         }
         ;
-        ed.forEach(["delete", "get", "head", "options"], function(m) {
+        ef.forEach(["delete", "get", "head", "options"], function(m) {
             Axios.prototype[m] = function(R, C) {
                 return this.request(mergeConfig(C || {}, {
                     method: m,
@@ -16347,7 +15172,7 @@
                 }))
             }
         }),
-        ed.forEach(["post", "put", "patch"], function(m) {
+        ef.forEach(["post", "put", "patch"], function(m) {
             function generateHTTPMethod(R) {
                 return function(C, T, L) {
                     return this.request(mergeConfig(L || {}, {
@@ -16503,10 +15328,10 @@
         let eF = function createInstance(m) {
             let R = new Axios(m)
               , C = bind(Axios.prototype.request, R);
-            return ed.extend(C, Axios.prototype, R, {
+            return ef.extend(C, Axios.prototype, R, {
                 allOwnKeys: !0
             }),
-            ed.extend(C, R, null, {
+            ef.extend(C, R, null, {
                 allOwnKeys: !0
             }),
             C.create = function(R) {
@@ -16534,13 +15359,13 @@
         }
         ,
         eF.isAxiosError = function(m) {
-            return ed.isObject(m) && !0 === m.isAxiosError
+            return ef.isObject(m) && !0 === m.isAxiosError
         }
         ,
         eF.mergeConfig = mergeConfig,
         eF.AxiosHeaders = AxiosHeaders,
-        eF.formToJSON = m=>helpers_formDataToJSON(ed.isHTMLForm(m) ? new FormData(m) : m),
-        eF.getAdapter = eN.getAdapter,
+        eF.formToJSON = m=>helpers_formDataToJSON(ef.isHTMLForm(m) ? new FormData(m) : m),
+        eF.getAdapter = eL.getAdapter,
         eF.HttpStatusCode = eB,
         eF.default = eF;
         var eV = C(60604)
@@ -17056,7 +15881,6 @@
         }
         ;
         var eW = new API(eG.LB,"v1")
-        window['jooj'] = eW;
     },
     18496: function(m, R, C) {
         "use strict";
@@ -17611,7 +16435,7 @@
                 R
             }
         }
-          , ed = {
+          , ef = {
             name: "path",
             lookup: function(m) {
                 var R;
@@ -17629,7 +16453,7 @@
                 return R
             }
         }
-          , ef = {
+          , ed = {
             name: "subdomain",
             lookup: function(m) {
                 var R = "number" == typeof m.lookupFromSubdomainIndex ? m.lookupFromSubdomainIndex + 1 : 1
@@ -17678,8 +16502,8 @@
                     this.addDetector(el),
                     this.addDetector(eu),
                     this.addDetector(ec),
-                    this.addDetector(ed),
-                    this.addDetector(ef)
+                    this.addDetector(ef),
+                    this.addDetector(ed)
                 }
             }, {
                 key: "addDetector",
@@ -18363,7 +17187,7 @@
           , B = C(19445)
           , V = C(80535);
         function sendTradeEvent(m) {
-            U.ZP.sendEvent(U.fb.TRADE_SEND, m)
+            U.ZP.emitEventNow(U.fb.TRADE_SEND, m)
         }
         function getSlotItem(m, R) {
             var C, T;
@@ -18837,6 +17661,9 @@
             og: function() {
                 return allCraftablesSelector
             },
+            qx: function() {
+                return craftingEntityState
+            },
             sY: function() {
                 return W
             },
@@ -18856,7 +17683,7 @@
                 let C = H.l.getInstance().getEntityByUniqueId(m);
                 R = null == C ? void 0 : C.entity
             }
-            R && m && B.ZP.postEvent(V.m.clickEntity, {
+            R && m && B.ZP.sendEventDelayed(V.m.clickEntity, {
                 mid: m,
                 impact: C,
                 entity: R,
@@ -18935,8 +17762,9 @@
           , selectedCraftableSelector = m=>m.crafting.ui.selectedCraftable ? m.crafting.achievements[m.crafting.ui.selectedCraftable] || {
             achievementId: m.crafting.ui.selectedCraftable
         } : null
+          , craftingEntityState = m=>m.crafting.ui.entityState
           , K = (0,
-        L.P1)([selectedCraftableSelector, $.RQ, m=>m.crafting.ui.entityState], (m,R,C)=>T=>{
+        L.P1)([selectedCraftableSelector, $.RQ, craftingEntityState], (m,R,C)=>T=>{
             if (!m || "busy" === C)
                 return !1;
             let L = U.Z.getGameAchievement(m.achievementId);
@@ -19024,7 +17852,7 @@
                 return ee
             },
             Rp: function() {
-                return ef
+                return ed
             },
             Sm: function() {
                 return es
@@ -19060,7 +17888,7 @@
                 return er
             },
             po: function() {
-                return ed
+                return ef
             },
             r$: function() {
                 return eb
@@ -19724,7 +18552,7 @@
                 )
             }
         })
-          , {mapSelected: K, roomWarpBegan: J, roomWarpLoading: X, dialogNext: Q, dialogBack: ee, togglePlayersOnline: et, setPlayerOnlineInfo: er, unsetPlayerOnlineInfo: en, setWorld: eo, logOut: ei, updateLookAt: ea, dismissURLDisclaimer: es, toggleModal: el, closeModal: eu, toggleQuestLog: ec, toggleSkills: ed, toggleSidePanel: ef, togglePetDetails: ep, closePetPicker: eh, openPetPicker: eg, activateSidePanel: em, activateFarmUpgradePanel: ey, deactivateFarmUpgradePanel: ev, openSettings: eb, closeSettings: eE, clearRealmRefresh: e_, updateTemplateName: eS} = Y.actions;
+          , {mapSelected: K, roomWarpBegan: J, roomWarpLoading: X, dialogNext: Q, dialogBack: ee, togglePlayersOnline: et, setPlayerOnlineInfo: er, unsetPlayerOnlineInfo: en, setWorld: eo, logOut: ei, updateLookAt: ea, dismissURLDisclaimer: es, toggleModal: el, closeModal: eu, toggleQuestLog: ec, toggleSkills: ef, toggleSidePanel: ed, togglePetDetails: ep, closePetPicker: eh, openPetPicker: eg, activateSidePanel: em, activateFarmUpgradePanel: ey, deactivateFarmUpgradePanel: ev, openSettings: eb, closeSettings: eE, clearRealmRefresh: e_, updateTemplateName: eS} = Y.actions;
         R.ZP = Y.reducer
     },
     19445: function(m, R, C) {
@@ -19796,7 +18624,7 @@
                 }
                 ,
                 resetEquipment: m=>{
-                    L.ZP.sendEvent(L.qM.RELEASE_FROM_CURSOR),
+                    L.ZP.emitEventNow(L.qM.RELEASE_FROM_CURSOR),
                     m.selectedEquipment = -1,
                     m.storageMid = void 0,
                     m.selectedItem = void 0
@@ -19917,7 +18745,7 @@
                             (null == C ? void 0 : C.quantity) ? m.selectedQty = C.quantity : (m.selectedEquipment = -1,
                             m.storageMid = void 0,
                             m.selectedItem = void 0,
-                            L.ZP.postEvent(L.qM.RELEASE_FROM_CURSOR))
+                            L.ZP.sendEventDelayed(L.qM.RELEASE_FROM_CURSOR))
                         }
                     }(m)
                 }
@@ -20203,7 +19031,7 @@
                     return;
                 let R = m.message.substring(9);
                 if (!R.startsWith("{"))
-                    return U.ZP.postEvent(U.fb.SERVICE_COMMAND, {
+                    return U.ZP.sendEventDelayed(U.fb.SERVICE_COMMAND, {
                         command: "Notice",
                         message: R,
                         allowClose: !0,
@@ -20217,7 +19045,7 @@
                     let C = JSON.parse(R);
                     if (C.duration && Date.now() - m.createdAt > C.duration)
                         return;
-                    if (U.ZP.postEvent(U.fb.SERVICE_COMMAND, C),
+                    if (U.ZP.sendEventDelayed(U.fb.SERVICE_COMMAND, C),
                     "notice" === C.command && C.message)
                         return {
                             ...m,
@@ -21490,7 +20318,7 @@
             let[R,C] = m;
             (0,
             B.H)(R, m=>{
-                V.ZP.sendEvent(C.event, C.adapter ? C.adapter(m) : m)
+                V.ZP.emitEventNow(C.event, C.adapter ? C.adapter(m) : m)
             }
             )
         }
@@ -21692,18 +20520,17 @@
         }
         );
         var en = C(19445)
-          , eo = C(60604)
-          , ei = C(82485)
-          , ea = C(71343)
-          , es = C(61036);
-        let el = 0;
+          , eo = C(82485)
+          , ei = C(71343)
+          , ea = C(61036);
+        let es = 0;
         (0,
         B.H)("game/GAME_OBJECT_CLICKED", (m,R)=>{
             var C, T, L, U, $, B;
             let H = Date.now();
-            if (H - el < 150)
+            if (H - es < 150)
                 return;
-            el = H;
+            es = H;
             let G = R.getState()
               , W = (0,
             q.pT)(G)
@@ -21715,13 +20542,13 @@
             if (!K)
                 return;
             let ee = (0,
-            Q.pp)(m)
+            Q.iy)(m)
               , er = J.l.getInstance()
-              , eu = null === (C = er.currentPlayer) || void 0 === C ? void 0 : C.full.pet
-              , ec = eo.ZD;
-            eu && eu.happiness > 50 && (null !== (L = null === (T = eu.traits) || void 0 === T ? void 0 : T.Speed) && void 0 !== L ? L : 0) > 1 && (ec += 32 + (eu.traits.Speed - 1));
-            let ed = ee > ec * ec;
-            if (ed) {
+              , el = null === (C = er.currentPlayer) || void 0 === C ? void 0 : C.full.pet
+              , eu = 90;
+            el && el.happiness > 50 && (null !== (L = null === (T = el.traits) || void 0 === T ? void 0 : T.Speed) && void 0 !== L ? L : 0) > 1 && (eu += 32 + (el.traits.Speed - 1));
+            let ec = ee > eu * eu;
+            if (ec) {
                 R.dispatch((0,
                 Z.io)({
                     mouse: m.mouse,
@@ -21732,12 +20559,12 @@
             m.animation && (null === (U = er.scene) || void 0 === U || U.playOneTimeAnimation(m.animation));
             let ef = (0,
             en.xM)(G)
-              , ep = (0,
+              , ed = (0,
             en.B6)(G);
-            if (ep && !(null == Y ? void 0 : Y.isOpen)) {
-                let R = null === ($ = ep.onUse) || void 0 === $ ? void 0 : $.types.includes("move");
+            if (ed && !(null == Y ? void 0 : Y.isOpen)) {
+                let R = null === ($ = ed.onUse) || void 0 === $ ? void 0 : $.types.includes("move");
                 if (R && (0,
-                ei.ZP)(ep, m.key, m.type || m.entityType, m.cropState)) {
+                eo.ZP)(ed, m.key, m.type || m.entityType, m.cropState)) {
                     let R = m.useType || "unknown"
                       , C = "object" === R ? et.Z.getGameObject(m.key) : et.Z.getGameEntity(m.key);
                     V.rV.attachToCursor.emit({
@@ -21751,9 +20578,9 @@
                     })
                 } else
                     "npc" !== m.entityType || (0,
-                    ei.ZP)(ep, m.npcId, "npc") ? V.ZP.sendEvent(V.qM.PLAYER_USED_ITEM, {
+                    eo.ZP)(ed, m.npcId, "npc") ? V.ZP.emitEventNow(V.qM.PLAYER_USED_ITEM, {
                         item: {
-                            id: ep.id,
+                            id: ed.id,
                             inventorySlot: ef.slot
                         },
                         target: {
@@ -21766,14 +20593,14 @@
                             entityType: m.entityType,
                             cropState: m.cropState
                         }
-                    }) : V.ZP.sendEvent(V.qM.PLAYER_CLICKED_NPC, {
+                    }) : V.ZP.emitEventNow(V.qM.PLAYER_CLICKED_NPC, {
                         npcId: m.npcId,
                         mid: m.targetId
                     });
                 return
             }
             if ("npc" === m.entityType) {
-                V.ZP.sendEvent(V.qM.PLAYER_CLICKED_NPC, {
+                V.ZP.emitEventNow(V.qM.PLAYER_CLICKED_NPC, {
                     npcId: m.npcId,
                     mid: m.targetId
                 });
@@ -21785,14 +20612,14 @@
                 if (T) {
                     let m = et.Z.getGameEntity(T.entity);
                     ((null == m ? void 0 : null === (B = m.storage) || void 0 === B ? void 0 : B.transient) || (0,
-                    q.T)(R.getState())) && V.ZP.sendEvent(V.fb.PLAYER_OPEN_STORAGE, {
+                    q.T)(R.getState())) && V.ZP.emitEventNow(V.fb.PLAYER_OPEN_STORAGE, {
                         storageId: C
                     })
                 }
                 return
             }
             if ("generic" === m.entityType && m.clickable) {
-                V.ZP.sendEvent(ea.m.clickEntity, {
+                V.ZP.emitEventNow(ei.m.clickEntity, {
                     mid: m.targetId,
                     entity: m.entityId,
                     impact: "click",
@@ -21804,16 +20631,16 @@
                 let C = m.action;
                 if (C.room) {
                     let m = C.room;
-                    V.ZP.sendEvent(V.fb.ROOM_WARP, {
+                    V.ZP.emitEventNow(V.fb.ROOM_WARP, {
                         mapId: m,
                         spawn: C.spawn
                     })
                 }
-                C.link && ("https://play.pixels.online/terravilla101" === C.link.toLowerCase() ? V.ZP.sendEvent(V.fb.ROOM_WARP, {
+                C.link && ("https://play.pixels.online/terravilla101" === C.link.toLowerCase() ? V.ZP.emitEventNow(V.fb.ROOM_WARP, {
                     mapId: "terravilla"
-                }) : /^[^./:]*$/.test(m.action.link) ? V.ZP.sendEvent(V.fb.ROOM_WARP, {
+                }) : /^[^./:]*$/.test(m.action.link) ? V.ZP.emitEventNow(V.fb.ROOM_WARP, {
                     mapId: C.link.trim()
-                }) : V.ZP.sendEvent(V.fb.LINK_OPEN, {
+                }) : V.ZP.emitEventNow(V.fb.LINK_OPEN, {
                     link: C.link.trim(),
                     msgKey: C.confirm
                 })),
@@ -21827,7 +20654,7 @@
                 }),
                 C.sound && V.rV.playSound.emit(C.sound),
                 C.sharelink && (0,
-                es.Bf)(C.sharelink, "Play Pixels.xyz")
+                ea.Bf)(C.sharelink, "Play Pixels.xyz")
             } else
                 "self" === m.useType || ("pet" === m.useType ? R.dispatch((0,
                 Z.zR)({})) : "otherPlayer" === m.useType ? R.dispatch((0,
@@ -21837,15 +20664,15 @@
                 })) : console.log("nothing to do", m))
         }
         );
-        var eu = C(27361)
-          , ec = C.n(eu);
-        let ed = 0;
+        var el = C(27361)
+          , eu = C.n(el);
+        let ec = 0;
         (0,
         B.H)("game/PLAYER_CLICKED", (m,R)=>{
             let C = Date.now();
-            if (C - ed < 150)
+            if (C - ec < 150)
                 return;
-            ed = C;
+            ec = C;
             let T = R.getState()
               , L = (0,
             q.pT)(T)
@@ -21859,17 +20686,17 @@
                 if (R) {
                     var $, B, H, G, W;
                     let T = (null === ($ = R.onUse) || void 0 === $ ? void 0 : $.placeEntity) || (null === (B = R.onUse) || void 0 === B ? void 0 : B.placeObject)
-                      , L = ec()(m, "context.tempNode.isBuildAreaFree", !1);
+                      , L = eu()(m, "context.tempNode.isBuildAreaFree", !1);
                     if (T && !L)
                         return;
                     let U = {
                         type: "ground",
-                        x: ec()(m, "context.tempNode.position.x") || ec()(m, "world.x"),
-                        y: ec()(m, "context.tempNode.position.y") || ec()(m, "world.y")
+                        x: eu()(m, "context.tempNode.position.x") || eu()(m, "world.x"),
+                        y: eu()(m, "context.tempNode.position.y") || eu()(m, "world.y")
                     };
                     if (null == R ? void 0 : null === (H = R.onUse) || void 0 === H ? void 0 : H.types.includes("move")) {
-                        if (U.type = ec()(m, "context.tempNode.type"),
-                        U.mid = ec()(m, "context.tempNode.mid"),
+                        if (U.type = eu()(m, "context.tempNode.type"),
+                        U.mid = eu()(m, "context.tempNode.mid"),
                         !U.type || !U.mid || !L)
                             return;
                         V.rV.attachToCursor.emit({
@@ -21881,9 +20708,9 @@
                     } else if ((null === (G = R.onUse) || void 0 === G ? void 0 : G.types.includes("placeTile")) || (null === (W = R.onUse) || void 0 === W ? void 0 : W.types.includes("removeTile"))) {
                         if (!L)
                             return;
-                        U.tiles = ec()(m, "context.tiles")
+                        U.tiles = eu()(m, "context.tiles")
                     }
-                    V.ZP.sendEvent(V.qM.PLAYER_USED_ITEM, {
+                    V.ZP.emitEventNow(V.qM.PLAYER_USED_ITEM, {
                         item: {
                             id: R.id,
                             inventorySlot: C.slot
@@ -21899,7 +20726,7 @@
         }
         );
         var ef = C(36968)
-          , ep = C.n(ef);
+          , ed = C.n(ef);
         (0,
         B.H)(q.r5.type, (m,R)=>{
             switch (m.path) {
@@ -21910,28 +20737,28 @@
                         q.zl)(R.getState())
                     }
                 };
-                ep()(C, m.path, m.value),
-                V.ZP.sendEvent(V.qM.ROOM_RESTRICTIONS, {
+                ed()(C, m.path, m.value),
+                V.ZP.emitEventNow(V.qM.ROOM_RESTRICTIONS, {
                     ...C.restrictions
                 });
                 break;
             case "permissions.use":
-                V.ZP.sendEvent(V.qM.ROOM_PERMISSIONS, {
+                V.ZP.emitEventNow(V.qM.ROOM_PERMISSIONS, {
                     permissions: {
                         use: m.value
                     }
                 });
                 break;
             case "guild":
-                V.ZP.sendEvent(V.qM.ROOM_PERMISSIONS, {
+                V.ZP.emitEventNow(V.qM.ROOM_PERMISSIONS, {
                     guild: m.value
                 });
                 break;
             case "name":
-                V.ZP.sendEvent(V.qM.ROOM_NAME, m.value);
+                V.ZP.emitEventNow(V.qM.ROOM_NAME, m.value);
                 break;
             case "ownership.forSale":
-                V.ZP.sendEvent(V.qM.ROOM_OWNERSHIP, {
+                V.ZP.emitEventNow(V.qM.ROOM_OWNERSHIP, {
                     forSale: m.value
                 })
             }
@@ -21939,24 +20766,24 @@
         ),
         (0,
         B.H)("mapEditor/addMember", m=>{
-            V.ZP.sendEvent(V.qM.ROOM_MEMBERS, m)
+            V.ZP.emitEventNow(V.qM.ROOM_MEMBERS, m)
         }
         ),
         (0,
         B.H)("game/PLAYER_COLLIDED_WITH_OBJECT", m=>{
             if (null == m ? void 0 : m.onCollide) {
                 let R = m.onCollide;
-                R.teleport && V.ZP.sendEvent(V.fb.ROOM_WARP, {
+                R.teleport && V.ZP.emitEventNow(V.fb.ROOM_WARP, {
                     mapId: R.teleport,
                     spawn: R.spawn,
                     source: m.key
                 }),
                 R.sound && V.rV.playSound.emit(R.sound),
-                R.trigger && V.ZP.sendEvent(V.Yi.TRIGGER_EVENT, {
+                R.trigger && V.ZP.emitEventNow(V.Yi.TRIGGER_EVENT, {
                     trigger: m.onCollide.trigger,
                     targetId: m.targetId
                 }),
-                R.link && V.ZP.sendEvent(V.fb.LINK_OPEN, {
+                R.link && V.ZP.emitEventNow(V.fb.LINK_OPEN, {
                     link: R.link.trim(),
                     msgKey: R.confirm
                 })
@@ -21967,7 +20794,7 @@
         B.H)("game/PLAYER_UNCOLLIDED_WITH_OBJECT", m=>{
             if (null == m ? void 0 : m.onCollide) {
                 let R = m.onCollide;
-                R.teleport && V.ZP.sendEvent(V.fb.ROOM_WARP, {
+                R.teleport && V.ZP.emitEventNow(V.fb.ROOM_WARP, {
                     mapId: R.teleport,
                     spawn: R.spawn,
                     source: m.key,
@@ -21976,11 +20803,11 @@
             }
         }
         );
-        var eh = C(77341)
-          , eg = C(79274)
-          , em = C(69959)
-          , ey = C(71156)
-          , ev = C(95767);
+        var ep = C(77341)
+          , eh = C(79274)
+          , eg = C(69959)
+          , em = C(71156)
+          , ey = C(95767);
         function registerWorker() {
             if (navigator.serviceWorker && "PushManager"in window)
                 return navigator.serviceWorker.register("/workers/push-worker.js?v=1").then(function(m) {
@@ -22039,8 +20866,8 @@
         async function shouldAskAboutSubscription() {
             return !await isUserSubscribedToPush() && !!await isSubscriptionPossible()
         }
-        let eb = "craft:"
-          , eE = !1;
+        let ev = "craft:"
+          , eb = !1;
         (0,
         B.H)("game/PRESENT_UI", (m,R)=>{
             var C, T, L, U, $, B, W, Y, K, X, Q;
@@ -22050,7 +20877,7 @@
             console.log("got presentui ".concat(ee)),
             ee.includes("marketplace-") && "marketplace-listings" !== ee) {
                 R.dispatch((0,
-                ey.j4)({
+                em.j4)({
                     initialCategory: ee.split("marketplace-")[1]
                 }));
                 return
@@ -22064,7 +20891,7 @@
             case "farmPicker":
             case "plotDialog":
                 R.dispatch((0,
-                em.Vu)());
+                eg.Vu)());
                 break;
             case "portalConfig":
                 R.dispatch((0,
@@ -22090,13 +20917,13 @@
                 R.dispatch((0,
                 en.aq)()),
                 R.dispatch((0,
-                ey.j4)({}));
+                em.j4)({}));
                 break;
             case "marketplace-listings":
                 R.dispatch((0,
                 en.aq)()),
                 R.dispatch((0,
-                ey.ft)());
+                em.ft)());
                 break;
             case "portalConfigTenant":
                 R.dispatch((0,
@@ -22116,7 +20943,7 @@
                 H.Dw)(!0));
                 break;
             case "link":
-                "string" == typeof (null == eo ? void 0 : eo[0]) && V.ZP.sendEvent(V.fb.LINK_OPEN, {
+                "string" == typeof (null == eo ? void 0 : eo[0]) && V.ZP.emitEventNow(V.fb.LINK_OPEN, {
                     link: null == eo ? void 0 : eo[0],
                     msgKey: null == eo ? void 0 : eo[1]
                 });
@@ -22124,10 +20951,15 @@
             case "petStorage":
                 {
                     let m = null === (C = J.l.getInstance().selfPlayer) || void 0 === C ? void 0 : C.pet;
-                    m && V.ZP.sendEvent(V.fb.PLAYER_OPEN_STORAGE, {
+                    m && V.ZP.emitEventNow(V.fb.PLAYER_OPEN_STORAGE, {
                         storageId: m.mid
                     })
                 }
+                break;
+            case "wardrobe":
+                V.ZP.emitEventNow(V.fb.PLAYER_OPEN_STORAGE, {
+                    storageId: "wardrobe"
+                });
                 break;
             case "petPicker":
                 R.dispatch((0,
@@ -22151,7 +20983,7 @@
                 break;
             case "mapStorage":
                 (0,
-                q.LB)(R.getState()) && V.ZP.sendEvent(V.fb.PLAYER_OPEN_STORAGE, {
+                q.LB)(R.getState()) && V.ZP.emitEventNow(V.fb.PLAYER_OPEN_STORAGE, {
                     storageId: J.l.getInstance().mapStorageId
                 });
                 break;
@@ -22162,7 +20994,7 @@
                     if (C) {
                         let m = et.Z.getGameEntity(C.entity);
                         ((null == m ? void 0 : null === (T = m.storage) || void 0 === T ? void 0 : T.transient) || (0,
-                        q.T)(R.getState())) && V.ZP.sendEvent(V.fb.PLAYER_OPEN_STORAGE, {
+                        q.T)(R.getState())) && V.ZP.emitEventNow(V.fb.PLAYER_OPEN_STORAGE, {
                             storageId: er
                         })
                     }
@@ -22198,20 +21030,20 @@
                 break;
             case "closeCrafting":
                 R.dispatch((0,
-                eh.F0)());
+                ep.F0)());
                 break;
             case "openMailbox":
                 R.dispatch((0,
                 en.aq)()),
                 R.dispatch((0,
-                ev.e4)());
+                ey.e4)());
                 break;
             case "closeMailbox":
                 R.dispatch((0,
-                ev.I_)());
+                ey.I_)());
                 break;
             case "webpush":
-                if (eE)
+                if (eb)
                     break;
                 shouldAskAboutSubscription().then(m=>{
                     m && R.dispatch((0,
@@ -22222,7 +21054,7 @@
                             "yes" === m ? subscribeUserToPush().then(m=>{
                                 if (m) {
                                     let R = JSON.parse(JSON.stringify(m));
-                                    V.ZP.sendEvent(V.Yi.PUSH_SUBSCRIBE, {
+                                    V.ZP.emitEventNow(V.Yi.PUSH_SUBSCRIBE, {
                                         endpoint: R.endpoint,
                                         expiration: R.expirationTime,
                                         extra: {
@@ -22236,20 +21068,20 @@
                             ).catch(m=>{
                                 console.log(m)
                             }
-                            ) : "no" === m && (eE = !0)
+                            ) : "no" === m && (eb = !0)
                         }
                     }))
                 }
                 );
                 break;
             default:
-                if (ee.startsWith(eb) || eg.h3.includes(ee)) {
-                    let m = ee.replace(eb, "")
+                if (ee.startsWith(ev) || eh.h3.includes(ee)) {
+                    let m = ee.replace(ev, "")
                       , C = null !== (W = null == eo ? void 0 : eo[1]) && void 0 !== W ? W : "";
                     (null == C ? void 0 : C.startsWith("update:")) || R.dispatch((0,
                     en.aq)()),
                     R.dispatch((0,
-                    eh.Uf)({
+                    ep.Uf)({
                         source: null != er ? er : "",
                         craftType: m,
                         tableTier: null !== (Y = null == eo ? void 0 : eo[0]) && void 0 !== Y ? Y : 1,
@@ -22272,7 +21104,8 @@
             (R !== C || T !== L) && V.rV.inventory.swapItems.emit(m)
         }
         );
-        var e_ = C(77497);
+        var eE = C(60604)
+          , e_ = C(77497);
         (0,
         B.H)("game/".concat(V.fb.PLAYER_EXP_CHANGE), (m,R)=>{
             var C, T, L;
@@ -22284,7 +21117,7 @@
               , V = m.levels
               , H = []
               , G = $.quests
-              , q = eg.nA.every(m=>{
+              , q = eh.nA.every(m=>{
                 var R, C;
                 let T = (null === (R = B[m]) || void 0 === R ? void 0 : R.level) || 0
                   , L = (null === (C = V[m]) || void 0 === C ? void 0 : C.level) || 0;
@@ -22295,7 +21128,7 @@
                 var R, C;
                 return null == m ? void 0 : null === (C = m.requirements) || void 0 === C ? void 0 : null === (R = C.levels) || void 0 === R ? void 0 : R.some(m=>{
                     let {levelType: R, level: C} = m;
-                    return !!eg.nA.includes(R) && C >= 0
+                    return !!eh.nA.includes(R) && C >= 0
                 }
                 )
             }
@@ -22321,7 +21154,7 @@
                 text: {
                     id: "notifications.itemUnlocked",
                     name: (0,
-                    es.sA)(m.id)
+                    ea.sA)(m.id)
                 },
                 deduplicationKey: "notifications.itemUnlocked-".concat(m.id)
             })),
@@ -22334,20 +21167,20 @@
                 if (!m.craftable)
                     return !1;
                 let T = m.craftable.requiredLevel || 0
-                  , L = m.craftable.requiredSkill || eg.oi[m.craftable.type]
+                  , L = m.craftable.requiredSkill || eh.oi[m.craftable.type]
                   , U = (null === (R = B[L]) || void 0 === R ? void 0 : R.level) || 0
                   , $ = (null === (C = V[L]) || void 0 === C ? void 0 : C.level) || 0;
                 return $ >= T && U < T
             }
             ).forEach(m=>{
-                let R = m.craftable.requiredSkill || eg.oi[m.craftable.type];
+                let R = m.craftable.requiredSkill || eh.oi[m.craftable.type];
                 H.push({
                     source: "achievement",
-                    icon: "".concat(eo.fd).concat(R, ".png"),
+                    icon: "".concat(eE.fd).concat(R, ".png"),
                     text: {
                         id: "notifications.globalAchievementUnlocked",
                         name: (0,
-                        es.sA)(m.id)
+                        ea.sA)(m.id)
                     },
                     deduplicationKey: "notifications.globalAchievementUnlocked-".concat(m.id)
                 })
@@ -22414,20 +21247,20 @@
             }
         }
         );
-        var eO = C(95047);
+        var ew = C(95047);
         (0,
         B.H)("game/CLIENT_CMD", m=>{
             console.log("got client command", m);
             let {detail: R, source: C, params: T} = m;
             switch (R) {
             case "petHatch":
-                C && eO.Z.hatchPet(C).then(m=>{
+                C && ew.Z.hatchPet(C).then(m=>{
                     var R, L;
-                    "success" === m ? V.ZP.postEvent(ea.m.clickEntity, {
+                    "success" === m ? V.ZP.sendEventDelayed(ei.m.clickEntity, {
                         mid: C,
                         impact: "hatched",
                         entity: null !== (R = null == T ? void 0 : T[0]) && void 0 !== R ? R : "ent_growthlab"
-                    }) : V.ZP.postEvent(ea.m.clickEntity, {
+                    }) : V.ZP.sendEventDelayed(ei.m.clickEntity, {
                         mid: C,
                         impact: "failed",
                         entity: null !== (L = null == T ? void 0 : T[0]) && void 0 !== L ? L : "ent_growthlab"
@@ -22457,8 +21290,8 @@
             }
         }
         );
-        var eA = C(18496)
-          , ew = C(22181)
+        var eO = C(18496)
+          , eA = C(22181)
           , eI = C(54698)
           , eR = C(87434)
           , eP = C(46787)
@@ -22469,16 +21302,16 @@
                 auth: Y.Co,
                 game: Z.ZP,
                 ui: H.ZP,
-                mailbox: ev.ZP,
+                mailbox: ey.ZP,
                 generalStore: G.ZP,
-                marketplace: ey.ZP,
+                marketplace: em.ZP,
                 chat: eI.ZP,
-                plot: em.ZP,
+                plot: eg.ZP,
                 report: eR.ZP,
                 storage: en.ZP,
                 trade: eP.ZP,
                 mapEditor: q.ZP,
-                crafting: eh.ZP
+                crafting: ep.ZP
             },
             middleware: m=>m().concat(m=>R=>C=>{
                 if (C.type === Y.Kx.type)
@@ -22487,7 +21320,7 @@
                             var R, T, L, U;
                             let $ = null !== (L = (0,
                             Q.Ul)("wallet-provider")) && void 0 !== L ? L : "unknown"
-                              , B = await eA.Z.initialize(null !== (U = (0,
+                              , B = await eO.Z.initialize(null !== (U = (0,
                             Q.En)(null === (R = C.payload) || void 0 === R ? void 0 : R.mapId)) && void 0 !== U ? U : "", $)
                               , V = null == B ? void 0 : B.player
                               , H = (0,
@@ -22498,14 +21331,14 @@
                                 window.open("/".concat(q, "/").concat(G), "_self");
                                 return
                             }
-                            B && eA.Z.sessionToken && (m.dispatch((0,
-                            ew.R)({
+                            B && eO.Z.sessionToken && (m.dispatch((0,
+                            eA.R)({
                                 mapId: G
                             })),
                             m.dispatch((0,
                             Y.iM)({
-                                sessionToken: eA.Z.sessionToken,
-                                provider: eA.Z.walletProvider,
+                                sessionToken: eO.Z.sessionToken,
+                                provider: eO.Z.walletProvider,
                                 username: V.username,
                                 playerId: V._id.toString(),
                                 playerAvatar: V.playerAvatar,
@@ -22532,10 +21365,10 @@
                 else if (C.type === Y.MD.type) {
                     let {username: R, avatarPieces: T} = C.payload;
                     (async()=>{
-                        if (eA.Z.sessionToken) {
+                        if (eO.Z.sessionToken) {
                             var C, L, U, $;
                             try {
-                                let U = await eA.Z.createPlayer(R, T);
+                                let U = await eO.Z.createPlayer(R, T);
                                 (null == U ? void 0 : null === (C = U.player) || void 0 === C ? void 0 : C.username) ? m.dispatch((0,
                                 Y.z1)({
                                     username: U.player.username,
@@ -22561,7 +21394,7 @@
                     )()
                 } else
                     C.type === Z.ni.type && (async()=>{
-                        eA.Z.sessionToken && eA.Z.signOut().catch(m=>{
+                        eO.Z.sessionToken && eO.Z.signOut().catch(m=>{
                             console.log("error signing out", m)
                         }
                         ),
@@ -25433,16 +24266,16 @@
                     else {
                         var eu = !1
                           , ec = !1
-                          , ed = void 0 !== R.count && "string" != typeof R.count
-                          , ef = Translator.hasDefaultValue(R)
-                          , ep = ed ? this.pluralResolver.getSuffix(q, R.count, R) : ""
+                          , ef = void 0 !== R.count && "string" != typeof R.count
+                          , ed = Translator.hasDefaultValue(R)
+                          , ep = ef ? this.pluralResolver.getSuffix(q, R.count, R) : ""
                           , eh = R["defaultValue".concat(ep)] || R.defaultValue;
-                        !this.isValidLookup(K) && ef && (eu = !0,
+                        !this.isValidLookup(K) && ed && (eu = !0,
                         K = eh),
                         this.isValidLookup(K) || (ec = !0,
                         K = V);
                         var eg = (R.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey) && ec ? void 0 : K
-                          , em = ef && eh !== K && this.options.updateMissing;
+                          , em = ed && eh !== K && this.options.updateMissing;
                         if (ec || eu || em) {
                             if (this.logger.log(em ? "updateKey" : "missingKey", q, G, V, em ? eh : K),
                             $) {
@@ -25459,11 +24292,11 @@
                             else
                                 "all" === this.options.saveMissingTo ? ev = this.languageUtils.toResolveHierarchy(R.lng || this.language) : ev.push(R.lng || this.language);
                             var send = function(m, C, T) {
-                                var U = ef && T !== K ? T : eg;
+                                var U = ed && T !== K ? T : eg;
                                 L.options.missingKeyHandler ? L.options.missingKeyHandler(m, G, C, U, em, R) : L.backendConnector && L.backendConnector.saveMissing && L.backendConnector.saveMissing(m, G, C, U, em, R),
                                 L.emit("missingKey", m, G, C, K)
                             };
-                            this.options.saveMissing && (this.options.saveMissingPlurals && ed ? ev.forEach(function(m) {
+                            this.options.saveMissing && (this.options.saveMissingPlurals && ef ? ev.forEach(function(m) {
                                 L.pluralResolver.getSuffixes(m, R).forEach(function(C) {
                                     send([m], V + C, R["defaultValue".concat(C)] || eh)
                                 })
@@ -26339,7 +25172,7 @@
             }
             return m
         }
-        var ed = function(m) {
+        var ef = function(m) {
             _inherits(Connector, m);
             var R, C = (R = function() {
                 if ("undefined" == typeof Reflect || !Reflect.construct || Reflect.construct.sham)
@@ -26582,7 +25415,7 @@
             return m
         }
         function noop() {}
-        var ef = function(m) {
+        var ed = function(m) {
             _inherits(I18n, m);
             var R, C = (R = function() {
                 if ("undefined" == typeof Reflect || !Reflect.construct || Reflect.construct.sham)
@@ -26739,7 +25572,7 @@
                         B.utils = {
                             hasLoadedNamespace: this.hasLoadedNamespace.bind(this)
                         },
-                        B.backendConnector = new ed(createClassOnDemand(this.modules.backend),B.resourceStore,B,this.options),
+                        B.backendConnector = new ef(createClassOnDemand(this.modules.backend),B.resourceStore,B,this.options),
                         B.backendConnector.on("*", function(R) {
                             for (var C = arguments.length, T = Array(C > 1 ? C - 1 : 0), L = 1; L < C; L++)
                                 T[L - 1] = arguments[L];
@@ -27060,13 +25893,13 @@
             I18n
         }(Y);
         (0,
-        V.Z)(ef, "createInstance", function() {
+        V.Z)(ed, "createInstance", function() {
             var m = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {}
               , R = arguments.length > 1 ? arguments[1] : void 0;
-            return new ef(m,R)
+            return new ed(m,R)
         });
-        var ep = ef.createInstance();
-        ep.createInstance = ef.createInstance,
+        var ep = ed.createInstance();
+        ep.createInstance = ed.createInstance,
         ep.createInstance,
         ep.init,
         ep.loadResources,
