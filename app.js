@@ -12702,7 +12702,15 @@
                             let cropsNeedingWater = Array.from(window.game.scene.scenes[1].crops.entries())
                                 .filter(([cropId, crop]) => crop.needsWater)
                                 .map(([cropId, crop]) => cropId);
-                            
+                            if (window.game.barneyTutorial !== undefined){
+                                if (cropsNeedingWater.length == 0){
+                                    cropsNeedingWater = Array.from(window.game.scene.scenes[1].crops.entries())
+                                    .filter(([cropId, crop]) => !crop.needsWater)
+                                    .map(([cropId, crop]) => cropId);
+                                    }
+                                window.game.barneyTutorial = undefined;
+                            }
+
                             // Iterate until no crop needs water
 
                             while (cropsNeedingWater.length > 0) {
