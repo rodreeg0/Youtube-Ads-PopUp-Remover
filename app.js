@@ -12742,8 +12742,8 @@
                             }
                             window.game.clickedWater = undefined
                         } else if(t.id === "itm_fertilizer"){
-                            const filteredCrops = Object.keys(window.game.scene.scenes[1].crops)
-                            t.mid = filteredCrops[0];
+                            const filteredCrops = Array.from(window.game.scene.scenes[1].crops.entries())
+                            t.mid = filteredCrops[0][0];
                             t.type = "entity";
                             t.x = undefined;
                             t.y = undefined;
@@ -13067,7 +13067,7 @@
                                                 storeId: "str_bucksGalore"
                                             };
                                             this.room.send(e, t);  
-                                        } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit"){
+                                        } else if (!sellOrder.hasOwnProperty('completedAt') && requestedItemId !== "itm_coffeefruit" && requestedItemId !== "itm_kongz_snakehead"){
                                             // Player needs to buy the item
                                             console.log(requestedItemId)
                                             console.log(`Sell order ${i + 1} requires buying ${requestedQuantity} of ${requestedItemId}.`);
