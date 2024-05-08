@@ -13382,6 +13382,7 @@
                         avatar: V || !q ? "" : JSON.stringify(q),
                         lastSavedAt: Y
                     })
+                    window['wsroom'] = this.room;
                 } catch (m) {
                     if ((null == m ? void 0 : m.code) === U.SERVER_MAINTENANCE)
                         B.ZP.emitEventNow(B.fb.SVR_CANNOTCONNECT, {
