@@ -12495,12 +12495,12 @@
                                 };
                                 await this.room.send(e, t);
                                 await delay(500);
-                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+                                let dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
 
                                 // Check if such a div exists
                                 if (dialogDiv) {
                                     // Remove the div from the DOM
-                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                    dialogDiv.parentNode.removeChild(let dialogDiv);
                                 } else {
                                     console.log("No div with class containing 'GameDialog_dialog' found.");
                                 }
@@ -12537,7 +12537,7 @@
                                 // Check if such a div exists
                                 if (dialogDiv) {
                                     // Remove the div from the DOM
-                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                    dialogDiv.parentNode.removeChild(let dialogDiv);
                                 } else {
                                     console.log("No div with class containing 'GameDialog_dialog' found.");
                                 }
@@ -12564,12 +12564,12 @@
                                 };
                                 await this.room.send(e, t);
                                 await delay(500);
-                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+                                let dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
 
                                 // Check if such a div exists
                                 if (dialogDiv) {
                                     // Remove the div from the DOM
-                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                    dialogDiv.parentNode.removeChild(let dialogDiv);
                                 } else {
                                     console.log("No div with class containing 'GameDialog_dialog' found.");
                                 }
@@ -12610,7 +12610,7 @@
                                 // Check if such a div exists
                                 if (dialogDiv) {
                                     // Remove the div from the DOM
-                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                    dialogDiv.parentNode.removeChild(let dialogDiv);
                                 } else {
                                     console.log("No div with class containing 'GameDialog_dialog' found.");
                                 }
@@ -12637,12 +12637,12 @@
                                 };
                                 await this.room.send(e, t);
                                 await delay(500);
-                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+                                let dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
 
                                 // Check if such a div exists
                                 if (dialogDiv) {
                                     // Remove the div from the DOM
-                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                    dialogDiv.parentNode.removeChild(let dialogDiv);
                                 } else {
                                     console.log("No div with class containing 'GameDialog_dialog' found.");
                                 }
@@ -12685,7 +12685,7 @@
                                 // Check if such a div exists
                                 if (dialogDiv) {
                                     // Remove the div from the DOM
-                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                    dialogDiv.parentNode.removeChild(let dialogDiv);
                                 } else {
                                     console.log("No div with class containing 'GameDialog_dialog' found.");
                                 }
