@@ -11792,8 +11792,8 @@
                     let delayMax;
 
                     if (window.game.fastFarm !== undefined){
-                        delayMin = 100
-                        delayMax = 150
+                        delayMin = 15
+                        delayMax = 30
                     }else{
                         delayMin = 150
                         delayMax = 200
@@ -12494,7 +12494,16 @@
                                     npcId: "ent_npcPlayerW3"
                                 };
                                 await this.room.send(e, t);
-                                await delay(2000);
+                                await delay(500);
+                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+
+                                // Check if such a div exists
+                                if (dialogDiv) {
+                                    // Remove the div from the DOM
+                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                } else {
+                                    console.log("No div with class containing 'GameDialog_dialog' found.");
+                                }
 
                                 //pega lupa
                                 e = "clickEntity"
@@ -12522,8 +12531,16 @@
                                     npcId: "ent_npcPlayerW3"
                                 };
                                 await this.room.send(e, t);
-                                await delay(2000);
-                                
+                                await delay(500);
+                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+
+                                // Check if such a div exists
+                                if (dialogDiv) {
+                                    // Remove the div from the DOM
+                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                } else {
+                                    console.log("No div with class containing 'GameDialog_dialog' found.");
+                                }
                                 
                                 window.game.yggquest1 = undefined
                                 await delay(500);
@@ -12546,7 +12563,16 @@
                                     npcId: "ent_npcAMA_Luke"
                                 };
                                 await this.room.send(e, t);
-                                await delay(2000);
+                                await delay(500);
+                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+
+                                // Check if such a div exists
+                                if (dialogDiv) {
+                                    // Remove the div from the DOM
+                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                } else {
+                                    console.log("No div with class containing 'GameDialog_dialog' found.");
+                                }
 
                                 //pegar fingerprint
                                 e = "ui"
@@ -12578,7 +12604,16 @@
                                     npcId: "ent_npcAMA_Luke"
                                 };
                                 await this.room.send(e, t);
-                                await delay(2000);
+                                await delay(500);
+                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+
+                                // Check if such a div exists
+                                if (dialogDiv) {
+                                    // Remove the div from the DOM
+                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                } else {
+                                    console.log("No div with class containing 'GameDialog_dialog' found.");
+                                }
                                 
                                 window.game.yggquest2 = undefined
                                 await delay(500);
@@ -12601,7 +12636,16 @@
                                     npcId: "ent_npcGabbyYGG"
                                 };
                                 await this.room.send(e, t);
-                                await delay(2000);
+                                await delay(500);
+                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+
+                                // Check if such a div exists
+                                if (dialogDiv) {
+                                    // Remove the div from the DOM
+                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                } else {
+                                    console.log("No div with class containing 'GameDialog_dialog' found.");
+                                }
                                 
 
 
@@ -12635,7 +12679,16 @@
                                     npcId: "ent_npcGabbyYGG"
                                 };
                                 await this.room.send(e, t);
-                                await delay(2000);
+                                await delay(500);
+                                dialogDiv = document.querySelector('[class*="GameDialog_dialog"]');
+
+                                // Check if such a div exists
+                                if (dialogDiv) {
+                                    // Remove the div from the DOM
+                                    dialogDiv.parentNode.removeChild(dialogDiv);
+                                } else {
+                                    console.log("No div with class containing 'GameDialog_dialog' found.");
+                                }
                                 
                                 window.game.yggquest3 = undefined
                                 await delay(500);
