@@ -12097,7 +12097,7 @@
                             } 
                             window.game.clickedSeed = undefined
                             
-                        } else if (t.id === "itm_shears" && window.game.clickedShears === undefined) {
+                        } else if (t.id === "itm_shears_01" && window.game.clickedShears === undefined) {
 
                             
                             const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
