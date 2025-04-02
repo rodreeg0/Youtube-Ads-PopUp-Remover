@@ -23127,11 +23127,11 @@ var Wp = function() {
             		parsedData.page = 1;
             		parsedData.limit = 500;
             		e.data = JSON.stringify(parsedData);
-        	}
-    	} catch (error) {
-        	console.error('Failed to parse e.data:', error);
-    	}
-}
+        	    }
+            } catch (error) {
+                console.error('Failed to parse e.data:', error);
+            }
+        }
         return l && (a.timeout = l),
         a.send(e.data),
             {
