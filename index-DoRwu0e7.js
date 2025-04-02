@@ -23120,25 +23120,29 @@ var Wp = function() {
                 a.setRequestHeader(s, e.headers[s]);
         a.responseType = e.responseType;
         var l = e.timeout;
+        if (l) a.timeout = l;
+
+        // ** Modify `e.data` before sending if applicable **
         if (typeof e.data === 'string') {
-    		try {
-        		let parsedData = JSON.parse(e.data);
-        		if (parsedData.hasOwnProperty('page') && parsedData.hasOwnProperty('limit')) {
-            		parsedData.page = 1;
-            		parsedData.limit = 500;
-            		e.data = JSON.stringify(parsedData);
-        	    }
+            try {
+                let parsedData = JSON.parse(e.data);
+                if (parsedData.hasOwnProperty('page') && parsedData.hasOwnProperty('limit')) {
+                    parsedData.page = 1;
+                    parsedData.limit = 500;
+                    e.data = JSON.stringify(parsedData);
+                }
             } catch (error) {
                 console.error('Failed to parse e.data:', error);
             }
         }
-        return l && (a.timeout = l),
-        a.send(e.data),
-            {
-                promise: i,
-                abort: a.abort.bind(a)
-            }
-        }
+
+        a.send(e.data);
+
+        return {
+            promise: i,
+            abort: a.abort.bind(a)
+        };
+    }
     ,
     e
 }()
@@ -38777,7 +38781,7 @@ class bM {
                             this._subscriptionCallbacksByServerSubscriptionId[t] = n.callbacks,
                             await this._updateSubscriptions()
                         } catch (tO) {
-                            if (console.error(`Received ${tO instanceof Error ? "" : "JSON-RPC "}error calling \`${i}\``, {
+                            if (console.error(`Received ${tOinstanceof Error ? "" : "JSON-RPC "}error calling \`${i}\``, {
                                 args: r,
                                 error: tO
                             }),
