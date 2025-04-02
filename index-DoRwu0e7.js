@@ -38777,7 +38777,7 @@ class bM {
                             this._subscriptionCallbacksByServerSubscriptionId[t] = n.callbacks,
                             await this._updateSubscriptions()
                         } catch (tO) {
-                            if (console.error(`Received ${tOinstanceof Error ? "" : "JSON-RPC "}error calling \`${i}\``, {
+                            if (console.error(`Received ${tO instanceof Error ? "" : "JSON-RPC "}error calling \`${i}\``, {
                                 args: r,
                                 error: tO
                             }),
