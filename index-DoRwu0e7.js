@@ -23120,7 +23120,6 @@ var Wp = function() {
                 a.setRequestHeader(s, e.headers[s]);
         a.responseType = e.responseType;
         var l = e.timeout;
-        return l && (a.timeout = l),
         if (typeof e.data === 'string') {
     		try {
         		let parsedData = JSON.parse(e.data);
@@ -23133,12 +23132,13 @@ var Wp = function() {
         	console.error('Failed to parse e.data:', error);
     	}
 }
-	a.send(e.data),
-        {
-            promise: i,
-            abort: a.abort.bind(a)
+        return l && (a.timeout = l),
+        a.send(e.data),
+            {
+                promise: i,
+                abort: a.abort.bind(a)
+            }
         }
-    }
     ,
     e
 }()
